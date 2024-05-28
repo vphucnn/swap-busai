@@ -62,7 +62,7 @@ const themeConfig: ThemeConfig = {
 
   // ** Navigation (Menu) Configs
   navHidden: false /* true | false */,
-  menuTextTruncate: true /* true | false */,
+  menuTextTruncate: false /* true | false */,
   navSubItemIcon: 'tabler:circle' /* Icon */,
   verticalNavToggleType: 'accordion' /* accordion | collapse /*! Note: This is for Vertical navigation menu only */,
   navCollapsed: false /* true | false /*! Note: This is for Vertical navigation menu only */,
