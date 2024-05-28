@@ -6,10 +6,10 @@
  */
 
 // ** MUI Imports
-import { Direction } from '@mui/material'
+import type { Direction } from '@mui/material'
 
 // ** Types
-import {
+import type {
   Skin,
   Mode,
   AppBar,
@@ -39,7 +39,7 @@ type ThemeConfig = {
   responsiveFontSizes: boolean
   collapsedNavigationSize: number
   horizontalMenuAnimation: boolean
-  layout: 'vertical' | 'horizontal'
+  layout: 'horizontal' |'vertical'
   verticalNavToggleType: VerticalNavToggle
   horizontalMenuToggle: HorizontalMenuToggle
   afterVerticalNavMenuContentPosition: 'fixed' | 'static'
@@ -49,7 +49,7 @@ type ThemeConfig = {
 
 const themeConfig: ThemeConfig = {
   // ** Layout Configs
-  templateName: 'Busai' /* App Name */,
+  templateName: 'BusAI' /* App Name */,
   layout: 'horizontal' /* vertical | horizontal */,
   mode: 'light' as Mode /* light | dark | semi-dark /*! Note: semi-dark value will only work for Vertical Layout */,
   direction: 'ltr' /* ltr | rtl */,
@@ -58,11 +58,11 @@ const themeConfig: ThemeConfig = {
   footer: 'hidden' /* fixed | static | hidden */,
 
   // ** Routing Configs
-  routingLoader: true /* true | false */,
+  routingLoader: false /* true | false */,
 
   // ** Navigation (Menu) Configs
   navHidden: false /* true | false */,
-  menuTextTruncate: false /* true | false */,
+  menuTextTruncate: true /* true | false */,
   navSubItemIcon: 'tabler:circle' /* Icon */,
   verticalNavToggleType: 'accordion' /* accordion | collapse /*! Note: This is for Vertical navigation menu only */,
   navCollapsed: false /* true | false /*! Note: This is for Vertical navigation menu only */,
@@ -80,7 +80,7 @@ const themeConfig: ThemeConfig = {
   // ** Other Configs
   responsiveFontSizes: false /* true | false */,
   disableRipple: false /* true | false */,
-  disableCustomizer: false /* true | false */,
+  disableCustomizer: true /* true | false */,
   toastPosition: 'top-right' /* top-left | top-center | top-right | bottom-left | bottom-center | bottom-right */
 }
 
