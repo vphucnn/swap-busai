@@ -50,12 +50,12 @@ const AclGuard = (props: AclGuardProps) => {
   }, [auth.user, guestGuard, router])
 
   // User is logged in, build ability for the user based on his role
-  if (auth.user && !ability) {
-    ability = buildAbilityFor(auth.user.role, aclAbilities.subject)
-    if (router.route === '/') {
-      return <Spinner />
-    }
-  }
+  // if (auth.user && !ability) {
+  //   ability = buildAbilityFor(auth.user.role, aclAbilities.subject)
+  //   if (router.route === '/') {
+  //     return <Spinner />
+  //   }
+  // }
 
   // If guest guard or no guard is true or any error page
   if (guestGuard || router.route === '/404' || router.route === '/500' || !authGuard) {
