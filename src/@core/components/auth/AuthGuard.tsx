@@ -27,7 +27,8 @@ const AuthGuard = (props: AuthGuardProps) => {
         if (router.asPath !== '/') {
           router.replace({
             pathname: '/connect-wallet',
-            query: { returnUrl: router.asPath }
+
+            // query: { returnUrl: router.asPath }
           })
         } else {
           router.replace('/connect-wallet')
