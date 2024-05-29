@@ -11,12 +11,12 @@ import { Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
 const Img = styled('img')(({ theme }) => ({
+  maxWidth: "100%",
+
   [theme.breakpoints.down('lg')]: {
-    height: 450,
     marginTop: theme.spacing(5)
   },
   [theme.breakpoints.down('md')]: {
-    height: 400
   },
   [theme.breakpoints.up('lg')]: {
     marginTop: theme.spacing(5)

@@ -13,12 +13,12 @@ import DialogShowPanda from 'src/views/pages/dialog-examples/DialogShowPanda';
 import TableHistory from 'src/views/table/mui/TableHistory';
 
 const Img = styled('img')(({ theme }) => ({
+  maxWidth: "100%",
+
   [theme.breakpoints.down('lg')]: {
-    height: 450,
     marginTop: theme.spacing(5)
   },
   [theme.breakpoints.down('md')]: {
-    height: 400
   },
   [theme.breakpoints.up('lg')]: {
     marginTop: theme.spacing(5)

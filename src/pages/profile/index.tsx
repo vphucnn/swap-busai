@@ -13,6 +13,7 @@ import TableHistory from 'src/views/table/mui/TableHistory';
 
 const Img = styled('img')(({ theme }) => ({
   maxWidth: "100%",
+
   [theme.breakpoints.down('lg')]: {
     marginTop: theme.spacing(5)
   },
