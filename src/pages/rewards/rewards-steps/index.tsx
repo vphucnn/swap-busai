@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 
 // import NProgress from 'nprogress'
 import { Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
 const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
@@ -25,6 +26,7 @@ const Img = styled('img')(({ theme }) => ({
 export default function Page() {
 
 
+  const router = useRouter()
 
   // function useDelayedCall(callback: any, delay: any) {
   //   useEffect(() => {
@@ -50,7 +52,7 @@ export default function Page() {
       <Box>
         <Img src='/images/general/cb-image.png' alt='box' />
       </Box>
-      <Box sx={{ textAlign: 'left' , display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+      <Box sx={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <Typography variant="h2" sx={{ fontWeight: '700' }}>
           Steps to participate
         </Typography>
@@ -88,7 +90,9 @@ export default function Page() {
         </Box>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '2rem' }}>
-        <Button variant="contained">Start</Button>
+        <Button variant="contained" onClick={() => {
+          router.replace('/generate-character-panda/')
+        }}>Start</Button>
       </Box >
     </Box>
   )

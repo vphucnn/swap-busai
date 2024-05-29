@@ -78,7 +78,7 @@ export default function Page() {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '2rem' }}>
         <Button variant="contained" onClick={() => {
-          router.replace('/rewards-steps')
+          router.replace('/rewards/rewards-steps')
         }}>Join Now</Button>
       </Box >
     </Box>
