@@ -10,12 +10,11 @@ import { Box, styled } from '@mui/system'
 
 const Img = styled('img')(({ theme }) => ({
   maxWidth: "100%",
+
   [theme.breakpoints.down('lg')]: {
-    height: 450,
     marginTop: theme.spacing(5)
   },
   [theme.breakpoints.down('md')]: {
-    height: 400
   },
   [theme.breakpoints.up('lg')]: {
     marginTop: theme.spacing(5)
@@ -107,7 +106,7 @@ const DialogShowPanda = ({ image, show, setShow }: Props) => {
                 </Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                   <Link href='https://t.me/share?url=https%3A%2F%2Fdemo01-lac.vercel.app%2F'>
-                    <Img src={'/images/logos/telegram.png'} alt="Girl in a jacket" width="40" />
+                    <Img src={'/images/logos/telegram.png'} alt="Girl in a jacket" width="40" height-="40" />
                   </Link>
 
 
