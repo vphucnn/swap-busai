@@ -105,7 +105,7 @@ const DialogShowPanda = ({ image, show, setShow }: Props) => {
                   Please share this joy with everyone
                 </Typography>
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                  <Link href='https://t.me/share?url=https%3A%2F%2Fdemo01-lac.vercel.app%2F'>
+                  <Link href='https://t.me/share/url?url=https://demo01-lac.vercel.app/images/general/panda.png&text=hello'>
                     <Img src={'/images/logos/telegram.png'} alt="Girl in a jacket" width="40" height-="40" />
                   </Link>
 
