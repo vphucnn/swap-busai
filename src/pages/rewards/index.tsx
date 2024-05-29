@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 
 // import NProgress from 'nprogress'
 import { Typography } from '@mui/material';
+import { useRouter } from 'next/router';
 
 const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
@@ -25,6 +26,7 @@ const Img = styled('img')(({ theme }) => ({
 export default function Page() {
 
 
+  const router = useRouter()
 
   // function useDelayedCall(callback: any, delay: any) {
   //   useEffect(() => {
@@ -44,14 +46,40 @@ export default function Page() {
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '3rem' }}>
       <Box>
         <Typography variant="h1">
-          Generate character panda
+          Event Create Character Panda
         </Typography>
       </Box>
       <Box>
-        <Img src='/images/general/box.png' alt='box' />
+        <Img src='/images/general/cb-image.png' alt='box' />
+      </Box>
+      <Box sx={{ textAlign: 'left' }}>
+        <Typography variant="body1" sx={{ fontWeight: '700' }}>
+          Event: Create Character Panda
+        </Typography>
+        <Typography variant="body1" sx={{ fontWeight: '700' }}>
+          Description:
+        </Typography>
+        <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Typography variant="body1" sx={{ fontWeight: '700' }}>
+            Purpose:
+          </Typography>
+          <Typography variant="body1" >
+            To encourage creativity and character design skills within the community.
+          </Typography>
+        </Box>
+        <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Typography variant="body1" sx={{ fontWeight: '700' }}>
+            Content:
+          </Typography>
+          <Typography variant="body1" >
+            Participants will have the opportunity to design their unique panda character using various drawing tools and graphic ...
+          </Typography>
+        </Box>
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '2rem' }}>
-        <Button variant="contained">Generate</Button>
+        <Button variant="contained" onClick={() => {
+          router.replace('/rewards-steps')
+        }}>Join Now</Button>
       </Box >
     </Box>
   )

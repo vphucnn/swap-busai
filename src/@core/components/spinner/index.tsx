@@ -18,7 +18,6 @@ const FallbackSpinner = ({ sx }: { sx?: BoxProps['sx'] }) => {
         ...sx
       }}
     >
-      <h1>FallbackSpinner</h1>
       <svg width={82} height={56.375} viewBox='0 0 32 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
         <path
           fillRule='evenodd'
