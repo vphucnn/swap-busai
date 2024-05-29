@@ -15,6 +15,7 @@ import toast from 'react-hot-toast'
 
 // ** Types
 import { Box } from '@mui/system'
+import { Dispatch, SetStateAction } from 'react'
 
 
 interface FormInputs {
@@ -25,8 +26,12 @@ const defaultValues = {
   prompt: '',
 }
 
+interface Props {
+  setShow: Dispatch<SetStateAction<boolean>>,
+}
 
-const FormPrompt = () => {
+
+const FormPrompt = ({ setShow }: Props) => {
   // ** States
 
 
@@ -40,6 +45,7 @@ const FormPrompt = () => {
 
   const onSubmit = () => {
     console.log(control._formValues)
+    setShow(true)
     toast.success('Form Submitted')
   }
 

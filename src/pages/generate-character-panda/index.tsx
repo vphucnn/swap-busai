@@ -8,6 +8,9 @@ import { styled } from '@mui/material/styles';
 // import NProgress from 'nprogress'
 import { Typography } from '@mui/material';
 import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
+import DialogShowPanda from 'src/views/pages/dialog-examples/DialogShowPanda';
+import { useState } from 'react';
+import TableHistory from 'src/views/table/mui/TableHistory';
 
 const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
@@ -39,6 +42,7 @@ export default function Page() {
   // useDelayedCall(() => NProgress.start(), 5000); // Delay by 2 seconds
   // useDelayedCall(() => NProgress.done(), 6000); // Delay by 2 seconds
 
+  const [show, setShow] = useState<boolean>(false)
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '3rem' }}>
@@ -60,7 +64,14 @@ export default function Page() {
 
       </Box>
       <Box>
-        <FormPrompt />
+        <FormPrompt setShow={setShow} />
+      </Box>
+      <Box>
+        <DialogShowPanda image={'/images/general/panda.png'} show={show} setShow={setShow} />
+      </Box>
+
+      <Box>
+        <TableHistory/>
       </Box>
     </Box>
   )
