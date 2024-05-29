@@ -3,11 +3,11 @@
 // import { useEffect } from 'react';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import { styled } from '@mui/material/styles';
 
 // import NProgress from 'nprogress'
 import { Typography } from '@mui/material';
+import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
 
 const Img = styled('img')(({ theme }) => ({
   [theme.breakpoints.down('lg')]: {
@@ -50,9 +50,18 @@ export default function Page() {
       <Box>
         <Img src='/images/general/box.png' alt='box' />
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '2rem' }}>
-        <Button variant="contained">Generate</Button>
-      </Box >
+      <Box sx={{ textAlign: 'center', display: 'flex' }}>
+        <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
+          Your remaining quantity :
+        </Typography>
+        <Typography variant="body1" sx={{ fontStyle: 'italic', color: 'red' }}>
+          (1/3)
+        </Typography>
+
+      </Box>
+      <Box>
+        <FormPrompt />
+      </Box>
     </Box>
   )
 }
