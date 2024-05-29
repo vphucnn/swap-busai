@@ -49,13 +49,13 @@ export default function Page() {
           Profile
         </Typography>
       </Box>
-      <Box sx={{ textAlign: 'left', display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: '1rem',  }}>
+      <Box sx={{ textAlign: 'left', display: 'flex', justifyContent: 'center', flexDirection: 'column', gap: '1rem', }}>
         <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between', textAlign: 'center', alignItems: 'center' }}>
           <Typography variant="body1" sx={{ fontWeight: '700', wordBreak: 'break-all' }}>
             Address:
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant="body1" sx={{wordBreak: 'break-all'}} >
+            <Typography variant="body1" sx={{ wordBreak: 'break-all' }} >
               {publicKey?.toString()}
             </Typography>
             <Box>
@@ -76,7 +76,7 @@ export default function Page() {
           <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '3rem' }}>
             <Img src={'/images/general/panda.png'} alt="Girl in a jacket" width="200" />
           </Box>
-          <Box sx={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1rem',  margin: 'auto' }}>
+          <Box sx={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1rem', margin: 'auto' }}>
             <Typography variant="h4" sx={{ fontWeight: '700' }}>
               Panda Lezen II
             </Typography>
@@ -95,6 +95,14 @@ export default function Page() {
                 </Typography>
                 <Typography variant="body1" >
                   220
+                </Typography>
+              </Box>
+              <Box sx={{ display: 'flex', gap: '1rem' }}>
+                <Typography variant="body1" sx={{ fontWeight: '700' }}>
+                  Created:
+                </Typography>
+                <Typography variant="body1" >
+                  14:09 24/05/2024
                 </Typography>
               </Box>
             </Box>
