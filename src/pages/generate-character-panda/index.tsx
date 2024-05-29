@@ -54,7 +54,7 @@ export default function Page() {
       <Box>
         <Img src='/images/general/box.png' alt='box' />
       </Box>
-      <Box sx={{ textAlign: 'center', display: 'flex' }}>
+      <Box sx={{ textAlign: 'center', display: 'flex', gap: '0.5rem' }}>
         <Typography variant="body1" sx={{ fontStyle: 'italic' }}>
           Your remaining quantity :
         </Typography>

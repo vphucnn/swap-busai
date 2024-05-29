@@ -57,7 +57,10 @@ const UserDropdown = (props: Props) => {
   const { direction } = settings
 
   const handleDropdownOpen = (event: SyntheticEvent) => {
-    setAnchorEl(event.currentTarget)
+    console.log(event)
+    router.push('/profile')
+
+    //setAnchorEl(event.currentTarget)
   }
 
   const handleDropdownClose = (url?: string) => {

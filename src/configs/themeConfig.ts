@@ -58,7 +58,7 @@ const themeConfig: ThemeConfig = {
   footer: 'hidden' /* fixed | static | hidden */,
 
   // ** Routing Configs
-  routingLoader: false /* true | false */,
+  routingLoader: true /* true | false */,
 
   // ** Navigation (Menu) Configs
   navHidden: false /* true | false */,

@@ -22,7 +22,7 @@ const rows = [
 const TableHistory = () => {
   return (
     <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 650 }} aria-label='simple table'>
+      <Table sx={{ width: '650px', maxWidth: '90vw' }} aria-label='simple table'>
         <TableHead>
           <TableRow>
             <TableCell>User</TableCell>
