@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
 
 // import NProgress from 'nprogress'
-import { Typography } from '@mui/material';
+import { Chip, Typography } from '@mui/material';
 import { useState } from 'react';
 import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
 import DialogShowPanda from 'src/views/pages/dialog-examples/DialogShowPanda';
@@ -57,21 +57,31 @@ export default function Page() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>
       <Box>
-        <Typography variant="h1">
+        <Typography variant="h1" sx={{ fontWeight: 700 }}>
           Make Busai your true style
         </Typography>
       </Box>
       <Box sx={{ display: 'flex' }}>
-        <Box sx={{width: '60%'}}>
+        <Box sx={{ width: '60%' }}>
           <Box>
             <Typography variant="body1" sx={{}}>
               Customizing Busai according to your ideas is simple, just write a detailed description in the box below. Share your achievements in Busai's community and receive surprising rewards
             </Typography>
           </Box>
-          <Box></Box>
-          <Box></Box>
+          <Box >
+            <Chip sx={{ margin: '10px 10px 10px 0px' }} label='Pink flip flops' />
+            <Chip sx={{ margin: '10px 10px 10px 0px' }} label='Standing on 1 leg' />
+            <Chip sx={{ margin: '10px 10px 10px 0px' }} label='stick out the tongue' />
+            <Chip sx={{ margin: '10px 10px 10px 0px' }} label='Red hat with a horn on it' />
+            <Chip sx={{ margin: '10px 10px 10px 0px' }} label='Jean Jacket with rocker style' />
+            <Chip sx={{ margin: '10px 10px 10px 0px' }} label='Funny nerdy face' />
+          </Box>
+          <Box>
+            <FormPrompt setShow={setShow} setUrlImg={setUrlImg} />
+
+          </Box>
         </Box>
-        <Box sx={{width: '40%'}}>
+        <Box sx={{ width: '40%' }}>
           <Img src='/images/general/box.png' alt='box' />
         </Box>
 
@@ -89,7 +99,6 @@ export default function Page() {
 
       </Box>
       <Box>
-        <FormPrompt setShow={setShow} setUrlImg={setUrlImg} />
       </Box>
       <Box>
         <DialogShowPanda image={urlImg} show={show} setShow={setShow} />

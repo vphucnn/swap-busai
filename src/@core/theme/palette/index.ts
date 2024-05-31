@@ -5,7 +5,7 @@ import { Skin } from 'src/@core/layouts/types'
 const DefaultPalette = (mode: Palette['mode'], skin: Skin): Palette => {
   // ** Vars
   const whiteColor = '#FFF'
-  const lightColor = '47, 43, 61'
+  const lightColor = '23,26,31'
   const darkColor = '208, 212, 241'
   const darkPaperBgColor = '#2F3349'
   const mainColor = mode === 'light' ? lightColor : darkColor
@@ -90,8 +90,8 @@ const DefaultPalette = (mode: Palette['mode'], skin: Skin): Palette => {
       A700: '#616161'
     },
     text: {
-      primary: `rgba(${mainColor}, 0.78)`,
-      secondary: `rgba(${mainColor}, 0.68)`,
+      primary: `rgba(${mainColor}, 1)`,
+      secondary: `rgba(${mainColor}, 0.8)`,
       disabled: `rgba(${mainColor}, 0.42)`
     },
     divider: `rgba(${mainColor}, 0.16)`,

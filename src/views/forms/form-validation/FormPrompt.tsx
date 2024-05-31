@@ -19,6 +19,9 @@ import { Dispatch, SetStateAction } from 'react'
 import axios from 'axios'
 
 import NProgress from 'nprogress'
+import { Tooltip, Typography } from '@mui/material'
+import { Icon } from '@iconify/react'
+import React from 'react'
 
 
 interface FormInputs {
@@ -94,7 +97,7 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
   return (
     <Box>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Grid container gap={15}>
+        <Grid container gap={10}>
           <Grid item xs={12} >
             <Controller
               name='prompt'
@@ -103,6 +106,8 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
               render={({ field: { value, onChange } }) => (
                 <CustomTextField
                   fullWidth
+                  rows={6}
+                  multiline
                   value={value}
                   onChange={onChange}
                   placeholder='Prompt'
@@ -113,10 +118,26 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
               )}
             />
           </Grid>
-          <Grid item xs={12} >
-            <Button type='submit' variant='contained'>
-              Generate
-            </Button>
+          <Grid item xs={12} container justifyContent="flex-end" >
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+              <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <Typography variant="body1">
+                  Generated 1/3
+                </Typography>
+                <Tooltip placement='top' title={
+                  <React.Fragment>
+                    <Typography color="inherit">Generated</Typography>
+                  </React.Fragment>
+                }>
+
+                  <Icon icon='tabler:info-circle' fontSize={20} />
+                </Tooltip>
+
+              </Box>
+              <Button type='submit' variant='contained'>
+                Generate
+              </Button>
+            </Box>
           </Grid>
         </Grid>
       </form>
