@@ -106,7 +106,7 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
               render={({ field: { value, onChange } }) => (
                 <CustomTextField
                   fullWidth
-                  rows={6}
+                  rows={7}
                   multiline
                   value={value}
                   onChange={onChange}
@@ -132,7 +132,6 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
 
                   <Icon icon='tabler:info-circle' fontSize={20} />
                 </Tooltip>
-
               </Box>
               <Button type='submit' variant='contained'>
                 Generate

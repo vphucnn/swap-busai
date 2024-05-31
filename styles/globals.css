@@ -24,3 +24,7 @@ code:not([class*='language-']):after {
 code[class*='language-'] {
   padding: 0;
 }
+
+.swiper-slide {
+  width: fit-content;
+}
