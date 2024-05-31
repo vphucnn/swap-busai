@@ -74,12 +74,15 @@ export const SwiperGenerateInage = () => {
           <ChevronRightIcon />
         </IconButton>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' , gap: '1rem', marginTop: '0.6rem'}}>
+      <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
         <Typography variant="body1" sx={{}}>
           Share Your <b>Idea</b> To Earn <b>Busai</b>
         </Typography>
-        <Button type='submit' variant='contained'>
-          Generate
+        <Button onClick={() => {
+          window.open('https://t.me/share/url?url=https://demo01-lac.vercel.app/images/general/panda.png&text=hello', '_blank', 'noopener,noreferrer');
+
+        }} type='submit' variant='contained'>
+          Share
         </Button>
       </Box>
     </Box>
