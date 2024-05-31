@@ -84,7 +84,7 @@ export default function Page() {
 
           </Box>
         </Box>
-        <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', alignItems: 'center', gap: '1rem' }}>
+        <Box sx={{  maxWidth: '90vw', display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', alignItems: 'center', gap: '1rem' }}>
           <Box sx={{ margin: "auto", display: 'flex', width: '400px', maxWidth: '100vw', alignItems: 'center', }}>
             <SwiperGenerateInage />
           </Box>
@@ -99,7 +99,7 @@ export default function Page() {
           </Typography>
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem', flexDirection: { xs: 'column', md: 'row' }, marginTop: '3rem' }}>
-          <Box sx={{ width: { xs: '100%', md: '40%' } }}>
+          <Box sx={{  maxWidth: '90vw', width: { xs: '100%', md: '40%' } }}>
             <Img src='/images/general/box.png' alt='box' />
           </Box>
           <Box sx={{ width: { xs: '100%', md: '60%' } }}>

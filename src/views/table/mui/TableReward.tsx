@@ -22,9 +22,9 @@ const rows = [
 
 const TableReward = () => {
   return (
-    <Box>
+    <Box sx={{ width: '1000px', maxWidth: '90vw', overflow: 'scroll' }}>
       <TableContainer component={Paper}>
-        <Table sx={{ width: '1000px', maxWidth: '90vw' }} aria-label='simple table'>
+        <Table  aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell>Date</TableCell>

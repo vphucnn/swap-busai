@@ -41,7 +41,7 @@ export const SwiperGenerateInage = () => {
 
   return (
     <Box>
-      <Box sx={{ margin: "auto", display: 'flex', width: '400px', alignItems: 'center' }}>
+      <Box sx={{ margin: "auto", display: 'flex', maxWidth: '95vw' ,width: '400px', alignItems: 'center' }}>
         <IconButton aria-label="delete" sx={{ width: 20, height: 20, border: 1, borderRadius: '100%' }} onClick={handlePrev} >
           <ChevronLeftIcon />
         </IconButton >
