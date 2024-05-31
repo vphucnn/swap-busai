@@ -1,6 +1,6 @@
 const typography = {
   fontFamily: [
-    'Public Sans',
+    'Manrope',
     'sans-serif',
     '-apple-system',
     'BlinkMacSystemFont',
@@ -54,7 +54,7 @@ const typography = {
   },
   body1: {
     lineHeight: 1.467,
-    fontSize: '0.9375rem'
+    fontSize: '16px'
   },
   body2: {
     fontSize: '0.8125rem',

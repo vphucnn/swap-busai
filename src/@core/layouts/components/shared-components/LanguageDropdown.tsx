@@ -34,7 +34,7 @@ const LanguageDropdown = ({ settings, saveSettings }: Props) => {
   return (
     <OptionsMenu
       iconButtonProps={{ color: 'inherit' }}
-      icon={<Icon fontSize='1.625rem' icon='tabler:language' />}
+      icon={<Icon fontSize='1.625rem' icon='tabler:world' />}
       menuProps={{ sx: { '& .MuiMenu-paper': { mt: 4.25, minWidth: 130 } } }}
       options={[
         {

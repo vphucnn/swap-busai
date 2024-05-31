@@ -127,7 +127,7 @@ const HorizontalLayout = (props: LayoutProps) => {
             >
               <AppBarContent
                 {...props}
-                hidden={hidden}
+                hidden={true}
                 settings={settings}
                 saveSettings={saveSettings}
                 appBarContent={horizontalLayoutProps?.appBar?.content}

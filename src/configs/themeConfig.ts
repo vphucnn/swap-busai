@@ -61,7 +61,7 @@ const themeConfig: ThemeConfig = {
   routingLoader: true /* true | false */,
 
   // ** Navigation (Menu) Configs
-  navHidden: false /* true | false */,
+  navHidden: true /* true | false */,
   menuTextTruncate: true /* true | false */,
   navSubItemIcon: 'tabler:circle' /* Icon */,
   verticalNavToggleType: 'accordion' /* accordion | collapse /*! Note: This is for Vertical navigation menu only */,

@@ -55,11 +55,26 @@ export default function Page() {
 
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '3rem' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>
       <Box>
         <Typography variant="h1">
-          Generate character panda
+          Make Busai your true style
         </Typography>
+      </Box>
+      <Box sx={{ display: 'flex' }}>
+        <Box sx={{width: '60%'}}>
+          <Box>
+            <Typography variant="body1" sx={{}}>
+              Customizing Busai according to your ideas is simple, just write a detailed description in the box below. Share your achievements in Busai's community and receive surprising rewards
+            </Typography>
+          </Box>
+          <Box></Box>
+          <Box></Box>
+        </Box>
+        <Box sx={{width: '40%'}}>
+          <Img src='/images/general/box.png' alt='box' />
+        </Box>
+
       </Box>
       <Box>
         <Img src='/images/general/box.png' alt='box' />
