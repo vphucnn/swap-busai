@@ -46,9 +46,7 @@ export const SwiperGenerateInage = () => {
           <ChevronLeftIcon />
         </IconButton >
         <Swiper
-          pagination={{
-            dynamicBullets: true,
-          }}
+          pagination={true}
           modules={[Pagination]}
           className="mySwiper"
           ref={sliderRef}
