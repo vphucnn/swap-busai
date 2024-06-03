@@ -49,7 +49,7 @@ const FooterContent = () => {
           <Typography
             target='_blank'
             component={LinkStyled}
-            href='https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+            href='https://demos.pixinvent.com/busai-nextjs-admin-template/documentation'
           >
             Documentation
           </Typography>

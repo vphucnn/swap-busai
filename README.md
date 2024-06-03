@@ -1,1 +1,1 @@
-# vuexy-full-cdt-template
+# busai-generate-fe

@@ -133,7 +133,7 @@ const navigation: HorizontalNavItemsType = [
         icon: 'tabler:brand-tabler'
       },
       {
-        
+
         title: 'Cards',
         icon: 'tabler:id',
         children: [
@@ -635,7 +635,7 @@ const navigation: HorizontalNavItemsType = [
         icon: 'tabler:file-text',
         externalLink: true,
         openInNewTab: true,
-        path: 'https://demos.pixinvent.com/vuexy-nextjs-admin-template/documentation'
+        path: 'https://demos.pixinvent.com/busai-nextjs-admin-template/documentation'
       }
     ]
   }
