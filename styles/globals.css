@@ -28,3 +28,13 @@ code[class*='language-'] {
 .swiper-slide {
   width: fit-content;
 }
+
+.tg-login-button {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.tgme_widget_login.large button.tgme_widget_login_button {
+  padding: 8px 21px 10px !important;
+}

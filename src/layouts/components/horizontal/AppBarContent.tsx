@@ -1,20 +1,21 @@
 // ** MUI Imports
-import Box from '@mui/material/Box'
+import Box from '@mui/material/Box';
 
 // ** Type Import
-import { Settings } from 'src/@core/context/settingsContext'
+import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
 // import Autocomplete from 'src/layouts/components/Autocomplete'
-import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler'
+import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
 
 // import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
-import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown'
+import { Button } from '@mui/material';
 import {
   WalletMultiButton
 } from '@solana/wallet-adapter-material-ui';
-import { Button } from '@mui/material';
+import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
 
+import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton';
 
 // import NotificationDropdown, {
 //   NotificationsType
@@ -134,10 +135,13 @@ const AppBarContent = (props: Props) => {
 
   // ** Hook
   // const auth = useAuth()
+  const onAuth = (ctx: any) => {
+    console.log(ctx);
+  };
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <Button variant="contained" onClick={() => { {}}}>Swap Points</Button>
+      <Button variant="contained" onClick={() => { { } }}>Swap Points</Button>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       <LanguageDropdown settings={settings} saveSettings={saveSettings} />
       <ModeToggler settings={settings} saveSettings={saveSettings} />
@@ -151,6 +155,18 @@ const AppBarContent = (props: Props) => {
       <Box className="connect-walletv" sx={{ position: 'relative' }}>
         <WalletMultiButton />
       </Box>
+      <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <TelegramLoginButton
+          botName="Binance111_bot"
+          cornerRadius="8"
+          className="tg-login-button"
+          dataOnAuth={onAuth}
+          dataAuthUrl={'/auth/telelgram'}
+          requestAccess={'write'}
+          usePic={true}
+        />
+      </Box>
+
     </Box>
   )
 }
