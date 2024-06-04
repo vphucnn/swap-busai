@@ -12,7 +12,7 @@ const VideoSection = () => {
       <iframe
         id="video-demo-trailer-home-abc"
         style={{
-          width: "800px",
+          width: "900px",
           maxWidth: "90vw",
           margin: "auto",
           aspectRatio: "16 / 9.2",

@@ -56,7 +56,7 @@ export default function Page() {
 
   const [show, setShow] = useState<boolean>(false)
 
-  const [urlImg, setUrlImg] = useState<string>('/images/general/panda.png')
+   const [urlImg, setUrlImg] = useState<string>('/images/general/panda.png')
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>

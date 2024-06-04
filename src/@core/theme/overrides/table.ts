@@ -42,10 +42,10 @@ const Table = () => {
         root: ({ theme }: OwnerStateThemeType) => ({
           '& .MuiTableCell-head:not(.MuiTableCell-paddingCheckbox):first-child, & .MuiTableCell-root:not(.MuiTableCell-paddingCheckbox):first-child ':
             {
-              paddingLeft: theme.spacing(6)
+              //paddingLeft: theme.spacing(6)
             },
           '& .MuiTableCell-head:last-child, & .MuiTableCell-root:last-child': {
-            paddingRight: theme.spacing(6)
+           // paddingRight: theme.spacing(6)
           }
         })
       }

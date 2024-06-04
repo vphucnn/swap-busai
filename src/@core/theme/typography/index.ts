@@ -49,13 +49,13 @@ const typography = {
     letterSpacing: '0.15px'
   },
   subtitle2: {
-    lineHeight: 1.32,
+    lineHeight: 1.41,
     fontSize: '0.875rem',
     letterSpacing: '0.1px'
   },
   body1: {
-    lineHeight: 1.467,
-    fontSize: '16px'
+    lineHeight: '25.6px',
+    fontSize: '18px'
   },
   body2: {
     fontSize: '0.8125rem',
@@ -73,6 +73,12 @@ const typography = {
   overline: {
     fontSize: '0.75rem',
     letterSpacing: '1px'
+  },
+  tableHeader: {
+    textAlign: 'center',
+    fontSize: '32px',
+    fontWeight: 500,
+    wordWrap: 'break-word'
   }
 }
 

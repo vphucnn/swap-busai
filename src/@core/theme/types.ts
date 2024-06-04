@@ -39,4 +39,10 @@ declare module '@mui/material/ButtonGroup' {
   }
 }
 
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    tableHeader: true;
+  }
+}
+
 export {}

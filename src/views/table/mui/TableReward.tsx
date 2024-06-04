@@ -6,7 +6,7 @@ import TableHead from '@mui/material/TableHead'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
-import { Box, Pagination } from '@mui/material'
+import { Box, Pagination, Typography } from '@mui/material'
 
 const createData = (user: string, type: string, reward: number) => {
   return { user, type, reward }
@@ -22,31 +22,46 @@ const rows = [
 
 const TableReward = () => {
   return (
-    <Box >
-      <TableContainer  sx={{ width: '1200px', maxWidth: '95vw', overflowX: 'auto' }} component={Paper}>
+    <Box sx={{ background: "#726FF7", marginBottom: '5rem', borderRadius: '64px' }}>
+      <TableContainer sx={{ width: '1200px', maxWidth: '95vw', overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
         <Table aria-label='simple table'>
           <TableHead>
             <TableRow>
-              <TableCell>Date</TableCell>
-              <TableCell align='right'>Status</TableCell>
-              <TableCell align='right'>Reward</TableCell>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '2rem 0 1rem 0' }}>
+                <Typography variant="tableHeader" >
+                  Date
+                </Typography>
+              </TableCell>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '2rem 0 1rem 0' }} align='right'>
+                <Typography variant="tableHeader" >
+                  Status
+                </Typography>
+              </TableCell>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '2rem 0 1rem 0' }} align='right'>
+                <Typography variant="tableHeader" >
+                  Reward
+                </Typography>
+              </TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody >
             {rows.map(row => (
               <TableRow
                 key={row.user}
                 sx={{
                   '&:last-of-type td, &:last-of-type th': {
-                    border: 0
+                    paddingTop: '2rem'
+                  },
+                  '&:first-of-type td, &:first-of-type th': {
+                    paddingTop: '2rem !important'
                   }
                 }}
               >
-                <TableCell component='th' scope='row'>
+                <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center' , padding: '1rem'}}>
                   {row.user}
                 </TableCell>
-                <TableCell align='right'>{row.type}</TableCell>
-                <TableCell align='right'>+ {row.reward}</TableCell>
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >{row.type}</TableCell>
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}>+ {row.reward}</TableCell>
               </TableRow>
             ))}
           </TableBody>
