@@ -15,8 +15,10 @@ const VideoSection = () => {
           width: "800px",
           maxWidth: "90vw",
           margin: "auto",
-          aspectRatio: "16 / 9",
-          border: 'none'
+          aspectRatio: "16 / 9.2",
+          border: 'none',
+          borderBottom: "10px black solid",
+          borderRadius: '24px'
         }}
         src="https://www.youtube.com/embed/EuFrxnaFs6Q?si=uLqoV2Ieuhl3PKJW"
         title="YouTube video player"

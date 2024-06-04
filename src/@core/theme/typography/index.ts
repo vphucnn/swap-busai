@@ -15,9 +15,10 @@ const typography = {
   ].join(','),
   fontSize: 13.125,
   h1: {
-    fontWeight: 500,
-    fontSize: '2.375rem',
-    lineHeight: 1.368421
+    fontWeight: 800,
+    fontSize: 96,
+    lineHeight: "115.2px",
+    letterSpacing: '-2.2px'
   },
   h2: {
     fontWeight: 500,

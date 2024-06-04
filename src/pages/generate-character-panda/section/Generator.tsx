@@ -20,12 +20,12 @@ const Generator = () => {
       }}
     >
       <Box sx={{ maxWidth: '1400px' }}>
-        <Box sx={{ marginTop: { xs: '50px', md: '120px' } }}>
+        <Box sx={{ textAlign: 'center',  marginTop: { xs: '1rem', md: '2rem' }, }}>
           <Typography variant="h1" sx={{ fontWeight: 700 }}>
             Make Busai your true style
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', gap: '1rem', flexDirection: { xs: 'column', md: 'row' } }}>
+        <Box sx={{ display: 'flex', gap: '1rem', flexDirection: { xs: 'column', md: 'row' },  marginTop: { xs: '20px', md: '40px' }, }}>
           <Box sx={{ width: { xs: '100%', md: '60%' }, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <Box>
               <Typography variant="body1" sx={{}}>
