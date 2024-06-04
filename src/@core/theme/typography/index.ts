@@ -1,6 +1,6 @@
 const typography = {
   fontFamily: [
-    'Manrope',
+    'Bricolage Grotesque',
     'sans-serif',
     '-apple-system',
     'BlinkMacSystemFont',
