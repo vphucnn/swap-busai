@@ -7,6 +7,7 @@ import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import { Box, Pagination, Typography } from '@mui/material'
+import PageIndicator from 'src/@core/components/pagination/PageIndicator'
 
 const createData = (user: string, type: string, reward: number) => {
   return { user, type, reward }
@@ -57,18 +58,24 @@ const TableReward = () => {
                   }
                 }}
               >
-                <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center' , padding: '1rem'}}>
-                  {row.user}
+                <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
+                  <Typography variant="body1" sx={{ color: 'white' }} >
+                    {row.user}
+                  </Typography>
                 </TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >{row.type}</TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}>+ {row.reward}</TableCell>
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white' }} >
+                    {row.user}
+                  </Typography></TableCell>
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}>+   <Typography variant="body1" sx={{ color: 'white' }} >
+                    {row.user}
+                  </Typography></TableCell>
               </TableRow>
             ))}
           </TableBody>
         </Table>
       </TableContainer>
-      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: '2rem' }}>
-        <Pagination count={6} />
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <PageIndicator currentPage={1}  totalPages={3}/>
       </Box>
 
     </Box>
