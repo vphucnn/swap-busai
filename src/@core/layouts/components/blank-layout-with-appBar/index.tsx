@@ -4,15 +4,13 @@ import Link from 'next/link'
 // ** MUI Imports
 import AppBar from '@mui/material/AppBar'
 import Toolbar from '@mui/material/Toolbar'
-import Typography from '@mui/material/Typography'
 import { styled, useTheme } from '@mui/material/styles'
 
 // ** Configs
-import themeConfig from 'src/configs/themeConfig'
 
 // ** Hook
-import { useSettings } from 'src/@core/hooks/useSettings'
 import BusAiLogo from 'src/@core/components/logo/BusAiLogo'
+import { useSettings } from 'src/@core/hooks/useSettings'
 
 const LinkStyled = styled(Link)(({ theme }) => ({
   display: 'flex',
@@ -46,9 +44,6 @@ const BlankLayoutAppBar = () => {
       >
         <LinkStyled href='/'>
           <BusAiLogo/>
-          {/* <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
-            {themeConfig.templateName}
-          </Typography> */}
         </LinkStyled>
       </Toolbar>
     </AppBar>

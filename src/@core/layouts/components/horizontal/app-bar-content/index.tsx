@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Box from '@mui/material/Box'
 
 // import Typography from '@mui/material/Typography'
-import { styled, useTheme } from '@mui/material/styles'
+import { styled } from '@mui/material/styles'
 
 // ** Type Import
 import { LayoutProps } from 'src/@core/layouts/types'

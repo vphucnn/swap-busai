@@ -1,12 +1,12 @@
 // ** MUI Imports
+import { Box, Typography } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
-import TableRow from '@mui/material/TableRow'
-import TableHead from '@mui/material/TableHead'
 import TableBody from '@mui/material/TableBody'
 import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
-import { Box, Pagination, Typography } from '@mui/material'
+import TableHead from '@mui/material/TableHead'
+import TableRow from '@mui/material/TableRow'
 import PageIndicator from 'src/@core/components/pagination/PageIndicator'
 
 const createData = (user: string, type: string, reward: number) => {

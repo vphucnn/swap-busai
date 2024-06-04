@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export const TelegramLoginButton = ({
   botName,
@@ -47,7 +47,7 @@ export const TelegramLoginButton = ({
       }, 1000);
       console.log(instance)
     }
-  }, [instance]);
+  }, [botName, buttonSize, cornerRadius, dataAuthUrl, instance, lang, loader, requestAccess, usePic]);
 
   return (
     <div style={{

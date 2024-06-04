@@ -2,10 +2,9 @@
 import Link from 'next/link'
 
 // ** MUI Imports
-import IconButton from '@mui/material/IconButton'
 import Box, { BoxProps } from '@mui/material/Box'
-import { styled, useTheme } from '@mui/material/styles'
-import Typography, { TypographyProps } from '@mui/material/Typography'
+import IconButton from '@mui/material/IconButton'
+import { styled } from '@mui/material/styles'
 
 // ** Type Import
 import { LayoutProps } from 'src/@core/layouts/types'
@@ -14,7 +13,6 @@ import { LayoutProps } from 'src/@core/layouts/types'
 import Icon from 'src/@core/components/icon'
 
 // ** Configs
-import themeConfig from 'src/configs/themeConfig'
 import BusAiLogo from 'src/@core/components/logo/BusAiLogo'
 
 interface Props {
@@ -40,11 +38,6 @@ const MenuHeaderWrapper = styled(Box)<BoxProps>(({ theme }) => ({
   minHeight: theme.mixins.toolbar.minHeight
 }))
 
-const HeaderTitle = styled(Typography)<TypographyProps>({
-  fontWeight: 700,
-  lineHeight: '24px',
-  transition: 'opacity .25s ease-in-out, margin .25s ease-in-out'
-})
 
 const LinkStyled = styled(Link)({
   display: 'flex',
