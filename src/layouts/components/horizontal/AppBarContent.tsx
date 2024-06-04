@@ -25,6 +25,7 @@ import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/s
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth'
+import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 
 interface Props {
   hidden: boolean
@@ -141,7 +142,7 @@ const AppBarContent = (props: Props) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <Button variant="contained" onClick={() => { { } }}>Swap Points</Button>
+      <BusAiButton/>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       <LanguageDropdown settings={settings} saveSettings={saveSettings} />
       <ModeToggler settings={settings} saveSettings={saveSettings} />
