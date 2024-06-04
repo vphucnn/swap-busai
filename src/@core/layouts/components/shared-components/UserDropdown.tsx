@@ -57,10 +57,10 @@ const UserDropdown = (props: Props) => {
   const { direction } = settings
 
   const handleDropdownOpen = (event: SyntheticEvent) => {
-    console.log(event)
-    router.push('/profile')
+    // console.log(event)
+    // router.push('/profile')
 
-    //setAnchorEl(event.currentTarget)
+    setAnchorEl(event.currentTarget)
   }
 
   const handleDropdownClose = (url?: string) => {
@@ -136,7 +136,7 @@ const UserDropdown = (props: Props) => {
           </Box>
         </Box>
         <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/pages/user-profile/profile')}>
+        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/profile')}>
           <Box sx={styles}>
             <Icon icon='tabler:user-check' />
             My Profile

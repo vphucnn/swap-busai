@@ -20,6 +20,7 @@ import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/s
 
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth'
+import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton'
 
 interface Props {
   hidden: boolean
@@ -127,6 +128,10 @@ const shortcuts: ShortcutsType[] = [
 const AppBarContent = (props: Props) => {
   // ** Props
   const { hidden, settings, saveSettings, toggleNavVisibility } = props
+  const onAuth = (ctx: any) => {
+    console.log("----------------")
+    console.log(ctx);
+  };
 
   // ** Hook
   const auth = useAuth()
@@ -144,6 +149,19 @@ const AppBarContent = (props: Props) => {
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         <ModeToggler settings={settings} saveSettings={saveSettings} />
+        <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+        <TelegramLoginButton
+          botName="Binance111_bot"
+          cornerRadius="8"
+          className="tg-login-button"
+          dataOnAuth={onAuth}
+          buttonSize={'medium'}
+
+          // dataAuthUrl={'/auth/telelgram'}
+          requestAccess={'write'}
+          usePic={true}
+        />
+      </Box>
         {auth.user && (
           <>
             <ShortcutsDropdown settings={settings} shortcuts={shortcuts} />

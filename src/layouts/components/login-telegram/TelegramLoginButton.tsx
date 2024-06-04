@@ -7,7 +7,6 @@ export const TelegramLoginButton = ({
   cornerRadius,
   requestAccess,
   usePic,
-  dataOnauth,
   dataAuthUrl,
   lang,
 }: any) => {
@@ -17,7 +16,7 @@ export const TelegramLoginButton = ({
     if (instance && !loader) {
       (window as any).TelegramLoginWidget = {
         dataOnauth: (user: any) => {
-          dataOnauth(user);
+          console.log("dataOnauth", user);
         },
       };
       const script = document.createElement("script");
