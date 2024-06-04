@@ -1,18 +1,18 @@
 // ** React Imports
-import { useState, SyntheticEvent, Fragment } from 'react'
+import { Fragment, SyntheticEvent, useState } from 'react'
 
 // ** Next Import
 import { useRouter } from 'next/router'
 
 // ** MUI Imports
-import Box from '@mui/material/Box'
-import Menu from '@mui/material/Menu'
-import Badge from '@mui/material/Badge'
 import Avatar from '@mui/material/Avatar'
+import Badge from '@mui/material/Badge'
+import Box from '@mui/material/Box'
 import Divider from '@mui/material/Divider'
-import { styled } from '@mui/material/styles'
-import Typography from '@mui/material/Typography'
+import Menu from '@mui/material/Menu'
 import MenuItem, { MenuItemProps } from '@mui/material/MenuItem'
+import Typography from '@mui/material/Typography'
+import { styled } from '@mui/material/styles'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -48,6 +48,8 @@ const UserDropdown = (props: Props) => {
 
   // ** States
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
+  const [name, setName] = useState<string>('User name')
+  const [points, setPoints] = useState<number>(10)
 
   // ** Hooks
   const router = useRouter()
@@ -59,8 +61,9 @@ const UserDropdown = (props: Props) => {
   const handleDropdownOpen = (event: SyntheticEvent) => {
     // console.log(event)
     // router.push('/profile')
+    console.log(event)
 
-    setAnchorEl(event.currentTarget)
+    // setAnchorEl(event.currentTarget)
   }
 
   const handleDropdownClose = (url?: string) => {
@@ -96,7 +99,7 @@ const UserDropdown = (props: Props) => {
         overlap='circular'
         onClick={handleDropdownOpen}
         sx={{ ml: 2, cursor: 'pointer' }}
-        badgeContent={<BadgeContentSpan />}
+        badgeContent={false ? null : <BadgeContentSpan />}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'right'
@@ -106,9 +109,24 @@ const UserDropdown = (props: Props) => {
           alt='John Doe'
           src='/images/avatars/1.png'
           onClick={handleDropdownOpen}
-          sx={{ width: 38, height: 38 }}
+          sx={{ width: 50, height: 50 }}
         />
       </Badge>
+      <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '0.5rem',
+        marginLeft: '0.5rem'
+      }}
+    >
+      <Typography variant="body1" noWrap component="div" sx={{ color: '#1F1F1F', fontWeight: 700, fontSize: 18,  }}>
+        {name}
+      </Typography>
+      <Typography variant="body1" noWrap component="div" sx={{ color: '#111111', fontWeight: 400, fontSize: 18, }}>
+        {points} points
+      </Typography>
+    </Box>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}

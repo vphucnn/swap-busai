@@ -15,9 +15,9 @@ import UserDropdown from 'src/@core/layouts/components/shared-components/UserDro
 
 import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton';
 
-import NotificationDropdown, {
-  NotificationsType
-} from 'src/@core/layouts/components/shared-components/NotificationDropdown';
+// import NotificationDropdown, {
+//   NotificationsType
+// } from 'src/@core/layouts/components/shared-components/NotificationDropdown';
 
 
 // ** Hook Import
@@ -30,50 +30,50 @@ interface Props {
   saveSettings: (values: Settings) => void
 }
 
-const notifications: NotificationsType[] = [
-  {
-    meta: 'Today',
-    avatarAlt: 'Flora',
-    title: 'Congratulation Flora! 🎉',
-    avatarImg: '/images/avatars/4.png',
-    subtitle: 'Won the monthly best seller badge'
-  },
-  {
-    meta: 'Yesterday',
-    avatarColor: 'primary',
-    subtitle: '5 hours ago',
-    avatarText: 'Robert Austin',
-    title: 'New user registered.'
-  },
-  {
-    meta: '11 Aug',
-    avatarAlt: 'message',
-    title: 'New message received 👋🏻',
-    avatarImg: '/images/avatars/5.png',
-    subtitle: 'You have 10 unread messages'
-  },
-  {
-    meta: '25 May',
-    title: 'Paypal',
-    avatarAlt: 'paypal',
-    subtitle: 'Received Payment',
-    avatarImg: '/images/misc/paypal.png'
-  },
-  {
-    meta: '19 Mar',
-    avatarAlt: 'order',
-    title: 'Received Order 📦',
-    avatarImg: '/images/avatars/3.png',
-    subtitle: 'New order received from John'
-  },
-  {
-    meta: '27 Dec',
-    avatarAlt: 'chart',
-    subtitle: '25 hrs ago',
-    avatarImg: '/images/misc/chart.png',
-    title: 'Finance report has been generated'
-  }
-]
+// const notifications: NotificationsType[] = [
+//   {
+//     meta: 'Today',
+//     avatarAlt: 'Flora',
+//     title: 'Congratulation Flora! 🎉',
+//     avatarImg: '/images/avatars/4.png',
+//     subtitle: 'Won the monthly best seller badge'
+//   },
+//   {
+//     meta: 'Yesterday',
+//     avatarColor: 'primary',
+//     subtitle: '5 hours ago',
+//     avatarText: 'Robert Austin',
+//     title: 'New user registered.'
+//   },
+//   {
+//     meta: '11 Aug',
+//     avatarAlt: 'message',
+//     title: 'New message received 👋🏻',
+//     avatarImg: '/images/avatars/5.png',
+//     subtitle: 'You have 10 unread messages'
+//   },
+//   {
+//     meta: '25 May',
+//     title: 'Paypal',
+//     avatarAlt: 'paypal',
+//     subtitle: 'Received Payment',
+//     avatarImg: '/images/misc/paypal.png'
+//   },
+//   {
+//     meta: '19 Mar',
+//     avatarAlt: 'order',
+//     title: 'Received Order 📦',
+//     avatarImg: '/images/avatars/3.png',
+//     subtitle: 'New order received from John'
+//   },
+//   {
+//     meta: '27 Dec',
+//     avatarAlt: 'chart',
+//     subtitle: '25 hrs ago',
+//     avatarImg: '/images/misc/chart.png',
+//     title: 'Finance report has been generated'
+//   }
+// ]
 
 // const shortcuts: ShortcutsType[] = [
 //   {
@@ -130,6 +130,7 @@ const AppBarContent = (props: Props) => {
   // ** Props
   // const { hidden, settings, saveSettings } = props
   const { settings, saveSettings } = props
+  const hide = true;
 
   // ** Hook
   const auth = useAuth()
@@ -141,18 +142,18 @@ const AppBarContent = (props: Props) => {
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
       <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}>Swap Points</BusAiButton>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
-      <LanguageDropdown settings={settings} saveSettings={saveSettings} />
+      { !hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
       {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
       {auth.user && (
         <>
           {/* <ShortcutsDropdown settings={settings} shortcuts={shortcuts} /> */}
-          <NotificationDropdown settings={settings} notifications={notifications} />
+          {/* <NotificationDropdown settings={settings} notifications={notifications} /> */}
           <UserDropdown settings={settings} />
         </>
       )}
-      <Box className="connect-walletv" sx={{ position: 'relative' }}>
+      {!hide && <Box className="connect-walletv" sx={{ position: 'relative' }}>
         <WalletMultiButton />
-      </Box>
+      </Box>}
       <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <TelegramLoginButton
           botName="Binance111_bot"
