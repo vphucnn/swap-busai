@@ -25,6 +25,10 @@ declare module '@mui/material/styles' {
       tableHeaderBg?: string
     }
   }
+
+  interface TypeText {
+    tableHeader: string;
+  }
 }
 
 declare module '@mui/material/Button' {
