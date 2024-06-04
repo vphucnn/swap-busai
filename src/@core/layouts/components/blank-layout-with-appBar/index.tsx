@@ -46,9 +46,9 @@ const BlankLayoutAppBar = () => {
       >
         <LinkStyled href='/'>
           <BusAiLogo/>
-          <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
+          {/* <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
             {themeConfig.templateName}
-          </Typography>
+          </Typography> */}
         </LinkStyled>
       </Toolbar>
     </AppBar>

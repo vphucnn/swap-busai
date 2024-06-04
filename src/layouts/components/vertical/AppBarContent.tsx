@@ -21,6 +21,7 @@ import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/s
 // ** Hook Import
 import { useAuth } from 'src/hooks/useAuth'
 import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton'
+import BusAiLogo from 'src/@core/components/logo/BusAiLogo'
 
 interface Props {
   hidden: boolean
@@ -139,12 +140,15 @@ const AppBarContent = (props: Props) => {
   return (
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
-        {hidden && !settings.navHidden ? (
+
+        {/* {hidden && !settings.navHidden ? (
           <IconButton color='inherit' sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
             <Icon fontSize='1.5rem' icon='tabler:menu-2' />
           </IconButton>
-        ) : null}
-        {auth.user && <Autocomplete hidden={hidden} settings={settings} />}
+        ) : null} */}
+        <BusAiLogo height={40} width={'fit-content'}/>
+
+        {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
         <LanguageDropdown settings={settings} saveSettings={saveSettings} />

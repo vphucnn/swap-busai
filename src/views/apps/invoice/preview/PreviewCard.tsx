@@ -55,9 +55,9 @@ const PreviewCard = ({ data }: Props) => {
               <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                 <Box sx={{ mb: 6, display: 'flex', alignItems: 'center' }}>
                   <BusAiLogo/>
-                  <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
+                  {/* <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
                     {themeConfig.templateName}
-                  </Typography>
+                  </Typography> */}
                 </Box>
                 <div>
                   <Typography sx={{ mb: 2, color: 'text.secondary' }}>Office 149, 450 South Brand Brooklyn</Typography>
