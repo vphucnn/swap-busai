@@ -1,4 +1,5 @@
-import { Box, Button, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 
 const InfoSection = () => {
   return (
@@ -30,10 +31,9 @@ const InfoSection = () => {
             <Typography variant="body1" sx={{ textAlign: 'left' }}>
               Culpa aliquip aute labore velit culpa culpa eiusmod ipsum eu. Officia dolor commodo quis qui ullamco dolor. Commodo ex ad et cillum laboris cillum cupidatat esse sunt dolore esse magna exercitation est veniam labore. Aliqua velit pariatur irure in labore reprehenderit occaecat.Amet qui eu voluptate nostrud proident esse exercitation fugiat Lorem ullamco qui mollit magna ad. Ex commodo magna ullamco laborum cupidatat irure quis excepteur velit est excepteur elit labore esse reprehenderit cupidatat et. Excepteur incididunt esse incididunt nisi non nisi nostru
             </Typography>
-            <Button sx={{ marginTop: '1rem' }} type='submit' variant='contained'>
+            <BusAiButton sx={{ marginTop: '1rem' }} type='submit' variant='contained' backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} >
               Try it out
-            </Button>
-
+            </BusAiButton>
           </Box>
           <Box sx={{ maxWidth: '90vw', width: { xs: '100%', md: '50%' } }}>
             <img src='/images/general/pc.png' alt='box' />

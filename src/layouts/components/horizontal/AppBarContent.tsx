@@ -139,7 +139,7 @@ const AppBarContent = (props: Props) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <BusAiButton/>
+      <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}>Swap Points</BusAiButton>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       <LanguageDropdown settings={settings} saveSettings={saveSettings} />
       {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}

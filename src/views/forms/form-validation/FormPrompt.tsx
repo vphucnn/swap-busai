@@ -22,6 +22,7 @@ import NProgress from 'nprogress'
 import { Tooltip, Typography } from '@mui/material'
 import { Icon } from '@iconify/react'
 import React from 'react'
+import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 
 
 interface FormInputs {
@@ -118,8 +119,11 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
               )}
             />
           </Grid>
-          <Grid item xs={12} container justifyContent="flex-end" >
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <Grid item xs={12} container justifyContent="flex-start" >
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+            <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
+                Generate
+              </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Typography variant="body1">
                   Generated 1/3
@@ -133,9 +137,7 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
                   <Icon icon='tabler:info-circle' fontSize={20} />
                 </Tooltip>
               </Box>
-              <Button type='submit' variant='contained'>
-                Generate
-              </Button>
+
             </Box>
           </Grid>
         </Grid>

@@ -9,9 +9,10 @@ import 'swiper/css/pagination';
 
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import { Button, IconButton, Typography } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import { Box, styled } from '@mui/system';
 import { useCallback, useRef } from 'react';
+import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 import { Pagination } from 'swiper/modules';
 
 const Img = styled('img')(({ theme }) => ({
@@ -41,7 +42,7 @@ export const SwiperGenerateInage = () => {
 
   return (
     <Box>
-      <Box sx={{ margin: "auto", display: 'flex', maxWidth: '95vw' ,width: '400px', alignItems: 'center' }}>
+      <Box sx={{ margin: "auto", display: 'flex', maxWidth: '95vw', width: '400px', alignItems: 'center' }}>
         <IconButton aria-label="delete" sx={{ width: 20, height: 20, border: 1, borderRadius: '100%' }} onClick={handlePrev} >
           <ChevronLeftIcon />
         </IconButton >
@@ -76,12 +77,9 @@ export const SwiperGenerateInage = () => {
         <Typography variant="body1" sx={{}}>
           Share Your <b>Idea</b> To Earn <b>Busai</b>
         </Typography>
-        <Button onClick={() => {
+        <BusAiButton backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
           window.open('https://t.me/share/url?url=https://demo01-lac.vercel.app/images/general/panda.png&text=hello', '_blank', 'noopener,noreferrer');
-
-        }} type='submit' variant='contained'>
-          Share
-        </Button>
+        }} >Share</BusAiButton>
       </Box>
     </Box>
   );

@@ -1,16 +1,23 @@
 import React from 'react';
-import { Button } from '@mui/material';
+import { Button, ButtonProps } from '@mui/material';
 
-export const BusAiButton = () => {
+
+interface BusAiButtonProps extends ButtonProps {
+  backgroundColor: string,
+  borderBottom: string,
+
+}
+export const BusAiButton : React.FC<BusAiButtonProps> = ({backgroundColor, borderBottom , ...props}) => {
   return (
     <Button
+      {...props}
       variant="contained" // For a solid background
       style={{
-        backgroundColor: '#FF66C8',
+        backgroundColor: backgroundColor,
         borderRadius: 40,
         color: 'white',
         fontSize: 18,
-        borderBottom: '4px #CC0083 solid',
+        borderBottom: borderBottom,
         fontFamily: 'Bricolage Grotesque', // Assuming you have this font imported
         fontWeight: 700,
         lineHeight: '25.60px',
@@ -20,7 +27,7 @@ export const BusAiButton = () => {
         gap: 10,
       }}
     >
-      Swap Points
+      {props.children}
     </Button>
   );
 };
