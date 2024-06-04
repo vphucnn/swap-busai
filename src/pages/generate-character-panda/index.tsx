@@ -14,6 +14,7 @@ import DialogShowPanda from 'src/views/pages/dialog-examples/DialogShowPanda';
 
 // import TableHistory from 'src/views/table/mui/TableHistory';
 import TableReward from 'src/views/table/mui/TableReward';
+import Generator from './section/Generator';
 
 const Img = styled('img')(({ theme }) => ({
   maxWidth: "100%",
@@ -58,7 +59,7 @@ export default function Page() {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', gap: '3rem' }}>
-
+      <Generator />
       <Box>
         <Typography variant="h1" sx={{ fontWeight: 700 }}>
           Make Busai your true style

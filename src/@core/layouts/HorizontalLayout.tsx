@@ -54,7 +54,8 @@ const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({
 const ContentWrapper = styled('main')(({ theme }) => ({
   flexGrow: 1,
   width: '100%',
-  padding: theme.spacing(6),
+
+  // padding: theme.spacing(6),
   transition: 'padding .25s ease-in-out',
   [theme.breakpoints.down('sm')]: {
     paddingLeft: theme.spacing(4),
@@ -103,8 +104,8 @@ const HorizontalLayout = (props: LayoutProps) => {
             ...(appBar === 'static' && { zIndex: 13 }),
             transition: 'border-bottom 0.2s ease-in-out',
             ...(appBarBlur && { backdropFilter: 'blur(6px)' }),
-            backgroundColor: theme => hexToRGBA(theme.palette.background.paper, appBarBlur ? 0.95 : 1),
-            ...(skin === 'bordered' && { borderBottom: theme => `1px solid ${theme.palette.divider}` }),
+            backgroundColor: "#CBFB45 ",
+            ...(skin === 'bordered' && { borderBottom: theme => `0px solid ${theme.palette.divider}` }),
             ...userAppBarStyle
           }}
           {...userAppBarProps}
@@ -166,7 +167,7 @@ const HorizontalLayout = (props: LayoutProps) => {
             ...(contentHeightFixed && { display: 'flex', overflow: 'hidden' }),
             ...(contentWidth === 'boxed' && {
               mx: 'auto',
-              '@media (min-width:1440px)': { maxWidth: 1440 },
+              '@media (min-width:1440px)': { maxWidth: '100%' },
               '@media (min-width:1200px)': { maxWidth: '100%' }
             })
           }}
