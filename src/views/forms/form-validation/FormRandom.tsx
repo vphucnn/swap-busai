@@ -16,11 +16,13 @@ import { Box } from '@mui/system'
 import axios from 'axios'
 import { Dispatch, SetStateAction, useState } from 'react'
 
-import { Button, Typography } from '@mui/material'
+import { Button, Tooltip, Typography } from '@mui/material'
 import NProgress from 'nprogress'
+import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
 import StepBar from 'src/@core/components/steper/StepBar'
+import { Icon } from '@iconify/react'
 
 
 interface FormInputs {
@@ -107,20 +109,20 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
           <Box>
-          <Typography
-            variant="body1"
-            component="div"
-            sx={{
-              width: '80px',
-              color: 'black',
-              fontSize: 18,
-              fontWeight: 700,
-              lineHeight: '25.6px',
-              wordWrap: 'break-word',
-            }}
-          >
-            Hat
-          </Typography>
+            <Typography
+              variant="body1"
+              component="div"
+              sx={{
+                width: '80px',
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 700,
+                lineHeight: '25.6px',
+                wordWrap: 'break-word',
+              }}
+            >
+              Hat
+            </Typography>
           </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Red hat with a hom on it' />
@@ -128,64 +130,64 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
           <Box>
-          <Typography
-            variant="body1"
-            component="div"
-            sx={{
-              width: '80px',
-              color: 'black',
-              fontSize: 18,
-              fontWeight: 700,
-              lineHeight: '25.6px',
-              wordWrap: 'break-word',
-            }}
-          >
-            Shoes
-          </Typography>
+            <Typography
+              variant="body1"
+              component="div"
+              sx={{
+                width: '80px',
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 700,
+                lineHeight: '25.6px',
+                wordWrap: 'break-word',
+              }}
+            >
+              Shoes
+            </Typography>
           </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Pink flip flops' />
           </Grid>
         </Box>
-        <Box sx={{ display: 'flex', gap: '1rem', justifyContent:'flex-start' }}>
+        <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'flex-start' }}>
           <Box>
-          <Typography
-            variant="body1"
-            component="div"
-            sx={{
-              width: '80px',
-              color: 'black',
-              fontSize: 18,
-              fontWeight: 700,
-              lineHeight: '25.6px',
-              wordWrap: 'break-word',
-            }}
-          >
-            Clothes
-          </Typography>
+            <Typography
+              variant="body1"
+              component="div"
+              sx={{
+                width: '80px',
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 700,
+                lineHeight: '25.6px',
+                wordWrap: 'break-word',
+              }}
+            >
+              Clothes
+            </Typography>
           </Box>
           <Box>
-          <Grid container gap={'1rem'}>
-            <BusAiChip label='Jean Jacket with rocker style' />
-          </Grid>
+            <Grid container gap={'1rem'}>
+              <BusAiChip label='Jean Jacket with rocker style' />
+            </Grid>
           </Box>
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
-         <Box>
-          <Typography
-            variant="body1"
-            component="div"
-            sx={{
-              width: '80px',
-              color: 'black',
-              fontSize: 18,
-              fontWeight: 700,
-              lineHeight: '25.6px',
-              wordWrap: 'break-word',
-            }}
-          >
-            Emotion
-          </Typography>
+          <Box>
+            <Typography
+              variant="body1"
+              component="div"
+              sx={{
+                width: '80px',
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 700,
+                lineHeight: '25.6px',
+                wordWrap: 'break-word',
+              }}
+            >
+              Emotion
+            </Typography>
           </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Funny nerdy face' /><BusAiChip label='stick out the tongue' />
@@ -193,20 +195,20 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
           <Box>
-          <Typography
-            variant="body1"
-            component="div"
-            sx={{
-              width: '80px',
-              color: 'black',
-              fontSize: 18,
-              fontWeight: 700,
-              lineHeight: '25.6px',
-              wordWrap: 'break-word',
-            }}
-          >
-            Pose
-          </Typography>
+            <Typography
+              variant="body1"
+              component="div"
+              sx={{
+                width: '80px',
+                color: 'black',
+                fontSize: 18,
+                fontWeight: 700,
+                lineHeight: '25.6px',
+                wordWrap: 'break-word',
+              }}
+            >
+              Pose
+            </Typography>
           </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Standing on 1 leg' />
@@ -215,6 +217,22 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
       </Box>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container gap={10}>
+          <Grid item xs={12} container justifyContent="flex-start" >
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+              <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <Typography variant="body1">
+                  Generated 1/3
+                </Typography>
+                <Tooltip placement='top' title={
+                  <React.Fragment>
+                    <Typography color="inherit">Generated</Typography>
+                  </React.Fragment>
+                }>
+                  <Icon icon='tabler:info-circle' fontSize={20} />
+                </Tooltip>
+              </Box>
+            </Box>
+          </Grid>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
               {currentStep === 1 && <Button variant='outlined' sx={{ borderRadius: 40 }}>

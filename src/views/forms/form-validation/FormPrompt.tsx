@@ -146,11 +146,9 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
                     <Typography color="inherit">Generated</Typography>
                   </React.Fragment>
                 }>
-
                   <Icon icon='tabler:info-circle' fontSize={20} />
                 </Tooltip>
               </Box>
-
             </Box>
           </Grid>
         </Grid>
