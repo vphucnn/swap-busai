@@ -2,10 +2,11 @@
 
 import { Typography } from '@mui/material';
 import Box from '@mui/material/Box';
-import {
-  WalletDisconnectButton,
-  WalletMultiButton
-} from '@solana/wallet-adapter-material-ui';
+
+// import {
+//   WalletDisconnectButton,
+//   WalletMultiButton
+// } from '@solana/wallet-adapter-material-ui';
 
 
 
@@ -22,10 +23,10 @@ export default function Page() {
           Please connect your Solana wallet
         </Typography>
       </Box>
-      <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      {/* <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
         <WalletMultiButton />
         <WalletDisconnectButton />
-      </Box >
+      </Box > */}
     </Box>
   )
 }
