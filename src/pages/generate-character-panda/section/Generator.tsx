@@ -58,10 +58,10 @@ const Generator = () => {
                     letterSpacing: '-0.5px'
                   }} />
                 </TabList>
-                <TabPanel value='1'>
+                <TabPanel value='1' sx={{ maxWidth: '90vw' }}>
                   <FormPrompt setShow={setShow} setUrlImg={setUrlImg} />
                 </TabPanel>
-                <TabPanel value='2'>
+                <TabPanel value='2' sx={{ maxWidth: '90vw' }}>
                   <FormRandom setShow={setShow} setUrlImg={setUrlImg} />
                 </TabPanel>
               </TabContext>
