@@ -22,6 +22,7 @@ import { Tooltip, Typography } from '@mui/material'
 import NProgress from 'nprogress'
 import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
+import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
 
 
 interface FormInputs {
@@ -95,7 +96,20 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
   };
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <Box>
+        <Typography variant="body1" sx={{}}>
+          Customizing Busai according to your ideas is simple, just write a detailed description in the box below. Share your achievements in Busai's community and receive surprising rewards
+        </Typography>
+      </Box>
+      <Grid container gap={'1rem'}>
+        <BusAiChip  label='Pink flip flops' />
+        <BusAiChip  label='Standing on 1 leg' />
+        <BusAiChip  label='stick out the tongue' />
+        <BusAiChip  label='Red hat with a horn on it' />
+        <BusAiChip  label='Jean Jacket with rocker style' />
+        <BusAiChip  label='Funny nerdy face' />
+      </Grid>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container gap={10}>
           <Grid item xs={12} >
@@ -120,7 +134,7 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
           </Grid>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-            <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
+              <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
                 Generate
               </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
