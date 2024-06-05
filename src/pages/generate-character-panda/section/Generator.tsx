@@ -1,15 +1,15 @@
-import { Box, Chip, Typography } from '@mui/material';
+import { Box, Typography } from '@mui/material';
+import type { SyntheticEvent } from 'react';
 import { useState } from 'react';
 import { SwiperGenerateInage } from 'src/views/components/swiper/SwiperGenerateInage';
 import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
 import DialogShowPanda from 'src/views/pages/dialog-examples/DialogShowPanda';
-import type { SyntheticEvent } from 'react'
 
 // MUI Imports
-import Tab from '@mui/material/Tab'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
-import TabContext from '@mui/lab/TabContext'
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Tab from '@mui/material/Tab';
 import FormRandom from 'src/views/forms/form-validation/FormRandom';
 
 const Generator = () => {
