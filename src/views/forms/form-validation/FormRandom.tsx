@@ -106,6 +106,7 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Box>
           <Typography
             variant="body1"
             component="div"
@@ -120,11 +121,13 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
           >
             Hat
           </Typography>
+          </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Red hat with a hom on it' />
           </Grid>
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Box>
           <Typography
             variant="body1"
             component="div"
@@ -139,11 +142,13 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
           >
             Shoes
           </Typography>
+          </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Pink flip flops' />
           </Grid>
         </Box>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
+        <Box sx={{ display: 'flex', gap: '1rem', justifyContent:'flex-start' }}>
+          <Box>
           <Typography
             variant="body1"
             component="div"
@@ -158,11 +163,15 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
           >
             Clothes
           </Typography>
+          </Box>
+          <Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Jean Jacket with rocker style' />
           </Grid>
+          </Box>
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
+         <Box>
           <Typography
             variant="body1"
             component="div"
@@ -177,11 +186,13 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
           >
             Emotion
           </Typography>
+          </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Funny nerdy face' /><BusAiChip label='stick out the tongue' />
           </Grid>
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem' }}>
+          <Box>
           <Typography
             variant="body1"
             component="div"
@@ -196,6 +207,7 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
           >
             Pose
           </Typography>
+          </Box>
           <Grid container gap={'1rem'}>
             <BusAiChip label='Standing on 1 leg' />
           </Grid>
