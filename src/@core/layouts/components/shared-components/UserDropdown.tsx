@@ -48,8 +48,8 @@ const UserDropdown = (props: Props) => {
 
   // ** States
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
-  const [name, setName] = useState<string>('User name')
-  const [points, setPoints] = useState<number>(10)
+  const [name] = useState<string>('User name')
+  const [points] = useState<number>(10)
 
   // ** Hooks
   const router = useRouter()
