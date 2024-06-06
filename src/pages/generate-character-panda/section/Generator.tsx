@@ -62,16 +62,16 @@ const Generator = () => {
                     letterSpacing: '-0.5px'
                   }} />
                 </TabList>
-                <TabPanel value='1' sx={{ maxWidth: '90vw' }}>
+                <TabPanel value='1' sx={{ paddingLeft: 0, paddingRight: 0}}>
                   <FormPrompt setShow={setShow} setUrlImg={setUrlImg} />
                 </TabPanel>
-                <TabPanel value='2' sx={{ maxWidth: '90vw' }}>
+                <TabPanel value='2' sx={{ paddingLeft: 0, paddingRight: 0 }}>
                   <FormRandom setShow={setShow} setUrlImg={setUrlImg} />
                 </TabPanel>
               </TabContext>
             </Box>
           </Box>
-          <Box sx={{ maxWidth: '90vw', display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', alignItems: 'center', gap: '1rem' }}>
+          <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', alignItems: 'center', gap: '1rem' }}>
             <Box sx={{ margin: "auto", display: 'flex', width: '400px', maxWidth: '100vw', alignItems: 'center', }}>
               <SwiperGenerateInage />
             </Box>
