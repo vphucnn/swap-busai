@@ -18,6 +18,8 @@ import UserDropdown from 'src/@core/layouts/components/shared-components/UserDro
 import BusAiLogo from 'src/@core/components/logo/BusAiLogo'
 import { useAuth } from 'src/hooks/useAuth'
 import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton'
+import { IconButton } from '@mui/material'
+import { Icon } from '@iconify/react'
 
 interface Props {
   hidden: boolean
@@ -124,7 +126,7 @@ const shortcuts: ShortcutsType[] = [
 
 const AppBarContent = (props: Props) => {
   // ** Props
-  const { settings, saveSettings } = props
+  const { settings, saveSettings, toggleNavVisibility } = props
   const onAuth = (ctx: any) => {
     console.log("----------------")
     console.log(ctx);
@@ -137,11 +139,11 @@ const AppBarContent = (props: Props) => {
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
 
-        {/* {hidden && !settings.navHidden ? (
+        {!settings.navHidden ? (
           <IconButton color='inherit' sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
             <Icon fontSize='1.5rem' icon='tabler:menu-2' />
           </IconButton>
-        ) : null} */}
+        ) : null}
         <BusAiLogo height={40} width={'fit-content'}/>
 
         {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
