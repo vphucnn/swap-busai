@@ -23,7 +23,8 @@ import HorizontalAppBarContent from './components/horizontal/AppBarContent'
 
 // ** Hook Import
 import { useSettings } from 'src/@core/hooks/useSettings'
-import useWindowSize from 'src/hooks/useWindowSize'
+
+// import useWindowSize from 'src/hooks/useWindowSize'
 
 interface Props {
   children: ReactNode

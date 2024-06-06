@@ -4,11 +4,11 @@
 
 import Box from '@mui/material/Box';
 import { styled } from '@mui/material/styles';
-import { useWallet } from '@solana/wallet-adapter-react';
 
 // import NProgress from 'nprogress'
 import { Typography } from '@mui/material';
-import { CopyIcon } from 'src/views/components/copy-icon/CopyIcon';
+
+// import { CopyIcon } from 'src/views/components/copy-icon/CopyIcon';
 import TableHistory from 'src/views/table/mui/TableHistory';
 
 const Img = styled('img')(({ theme }) => ({
@@ -26,7 +26,6 @@ const Img = styled('img')(({ theme }) => ({
 
 export default function Page() {
 
-  const { publicKey } = useWallet();
 
 
   // function useDelayedCall(callback: any, delay: any) {
@@ -56,12 +55,6 @@ export default function Page() {
             Address:
           </Typography>
           <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Typography variant="body1" sx={{ wordBreak: 'break-all' }} >
-              {publicKey?.toString()}
-            </Typography>
-            <Box>
-              <CopyIcon text={publicKey?.toString() ? publicKey?.toString() : ''} />
-            </Box>
           </Box>
 
         </Box>
