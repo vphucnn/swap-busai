@@ -50,15 +50,15 @@ const UserDropdown = (props: Props) => {
 
   // ** States
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
-  const [name, setname] = useState<string>('')
+  const [name, setName] = useState<string>('')
   const [points] = useState<number>(10)
 
   // ** Hooks
   const router = useRouter()
   const { logout, user } = useAuth()
   useEffect(() => {
-    setname(user?.firstName + ' ' + user?.lastName)
-  }, []);
+    setName(user?.firstName + ' ' + user?.lastName)
+  }, [user]);
 
   // ** Vars
   const { direction } = settings
@@ -95,7 +95,8 @@ const UserDropdown = (props: Props) => {
 
   const handleLogout = () => {
     logout()
-    handleDropdownClose()
+
+    // handleDropdownClose()
   }
 
   return (

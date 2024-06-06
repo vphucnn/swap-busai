@@ -82,9 +82,9 @@ const AuthProvider = ({ children }: Props) => {
     try {
       const response = await API.loginTelegram(data)
       console.log("response", response.data.data)
-      setUser({ ...response.data.data })
+      setUser({ ...response.data.data.profile })
       window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.data.accessToken)
-      window.localStorage.setItem('userData', JSON.stringify(response.data.data.profile))
+      window.localStorage.setItem(authConfig.userData, JSON.stringify(response.data.data.profile))
     } catch (error: any) {
       console.error(error);
       if (errorCallback) errorCallback(error);
@@ -95,9 +95,9 @@ const AuthProvider = ({ children }: Props) => {
 
   const handleLogout = () => {
     setUser(null)
-    window.localStorage.removeItem('userData')
+    window.localStorage.removeItem(authConfig.userData)
     window.localStorage.removeItem(authConfig.storageTokenKeyName)
-    router.push('/login')
+    router.push('/generate-character-panda')
   }
 
   const values = {
