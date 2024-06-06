@@ -23,8 +23,8 @@ const rows = [
 
 const TableReward = () => {
   return (
-    <Box sx={{ background: "#726FF7", marginBottom: '5rem', borderRadius: '64px' }}>
-      <TableContainer sx={{ width: '1200px', maxWidth: '95vw', overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
+    <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw' , margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
+      <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
         <Table aria-label='simple table'>
           <TableHead>
             <TableRow>
