@@ -33,7 +33,7 @@ const StepIndicator = ({ currentStep, totalSteps }: any) => {
               <Box style={{ color: 'white', fontSize: 14, fontFamily: 'Poppins', fontWeight: 400, lineHeight: "20px", letterSpacing: 0.02, wordWrap: 'break-word' }}>
                 {!isDone ? i :
                   <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1.33398 5.00002L5.10732 8.77335L12.6673 1.22668" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M1.33398 5.00002L5.10732 8.77335L12.6673 1.22668" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                   </svg>
                 }
               </Box>

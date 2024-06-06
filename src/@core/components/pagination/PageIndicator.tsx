@@ -8,7 +8,7 @@ const PageIndicator = ({ currentPage, totalPages }: any) => {
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
 
           <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M15.4998 19.9201L8.97984 13.4001C8.20984 12.6301 8.20984 11.3701 8.97984 10.6001L15.4998 4.08008" stroke="#111111" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M15.4998 19.9201L8.97984 13.4001C8.20984 12.6301 8.20984 11.3701 8.97984 10.6001L15.4998 4.08008" stroke="#111111" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
 
         </Box>
@@ -32,7 +32,7 @@ const PageIndicator = ({ currentPage, totalPages }: any) => {
       <IconButton sx={{ backgroundColor: '#CBFB45', borderRadius: '100%', width: '50px', height: '50px', borderBottom: '4px #6F9603 solid' }}>
         <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: 10 }}>
           <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M9.41016 19.9201L15.9302 13.4001C16.7002 12.6301 16.7002 11.3701 15.9302 10.6001L9.41016 4.08008" stroke="#111111" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M9.41016 19.9201L15.9302 13.4001C16.7002 12.6301 16.7002 11.3701 15.9302 10.6001L9.41016 4.08008" stroke="#111111" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
         </Box>
       </IconButton>
