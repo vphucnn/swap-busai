@@ -1,5 +1,5 @@
 // ** React Imports
-import { Fragment, SyntheticEvent, useState } from 'react'
+import { Fragment, SyntheticEvent, useEffect, useState } from 'react'
 
 // ** Next Import
 import { useRouter } from 'next/router'
@@ -46,14 +46,19 @@ const UserDropdown = (props: Props) => {
   // ** Props
   const { settings } = props
 
+
+
   // ** States
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
-  const [name] = useState<string>('User name')
+  const [name, setname] = useState<string>('')
   const [points] = useState<number>(10)
 
   // ** Hooks
   const router = useRouter()
-  const { logout } = useAuth()
+  const { logout, user } = useAuth()
+  useEffect(() => {
+    setname(user?.firstName + ' ' + user?.lastName)
+  }, []);
 
   // ** Vars
   const { direction } = settings
@@ -107,26 +112,26 @@ const UserDropdown = (props: Props) => {
       >
         <Avatar
           alt='John Doe'
-          src='/images/avatars/1.png'
+          src={user?.avatar}
           onClick={handleDropdownOpen}
           sx={{ width: 50, height: 50 }}
         />
       </Badge>
       <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '0.5rem',
-        marginLeft: '0.5rem'
-      }}
-    >
-      <Typography variant="body1" noWrap component="div" sx={{ color: '#1F1F1F', fontWeight: 700, fontSize: 18,  }}>
-        {name}
-      </Typography>
-      <Typography variant="body1" noWrap component="div" sx={{ color: '#111111', fontWeight: 400, fontSize: 18, }}>
-        {points} points
-      </Typography>
-    </Box>
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.5rem',
+          marginLeft: '0.5rem'
+        }}
+      >
+        <Typography variant="body1" noWrap component="div" sx={{ color: '#1F1F1F', fontWeight: 700, fontSize: 18, }}>
+          {name}
+        </Typography>
+        <Typography variant="body1" noWrap component="div" sx={{ color: '#111111', fontWeight: 400, fontSize: 18, }}>
+          {points} points
+        </Typography>
+      </Box>
       <Menu
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
@@ -145,11 +150,11 @@ const UserDropdown = (props: Props) => {
                 horizontal: 'right'
               }}
             >
-              <Avatar alt='John Doe' src='/images/avatars/1.png' sx={{ width: '2.5rem', height: '2.5rem' }} />
+              <Avatar alt='John Doe' src={user?.avatar} sx={{ width: '2.5rem', height: '2.5rem' }} />
             </Badge>
             <Box sx={{ display: 'flex', ml: 2.5, alignItems: 'flex-start', flexDirection: 'column' }}>
-              <Typography sx={{ fontWeight: 500 }}>John Doe</Typography>
-              <Typography variant='body2'>Admin</Typography>
+              <Typography sx={{ fontWeight: 500 }}>{user?.firstName} {user?.lastName}</Typography>
+              <Typography variant='body2'>User</Typography>
             </Box>
           </Box>
         </Box>

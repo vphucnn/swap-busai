@@ -135,11 +135,13 @@ const AppBarContent = (props: Props) => {
     console.log("ctx", ctx);
   };
 
+  console.log(auth)
+
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
       <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}>Swap Points</BusAiButton>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
-      { !hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
+      {!hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
       {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
       {auth.user && (
         <>
@@ -148,7 +150,7 @@ const AppBarContent = (props: Props) => {
           <UserDropdown settings={settings} />
         </>
       )}
-      <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      {!auth.user && <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <TelegramLoginButton
           botName="Binance111_bot"
           cornerRadius="8"
@@ -159,7 +161,7 @@ const AppBarContent = (props: Props) => {
           requestAccess={'write'}
           usePic={true}
         />
-      </Box>
+      </Box>}
 
     </Box>
   )

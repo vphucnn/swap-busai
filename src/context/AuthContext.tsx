@@ -12,6 +12,7 @@ import authConfig from 'src/configs/auth'
 
 // ** Types
 import { AuthValuesType, LoginParams, ErrCallbackType, UserDataType } from './types'
+import API from 'src/api'
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -41,28 +42,11 @@ const AuthProvider = ({ children }: Props) => {
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!
-      if (storedToken) {
+      const profile = window.localStorage.getItem(authConfig.userData)!
+      if (storedToken && profile) {
         setLoading(true)
-        await axios
-          .get(authConfig.meEndpoint, {
-            headers: {
-              Authorization: storedToken
-            }
-          })
-          .then(async response => {
-            setLoading(false)
-            setUser({ ...response.data.userData })
-          })
-          .catch(() => {
-            localStorage.removeItem('userData')
-            localStorage.removeItem('refreshToken')
-            localStorage.removeItem('accessToken')
-            setUser(null)
-            setLoading(false)
-            if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-              router.replace('/login')
-            }
-          })
+        setUser({...JSON.parse(profile)})
+        setLoading(false)
       } else {
         setLoading(false)
       }
@@ -94,28 +78,19 @@ const AuthProvider = ({ children }: Props) => {
       })
   }
 
-  const handleLoginTelegram = (params: LoginParams, errorCallback?: ErrCallbackType) => {
-    axios
-      .post(authConfig.loginEndpoint, params)
-      .then(async response => {
-        params.rememberMe
-          ? window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.accessToken)
-          : null
-        const returnUrl = router.query.returnUrl
+  const handleLoginTelegram = async (data: any, errorCallback?: ErrCallbackType) => {
+    try {
+      const response = await API.loginTelegram(data)
+      console.log("response", response.data.data)
+      setUser({ ...response.data.data })
+      window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.data.accessToken)
+      window.localStorage.setItem('userData', JSON.stringify(response.data.data.profile))
+    } catch (error: any) {
+      console.error(error);
+      if (errorCallback) errorCallback(error);
+    } finally {
 
-        console.log('use', { ...response.data.userData })
-
-        setUser({ ...response.data.userData })
-        params.rememberMe ? window.localStorage.setItem('userData', JSON.stringify(response.data.userData)) : null
-
-        const redirectURL = returnUrl && returnUrl !== '/' ? returnUrl : '/'
-
-        router.replace(redirectURL as string)
-      })
-
-      .catch(err => {
-        if (errorCallback) errorCallback(err)
-      })
+    }
   }
 
   const handleLogout = () => {
