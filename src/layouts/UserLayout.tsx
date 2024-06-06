@@ -2,8 +2,8 @@
 import { ReactNode } from 'react'
 
 // ** MUI Imports
-// import { Theme } from '@mui/material/styles'
-// import useMediaQuery from '@mui/material/useMediaQuery'
+import { Theme } from '@mui/material/styles'
+import useMediaQuery from '@mui/material/useMediaQuery'
 
 // ** Layout Imports
 // !Do not remove this Layout import
@@ -33,7 +33,8 @@ interface Props {
 const UserLayout = ({ children, contentHeightFixed }: Props) => {
   // ** Hooks
   const { settings, saveSettings } = useSettings()
-  const { width } = useWindowSize();
+
+  // const { width } = useWindowSize();
 
   // ** Vars for server side navigation
   // const { menuItems: verticalMenuItems } = ServerSideVerticalNavItems()
@@ -47,9 +48,9 @@ const UserLayout = ({ children, contentHeightFixed }: Props) => {
    *  to know more about what values can be passed to this hook.
    *  ! Do not change this value unless you know what you are doing. It can break the template.
    */
-  // const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
+  const hidden = useMediaQuery((theme: Theme) => theme.breakpoints.down('lg'))
 
-  const hidden = width <= 1200
+  // const hidden = width <= 1200
 
   if (hidden && settings.layout === 'horizontal') {
     settings.layout = 'vertical'
