@@ -7,9 +7,6 @@ import { Settings } from 'src/@core/context/settingsContext';
 // ** Components
 // import Autocomplete from 'src/layouts/components/Autocomplete'
 
-import {
-  WalletMultiButton
-} from '@solana/wallet-adapter-material-ui';
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
 
@@ -151,9 +148,6 @@ const AppBarContent = (props: Props) => {
           <UserDropdown settings={settings} />
         </>
       )}
-      {!hide && <Box className="connect-walletv" sx={{ position: 'relative' }}>
-        <WalletMultiButton />
-      </Box>}
       <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <TelegramLoginButton
           botName="Binance111_bot"

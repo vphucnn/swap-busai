@@ -66,18 +66,9 @@ import 'src/iconify-bundle/icons-bundle-react'
 import '../../styles/globals.css'
 
 
-import { useMemo } from 'react'
 
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
-import {
-  WalletDialogProvider
-} from '@solana/wallet-adapter-material-ui'
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
-import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets'
-import { clusterApiUrl } from '@solana/web3.js'
 
 // Default styles that can be overridden by your app
-require('@solana/wallet-adapter-react-ui/styles.css');
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -134,30 +125,7 @@ const App = (props: ExtendedAppProps) => {
 
   const aclAbilities = Component.acl ?? defaultACLObj
 
-  const network = WalletAdapterNetwork.Devnet;
 
-  // You can also provide a custom RPC endpoint.
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-  const wallets = useMemo(
-    () => [
-      /**
-       * Wallets that implement either of these standards will be available automatically.
-       *
-       *   - Solana Mobile Stack Mobile Wallet Adapter Protocol
-       *     (https://github.com/solana-mobile/mobile-wallet-adapter)
-       *   - Solana Wallet Standard
-       *     (https://github.com/anza-xyz/wallet-standard)
-       *
-       * If you wish to support a wallet that supports neither of those standards,
-       * instantiate its legacy wallet adapter here. Common legacy adapters can be found
-       * in the npm package `@solana/wallet-adapter-wallets`.
-       */
-      new UnsafeBurnerWalletAdapter(),
-    ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [network]
-  );
 
 
   return (
@@ -175,9 +143,6 @@ const App = (props: ExtendedAppProps) => {
         </Head>
 
         <AuthProvider>
-          <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} autoConnect>
-              <WalletDialogProvider>
                 <SettingsProvider {...(setConfig ? { pageSettings: setConfig() } : {})}>
                   <SettingsConsumer>
                     {({ settings }) => {
@@ -196,9 +161,6 @@ const App = (props: ExtendedAppProps) => {
                     }}
                   </SettingsConsumer>
                 </SettingsProvider>
-              </WalletDialogProvider>
-            </WalletProvider>
-          </ConnectionProvider>
         </AuthProvider>
       </CacheProvider>
     </Provider>
