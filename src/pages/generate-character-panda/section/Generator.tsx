@@ -29,12 +29,16 @@ const Generator = () => {
         position: 'relative',
         background: 'linear-gradient(180deg, #CBFB45 0%, rgba(203, 251, 69, 0) 100%)',
         display: 'fex',
-        justifyContent: 'center'
+        justifyContent: 'center',
+        padding: '20px'
       }}
     >
-      <Box sx={{ maxWidth: '1400px' }}>
+      <Box sx={{
+        maxWidth: '1400px',
+        width: "100%"
+      }}>
         <Box sx={{ textAlign: 'center', marginTop: { xs: '1rem', md: '2rem' }, }}>
-          <Typography variant="h1" sx={{ fontWeight: 700 }}>
+          <Typography sx={{ fontWeight: 700, typography: { lg: 'h1', xs: 'h3' } }}>
             Make Busai your true style
           </Typography>
         </Box>
@@ -78,7 +82,7 @@ const Generator = () => {
         </Box>
       </Box>
 
-    </Box>
+    </Box >
   );
 };
 

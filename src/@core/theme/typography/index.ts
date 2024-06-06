@@ -19,16 +19,15 @@ const typography = {
     fontSize: 96,
     lineHeight: "115.2px",
     letterSpacing: '-2.2px'
+
   },
   h2: {
-    fontWeight: 500,
-    fontSize: '2rem',
-    lineHeight: 1.375
+    fontWeight: 700,
+    fontSize: 80,
   },
   h3: {
-    fontWeight: 500,
-    lineHeight: 1.38462,
-    fontSize: '1.625rem'
+    fontWeight: 600,
+    fontSize: 60,
   },
   h4: {
     fontWeight: 500,

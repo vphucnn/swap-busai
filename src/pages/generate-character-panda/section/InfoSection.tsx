@@ -13,15 +13,17 @@ const InfoSection = () => {
         backgroundImage: 'url(/images/general/info-section-2.png)',
         backgroundSize: 'cover', // Ensures full coverage
         backgroundRepeat: 'no-repeat',
+        padding: '20px'
       }}
     >
       <Box sx={{
-        textAlign: 'left', maxWidth: "1400px"
+        maxWidth: '1400px',
+        textAlign: 'left', width: "100%"
         , display: 'flex', flexDirection: 'column', gap: '0.5rem',
         marginTop: '5rem', paddingBottom: '5rem'
       }}>
         <Box>
-          <Typography variant="h1" sx={{ fontWeight: 700 }}>
+          <Typography  sx={{ fontWeight: 700 ,typography: { lg: 'h1', xs: 'h3' } }}>
             Create Music with AI and Earn Point
           </Typography>
         </Box>
