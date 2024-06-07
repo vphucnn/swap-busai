@@ -45,6 +45,7 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm<FormInputs>({ defaultValues })
 
@@ -94,6 +95,9 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
       toast.error('Generate error')
     }
   };
+  const handleClick = (value: string) => {
+    setValue('prompt', value);
+  };
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
@@ -103,12 +107,12 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
         </Typography>
       </Box>
       <Grid container gap={'1rem'}>
-        <BusAiChip  label='Pink flip flops' />
-        <BusAiChip  label='Standing on 1 leg' />
-        <BusAiChip  label='stick out the tongue' />
-        <BusAiChip  label='Red hat with a horn on it' />
-        <BusAiChip  label='Jean Jacket with rocker style' />
-        <BusAiChip  label='Funny nerdy face' />
+        <BusAiChip onClick={() => handleClick('Pink flip flops')} label='Pink flip flops' />
+        <BusAiChip onClick={() => handleClick('Standing on 1 leg')} label='Standing on 1 leg' />
+        <BusAiChip onClick={() => handleClick('stick out the tongue')} label='stick out the tongue' />
+        <BusAiChip onClick={() => handleClick('Red hat with a horn on it')} label='Red hat with a horn on it' />
+        <BusAiChip onClick={() => handleClick('Jean Jacket with rocker style')} label='Jean Jacket with rocker style' />
+        <BusAiChip onClick={() => handleClick('Funny nerdy face')} label='Funny nerdy face' />
       </Grid>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container gap={10}>
