@@ -13,6 +13,7 @@ import authConfig from 'src/configs/auth'
 // ** Types
 import { AuthValuesType, LoginParams, ErrCallbackType, UserDataType } from './types'
 import API from 'src/api'
+import toast from 'react-hot-toast'
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -87,6 +88,7 @@ const AuthProvider = ({ children }: Props) => {
       window.localStorage.setItem(authConfig.userData, JSON.stringify(response.data.data.profile))
     } catch (error: any) {
       console.error(error);
+      toast.error("Login error");
       if (errorCallback) errorCallback(error);
     } finally {
 

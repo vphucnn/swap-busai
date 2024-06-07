@@ -152,7 +152,7 @@ const AppBarContent = (props: Props) => {
       )}
       {!auth.user && <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <TelegramLoginButton
-          botName="Binance111_bot"
+          botName={process.env.NEXT_PUBLIC_BOT_NAME}
           cornerRadius="8"
           className="tg-login-button"
           dataOnAuth={onAuth}

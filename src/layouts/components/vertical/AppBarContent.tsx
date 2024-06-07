@@ -153,7 +153,7 @@ const AppBarContent = (props: Props) => {
         {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
         <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
         <TelegramLoginButton
-          botName="Binance111_bot"
+          botName={process.env.NEXT_PUBLIC_BOT_NAME}
           cornerRadius="8"
           className="tg-login-button"
           dataOnAuth={onAuth}
