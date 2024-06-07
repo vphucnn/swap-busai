@@ -15,6 +15,8 @@ import FormRandom from 'src/views/forms/form-validation/FormRandom';
 const Generator = () => {
 
   const [urlImg, setUrlImg] = useState<string>('/images/general/panda.png')
+  const [imageShare, setImageShare] = useState<string>('/images/general/panda.png')
+
   const [show, setShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>('1')
 
@@ -63,7 +65,7 @@ const Generator = () => {
                   }} />
                 </TabList>
                 <TabPanel value='1' sx={{ paddingLeft: 0, paddingRight: 0}}>
-                  <FormPrompt setShow={setShow} setUrlImg={setUrlImg} />
+                  <FormPrompt setShow={setShow} setUrlImg={setUrlImg} setImageShare={setImageShare}/>
                 </TabPanel>
                 <TabPanel value='2' sx={{ paddingLeft: 0, paddingRight: 0 }}>
                   <FormRandom setShow={setShow} setUrlImg={setUrlImg} />
@@ -78,7 +80,7 @@ const Generator = () => {
           </Box>
         </Box>
         <Box>
-          <DialogShowPanda image={urlImg} show={show} setShow={setShow} />
+          <DialogShowPanda image={urlImg}  imageShare={imageShare} show={show} setShow={setShow} />
         </Box>
       </Box>
 

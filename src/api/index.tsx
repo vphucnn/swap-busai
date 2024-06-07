@@ -24,6 +24,14 @@ api.interceptors.request.use(
 const API = {
   loginTelegram: (userData: any) => {
     return api.post('/auth/login-telegram', { data: userData });
+  },
+
+  textToImage: (prompt: any) => {
+    return api.post('/ai/text-to-image/queue', { prompt: prompt });
+  },
+
+  getUrlImage: (path: string) =>{
+    return API_BASE_URL + path
   }
 };
 

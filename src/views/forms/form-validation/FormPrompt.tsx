@@ -14,7 +14,6 @@ import toast from 'react-hot-toast'
 
 // ** Types
 import { Box } from '@mui/system'
-import axios from 'axios'
 import { Dispatch, SetStateAction } from 'react'
 
 import { Icon } from '@iconify/react'
@@ -23,6 +22,7 @@ import NProgress from 'nprogress'
 import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
+import API from 'src/api'
 
 
 interface FormInputs {
@@ -36,10 +36,11 @@ const defaultValues = {
 interface Props {
   setShow: Dispatch<SetStateAction<boolean>>,
   setUrlImg: Dispatch<SetStateAction<string>>,
+  setImageShare: Dispatch<SetStateAction<string>>
 }
 
 
-const FormPrompt = ({ setShow, setUrlImg }: Props) => {
+const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
   // ** States
   // ** Hooks
   const {
@@ -60,35 +61,11 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
 
   const fetchData = async (prompt: string) => {
     try {
-      const data = JSON.stringify({
-        "host": "Fireworks",
-        "model_name": "stable-diffusion-xl-1024-v1-0",
-        "prompt": prompt,
-        "negative_prompt": "bad proportions, asymmetric ears, broken wrist, additional limbs, asymmetric, collapsed eyeshadow, altered appendages, broken finger, bad anatomy, elongated throat, double face, conjoined, bad face, broken hand, out of frame, disconnected limb, 3d, bad ears, amputee, cross-eyed, disfigured, cartoon, bad eyes, cloned face, combined appendages, broken leg, copied visage, absent limbs, childish, cropped head, cloned head, desiccated, duplicated features, dismembered, disproportionate, cripple.",
-        "config": {
-          "image_content_type": "image/png",
-          "size": "1024 x 1024",
-          "cfg_scale": 7,
-          "seed": 5564,
-          "steps": 30,
-          "sampler": "K_DPMPP_2M",
-          "safety_check": true
-        }
-      });
 
-      const config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'https://ai-api-gpu-local.playgroundx.site/v2/ai_center/text-to-image',
-        headers: {
-          'accept': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjQ4NTgyODUyNDEsInVzZXJfaWQiOiIxIn0.WcBCWXVZqI5G4sRRi_eOSxfEP5ynQfCbGsKQNOulkfU',
-          'Content-Type': 'application/json'
-        },
-        data: data
-      };
-      const response = await axios.request(config);
-      setUrlImg(response?.data?.data?.file_url?.url)
+      const response = await API.textToImage(prompt);
+      console.log("response", response)
+      setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
+      setImageShare(API.getUrlImage(response?.data?.data?.task_result?.url))
 
       return response.data
     } catch (error) {
