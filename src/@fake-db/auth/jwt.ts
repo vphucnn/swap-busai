@@ -81,12 +81,12 @@ mock.onPost('/jwt/register').reply(request => {
       if (length) {
         lastIndex = users[length - 1].id
       }
-      const userData = {
+      const userData : UserDataType= {
         id: lastIndex + 1,
         email,
         password,
         username,
-        avatar: null,
+        avatar: '',
         fullName: '',
         role: 'admin'
       }
