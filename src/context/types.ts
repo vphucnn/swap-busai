@@ -16,6 +16,7 @@ export type UserDataType = {
   password?: string
   avatar?: string
   fullName: string
+  point: number
 }
 
 export type AuthValuesType = {

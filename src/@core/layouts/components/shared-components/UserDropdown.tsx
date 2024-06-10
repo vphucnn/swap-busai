@@ -51,13 +51,14 @@ const UserDropdown = (props: Props) => {
   // ** States
   const [anchorEl, setAnchorEl] = useState<Element | null>(null)
   const [name, setName] = useState<string>('')
-  const [points] = useState<number>(10)
+  const [points, setPoint] = useState<number>()
 
   // ** Hooks
   const router = useRouter()
   const { logout, user } = useAuth()
   useEffect(() => {
     setName(user?.firstName + ' ' + user?.lastName)
+    setPoint(user?.point)
   }, [user]);
 
   // ** Vars

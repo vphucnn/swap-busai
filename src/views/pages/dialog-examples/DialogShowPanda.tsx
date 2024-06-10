@@ -97,7 +97,6 @@ const DialogShowPanda = ({ image, imageShare, show, setShow }: Props) => {
         </Box >
         {showShare &&
           <Collapse orientation="horizontal" in={showShare}>
-
             <Card sx={{ maxWidth: '100%', width: '400px', margin: 'auto', marginTop: '30px', position: 'absolute', bottom: 0, left: 0, right: 0 }}>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
@@ -109,8 +108,6 @@ const DialogShowPanda = ({ image, imageShare, show, setShow }: Props) => {
                   <Link href={`https://t.me/share/url?url=${imageShare}`}>
                     <Img src={'/images/logos/telegram.png'} alt="Girl in a jacket" width="40" height-="40" />
                   </Link>
-
-
                 </Box>
               </CardContent>
               <CardActions>
@@ -120,7 +117,6 @@ const DialogShowPanda = ({ image, imageShare, show, setShow }: Props) => {
               </CardActions>
             </Card>
           </Collapse>
-
         }
       </DialogContent>
     </Dialog>
