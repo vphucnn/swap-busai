@@ -34,8 +34,8 @@ const defaultValues = {
 }
 
 interface Props {
-  setShow: Dispatch<SetStateAction<boolean>>,
-  setUrlImg: Dispatch<SetStateAction<string>>,
+  setShow?: Dispatch<SetStateAction<boolean>>,
+  setUrlImg: Dispatch<SetStateAction<string | null>>,
 }
 
 
@@ -52,7 +52,7 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
 
     await fetchData(control._formValues.prompt)
     NProgress.done()
-    setShow(true)
+    if (setShow) setShow(true)
     toast.success('Form Submitted')
   }
   const [currentStep, setCurrentStep] = useState<number>(1)

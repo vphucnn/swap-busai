@@ -25,8 +25,8 @@ const Img = styled('img')(({ theme }) => ({
 
 
 interface Props {
-  image: string,
-  imageShare: string,
+  image: string|null,
+  imageShare: string|null,
   show: boolean,
   setShow: Dispatch<SetStateAction<boolean>>,
 }
@@ -62,7 +62,7 @@ const DialogShowPanda = ({ image, imageShare, show, setShow }: Props) => {
         }}
       >
         <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '3rem' }}>
-          <Img src={image} alt="Girl in a jacket" width="400" />
+          <Img src={image || ''} alt="Girl in a jacket" width="400" />
         </Box>
         <Box sx={{ textAlign: 'left', display: 'flex', flexDirection: 'column', gap: '1rem', width: '400px', maxWidth: '100%', margin: 'auto' }}>
           <Typography variant="h2" sx={{ fontWeight: '700' }}>

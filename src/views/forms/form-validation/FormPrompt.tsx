@@ -34,9 +34,9 @@ const defaultValues = {
 }
 
 interface Props {
-  setShow: Dispatch<SetStateAction<boolean>>,
-  setUrlImg: Dispatch<SetStateAction<string>>,
-  setImageShare: Dispatch<SetStateAction<string>>
+  setShow?: Dispatch<SetStateAction<boolean>>,
+  setUrlImg: Dispatch<SetStateAction<string|null>>,
+  setImageShare: Dispatch<SetStateAction<string|null>>
 }
 
 
@@ -55,7 +55,7 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
 
     await fetchData(control._formValues.prompt)
     NProgress.done()
-    setShow(true)
+    if(setShow) setShow(true)
     toast.success('Form Submitted')
   }
 
