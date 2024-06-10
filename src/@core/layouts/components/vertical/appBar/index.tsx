@@ -23,6 +23,7 @@ const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'center',
   backgroundColor: 'transparent',
+  transparentBackground : 0,
   color: theme.palette.text.primary,
   minHeight: theme.mixins.toolbar.minHeight,
   [theme.breakpoints.up('sm')]: {
@@ -37,7 +38,8 @@ const AppBar = styled(MuiAppBar)<AppBarProps>(({ theme }) => ({
 
 const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({
   width: '100%',
-  marginTop: theme.spacing(4),
+
+  // marginTop: theme.spacing(4),
   borderRadius: theme.shape.borderRadius,
   padding: `${theme.spacing(0, 6)} !important`
 }))
@@ -57,15 +59,8 @@ const LayoutAppBar = (props: Props) => {
       width: '100%',
       content: '""',
       position: 'absolute',
-      backdropFilter: 'blur(10px)',
       height: (theme: Theme) => `calc(${theme.mixins.toolbar.minHeight as number}px + ${theme.spacing(4)})`,
-      mask: (theme: Theme) =>
-        `linear-gradient(${theme.palette.background.default}, ${theme.palette.background.default} 18%, transparent 100%)`,
-      background: (theme: Theme) =>
-        `linear-gradient(180deg,${hexToRGBA(theme.palette.background.default, 0.7)} 44%, ${hexToRGBA(
-          theme.palette.background.default,
-          0.43
-        )} 73%, ${hexToRGBA(theme.palette.background.default, 0)})`
+      backgroundColor: "#CBFB45 ",
     }
   }
 
@@ -94,8 +89,8 @@ const LayoutAppBar = (props: Props) => {
         sx={{
           ...(appBarBlur && { backdropFilter: 'blur(6px)' }),
           minHeight: theme => `${theme.mixins.toolbar.minHeight as number}px !important`,
-          backgroundColor: theme => hexToRGBA(theme.palette.background.paper, appBarBlur ? 0.95 : 1),
-          ...(skin === 'bordered' ? { border: theme => `1px solid ${theme.palette.divider}` } : { boxShadow: 2 }),
+          backgroundColor: theme => hexToRGBA(theme.palette.background.paper, appBarBlur ? 0 : 1),
+          ...(skin === 'bordered' ? { border: theme => `0px solid ${theme.palette.divider}` } : { boxShadow: 2 }),
           ...(contentWidth === 'boxed' && {
             '@media (min-width:1440px)': { maxWidth: theme => `calc(1440px - ${theme.spacing(6 * 2)})` }
           })

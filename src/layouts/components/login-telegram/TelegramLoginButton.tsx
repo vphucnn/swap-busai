@@ -1,4 +1,5 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useAuth } from "src/hooks/useAuth";
 
 export const TelegramLoginButton = ({
   botName,
@@ -7,17 +8,33 @@ export const TelegramLoginButton = ({
   cornerRadius,
   requestAccess,
   usePic,
-  dataOnauth,
   dataAuthUrl,
   lang,
 }: any) => {
   const [loader, setLoader] = useState(false);
   const instance = useRef<any>(null);
+  const auth = useAuth()
+
+  // const handleSubmit = async (data: any) => {
+  //   try {
+  //     const response = API.loginTelegram(data)
+  //     console.log("response", response)
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //   }
+  // };
+
+  const handleSubmit = (data: FormData) => {
+    auth.loginTelegram(data, () => {
+      console.log('error')
+    })
+  }
   useEffect(() => {
     if (instance && !loader) {
       (window as any).TelegramLoginWidget = {
         dataOnauth: (user: any) => {
-          dataOnauth(user);
+          handleSubmit(user)
         },
       };
       const script = document.createElement("script");
@@ -40,15 +57,13 @@ export const TelegramLoginButton = ({
         );
       }
       script.async = true;
-
       instance?.current?.appendChild(script);
-
       setTimeout(() => {
         setLoader(true);
       }, 1000);
       console.log(instance)
     }
-  }, [instance]);
+  }, [botName, buttonSize, cornerRadius, dataAuthUrl, instance, lang, loader, requestAccess, usePic]);
 
   return (
     <div style={{

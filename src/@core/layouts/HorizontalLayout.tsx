@@ -1,9 +1,9 @@
 // ** MUI Imports
-import Fab from '@mui/material/Fab'
 import AppBar from '@mui/material/AppBar'
-import { styled } from '@mui/material/styles'
 import Box, { BoxProps } from '@mui/material/Box'
+import Fab from '@mui/material/Fab'
 import MuiToolbar, { ToolbarProps } from '@mui/material/Toolbar'
+import { styled } from '@mui/material/styles'
 
 // ** Icon Imports
 import Icon from 'src/@core/components/icon'
@@ -16,13 +16,12 @@ import { LayoutProps } from 'src/@core/layouts/types'
 
 // ** Components
 import Customizer from 'src/@core/components/customizer'
-import Footer from './components/shared-components/footer'
-import Navigation from './components/horizontal/navigation'
 import ScrollToTop from 'src/@core/components/scroll-to-top'
 import AppBarContent from './components/horizontal/app-bar-content'
+import Navigation from './components/horizontal/navigation'
+import Footer from './components/shared-components/footer'
 
 // ** Util Import
-import { hexToRGBA } from '../utils/hex-to-rgba'
 
 const HorizontalLayoutWrapper = styled('div')({
   height: '100%',
@@ -54,11 +53,12 @@ const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({
 const ContentWrapper = styled('main')(({ theme }) => ({
   flexGrow: 1,
   width: '100%',
-  padding: theme.spacing(6),
+
+  // padding: theme.spacing(6),
   transition: 'padding .25s ease-in-out',
   [theme.breakpoints.down('sm')]: {
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4)
+    paddingLeft: theme.spacing(0),
+    paddingRight: theme.spacing(0)
   }
 }))
 
@@ -103,8 +103,8 @@ const HorizontalLayout = (props: LayoutProps) => {
             ...(appBar === 'static' && { zIndex: 13 }),
             transition: 'border-bottom 0.2s ease-in-out',
             ...(appBarBlur && { backdropFilter: 'blur(6px)' }),
-            backgroundColor: theme => hexToRGBA(theme.palette.background.paper, appBarBlur ? 0.95 : 1),
-            ...(skin === 'bordered' && { borderBottom: theme => `1px solid ${theme.palette.divider}` }),
+            backgroundColor: "#CBFB45 ",
+            ...(skin === 'bordered' && { borderBottom: theme => `0px solid ${theme.palette.divider}` }),
             ...userAppBarStyle
           }}
           {...userAppBarProps}
@@ -166,7 +166,7 @@ const HorizontalLayout = (props: LayoutProps) => {
             ...(contentHeightFixed && { display: 'flex', overflow: 'hidden' }),
             ...(contentWidth === 'boxed' && {
               mx: 'auto',
-              '@media (min-width:1440px)': { maxWidth: 1440 },
+              '@media (min-width:1440px)': { maxWidth: '100%' },
               '@media (min-width:1200px)': { maxWidth: '100%' }
             })
           }}

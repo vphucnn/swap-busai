@@ -38,11 +38,12 @@ const MainContentWrapper = styled(Box)<BoxProps>({
 const ContentWrapper = styled('main')(({ theme }) => ({
   flexGrow: 1,
   width: '100%',
-  padding: theme.spacing(6),
+
+  // padding: theme.spacing(6),
   transition: 'padding .25s ease-in-out',
   [theme.breakpoints.down('sm')]: {
-    paddingLeft: theme.spacing(4),
-    paddingRight: theme.spacing(4)
+    // paddingLeft: theme.spacing(4),
+    // paddingRight: theme.spacing(4)
   }
 }))
 
@@ -108,7 +109,7 @@ const VerticalLayout = (props: LayoutProps) => {
               }),
               ...(contentWidth === 'boxed' && {
                 mx: 'auto',
-                '@media (min-width:1440px)': { maxWidth: 1440 },
+                '@media (min-width:1440px)': { maxWidth: '100%' },
                 '@media (min-width:1200px)': { maxWidth: '100%' }
               })
             }}

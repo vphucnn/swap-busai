@@ -1,6 +1,6 @@
 const typography = {
   fontFamily: [
-    'Manrope',
+    'Bricolage Grotesque',
     'sans-serif',
     '-apple-system',
     'BlinkMacSystemFont',
@@ -15,19 +15,19 @@ const typography = {
   ].join(','),
   fontSize: 13.125,
   h1: {
-    fontWeight: 500,
-    fontSize: '2.375rem',
-    lineHeight: 1.368421
+    fontWeight: 800,
+    fontSize: 96,
+    lineHeight: "115.2px",
+    letterSpacing: '-2.2px'
+
   },
   h2: {
-    fontWeight: 500,
-    fontSize: '2rem',
-    lineHeight: 1.375
+    fontWeight: 700,
+    fontSize: 80,
   },
   h3: {
-    fontWeight: 500,
-    lineHeight: 1.38462,
-    fontSize: '1.625rem'
+    fontWeight: 600,
+    fontSize: 60,
   },
   h4: {
     fontWeight: 500,
@@ -48,13 +48,13 @@ const typography = {
     letterSpacing: '0.15px'
   },
   subtitle2: {
-    lineHeight: 1.32,
+    lineHeight: 1.41,
     fontSize: '0.875rem',
     letterSpacing: '0.1px'
   },
   body1: {
-    lineHeight: 1.467,
-    fontSize: '16px'
+    lineHeight: '25.6px',
+    fontSize: '18px'
   },
   body2: {
     fontSize: '0.8125rem',
@@ -72,6 +72,12 @@ const typography = {
   overline: {
     fontSize: '0.75rem',
     letterSpacing: '1px'
+  },
+  tableHeader: {
+    textAlign: 'center',
+    fontSize: '32px',
+    fontWeight: 500,
+    wordWrap: 'break-word'
   }
 }
 

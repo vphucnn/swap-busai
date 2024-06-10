@@ -12,6 +12,8 @@ import authConfig from 'src/configs/auth'
 
 // ** Types
 import { AuthValuesType, LoginParams, ErrCallbackType, UserDataType } from './types'
+import API from 'src/api'
+import toast from 'react-hot-toast'
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -20,6 +22,7 @@ const defaultProvider: AuthValuesType = {
   setUser: () => null,
   setLoading: () => Boolean,
   login: () => Promise.resolve(),
+  loginTelegram: () => Promise.resolve(),
   logout: () => Promise.resolve()
 }
 
@@ -40,28 +43,11 @@ const AuthProvider = ({ children }: Props) => {
   useEffect(() => {
     const initAuth = async (): Promise<void> => {
       const storedToken = window.localStorage.getItem(authConfig.storageTokenKeyName)!
-      if (storedToken) {
+      const profile = window.localStorage.getItem(authConfig.userData)!
+      if (storedToken && profile) {
         setLoading(true)
-        await axios
-          .get(authConfig.meEndpoint, {
-            headers: {
-              Authorization: storedToken
-            }
-          })
-          .then(async response => {
-            setLoading(false)
-            setUser({ ...response.data.userData })
-          })
-          .catch(() => {
-            localStorage.removeItem('userData')
-            localStorage.removeItem('refreshToken')
-            localStorage.removeItem('accessToken')
-            setUser(null)
-            setLoading(false)
-            if (authConfig.onTokenExpiration === 'logout' && !router.pathname.includes('login')) {
-              router.replace('/login')
-            }
-          })
+        setUser({...JSON.parse(profile)})
+        setLoading(false)
       } else {
         setLoading(false)
       }
@@ -93,11 +79,27 @@ const AuthProvider = ({ children }: Props) => {
       })
   }
 
+  const handleLoginTelegram = async (data: any, errorCallback?: ErrCallbackType) => {
+    try {
+      const response = await API.loginTelegram(data)
+      console.log("response", response.data.data)
+      setUser({ ...response.data.data.profile })
+      window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.data.accessToken)
+      window.localStorage.setItem(authConfig.userData, JSON.stringify(response.data.data.profile))
+    } catch (error: any) {
+      console.error(error);
+      toast.error("Login error");
+      if (errorCallback) errorCallback(error);
+    } finally {
+
+    }
+  }
+
   const handleLogout = () => {
     setUser(null)
-    window.localStorage.removeItem('userData')
+    window.localStorage.removeItem(authConfig.userData)
     window.localStorage.removeItem(authConfig.storageTokenKeyName)
-    router.push('/login')
+    router.push('/generate-character-panda')
   }
 
   const values = {
@@ -106,6 +108,7 @@ const AuthProvider = ({ children }: Props) => {
     setUser,
     setLoading,
     login: handleLogin,
+    loginTelegram: handleLoginTelegram,
     logout: handleLogout
   }
 

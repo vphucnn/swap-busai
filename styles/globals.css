@@ -8,8 +8,8 @@ body {
 }
 
 code {
-  font-family: 'Manrope', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  font-family: 'Bricolage Grotesque', sans-serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
   padding: 0.1rem 0.4rem;
   font-size: 90%;
   color: #d400ff;
@@ -37,4 +37,16 @@ code[class*='language-'] {
 
 .tgme_widget_login.large button.tgme_widget_login_button {
   padding: 8px 21px 10px !important;
+}
+
+.mySwiper .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  width: 24px !important;
+  height: 8px !important;
+  background-color: #ff66c8 !important;
+  border-radius: 50px !important;
+}
+
+.mySwiper .swiper-pagination-bullet {
+  background-color: #1f1f1f !important;
+  opacity: 1 !important;
 }

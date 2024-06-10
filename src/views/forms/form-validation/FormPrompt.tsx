@@ -1,7 +1,6 @@
 // ** React Imports
 
 // ** MUI Imports
-import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
 
 // ** Custom Component Import
@@ -16,12 +15,14 @@ import toast from 'react-hot-toast'
 // ** Types
 import { Box } from '@mui/system'
 import { Dispatch, SetStateAction } from 'react'
-import axios from 'axios'
 
-import NProgress from 'nprogress'
-import { Tooltip, Typography } from '@mui/material'
 import { Icon } from '@iconify/react'
+import { Tooltip, Typography } from '@mui/material'
+import NProgress from 'nprogress'
 import React from 'react'
+import { BusAiButton } from 'src/@core/components/button/BusAiButton'
+import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
+import API from 'src/api'
 
 
 interface FormInputs {
@@ -33,17 +34,19 @@ const defaultValues = {
 }
 
 interface Props {
-  setShow: Dispatch<SetStateAction<boolean>>,
-  setUrlImg: Dispatch<SetStateAction<string>>,
+  setShow?: Dispatch<SetStateAction<boolean>>,
+  setUrlImg: Dispatch<SetStateAction<string|null>>,
+  setImageShare: Dispatch<SetStateAction<string|null>>
 }
 
 
-const FormPrompt = ({ setShow, setUrlImg }: Props) => {
+const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
   // ** States
   // ** Hooks
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors }
   } = useForm<FormInputs>({ defaultValues })
 
@@ -52,50 +55,42 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
 
     await fetchData(control._formValues.prompt)
     NProgress.done()
-    setShow(true)
+    if(setShow) setShow(true)
     toast.success('Form Submitted')
   }
 
   const fetchData = async (prompt: string) => {
     try {
-      const data = JSON.stringify({
-        "host": "Fireworks",
-        "model_name": "stable-diffusion-xl-1024-v1-0",
-        "prompt": prompt,
-        "negative_prompt": "bad proportions, asymmetric ears, broken wrist, additional limbs, asymmetric, collapsed eyeshadow, altered appendages, broken finger, bad anatomy, elongated throat, double face, conjoined, bad face, broken hand, out of frame, disconnected limb, 3d, bad ears, amputee, cross-eyed, disfigured, cartoon, bad eyes, cloned face, combined appendages, broken leg, copied visage, absent limbs, childish, cropped head, cloned head, desiccated, duplicated features, dismembered, disproportionate, cripple.",
-        "config": {
-          "image_content_type": "image/png",
-          "size": "1024 x 1024",
-          "cfg_scale": 7,
-          "seed": 5564,
-          "steps": 30,
-          "sampler": "K_DPMPP_2M",
-          "safety_check": true
-        }
-      });
 
-      const config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'https://ai-api-gpu-local.playgroundx.site/v2/ai_center/text-to-image',
-        headers: {
-          'accept': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjQ4NTgyODUyNDEsInVzZXJfaWQiOiIxIn0.WcBCWXVZqI5G4sRRi_eOSxfEP5ynQfCbGsKQNOulkfU',
-          'Content-Type': 'application/json'
-        },
-        data: data
-      };
-      const response = await axios.request(config);
-      setUrlImg(response?.data?.data?.file_url?.url)
+      const response = await API.textToImage(prompt);
+      console.log("response", response)
+      setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
+      setImageShare(API.getUrlImage(response?.data?.data?.task_result?.url))
 
       return response.data
     } catch (error) {
       toast.error('Generate error')
     }
   };
+  const handleClick = (value: string) => {
+    setValue('prompt', value);
+  };
 
   return (
-    <Box>
+    <Box sx={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <Box>
+        <Typography variant="body1" sx={{}}>
+          Customizing Busai according to your ideas is simple, just write a detailed description in the box below. Share your achievements in Busai's community and receive surprising rewards
+        </Typography>
+      </Box>
+      <Grid container gap={'1rem'}>
+        <BusAiChip onClick={() => handleClick('Pink flip flops')} label='Pink flip flops' />
+        <BusAiChip onClick={() => handleClick('Standing on 1 leg')} label='Standing on 1 leg' />
+        <BusAiChip onClick={() => handleClick('stick out the tongue')} label='stick out the tongue' />
+        <BusAiChip onClick={() => handleClick('Red hat with a horn on it')} label='Red hat with a horn on it' />
+        <BusAiChip onClick={() => handleClick('Jean Jacket with rocker style')} label='Jean Jacket with rocker style' />
+        <BusAiChip onClick={() => handleClick('Funny nerdy face')} label='Funny nerdy face' />
+      </Grid>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container gap={10}>
           <Grid item xs={12} >
@@ -118,8 +113,11 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
               )}
             />
           </Grid>
-          <Grid item xs={12} container justifyContent="flex-end" >
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <Grid item xs={12} container justifyContent="flex-start" >
+            <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
+              <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
+                Generate
+              </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Typography variant="body1">
                   Generated 1/3
@@ -129,13 +127,9 @@ const FormPrompt = ({ setShow, setUrlImg }: Props) => {
                     <Typography color="inherit">Generated</Typography>
                   </React.Fragment>
                 }>
-
                   <Icon icon='tabler:info-circle' fontSize={20} />
                 </Tooltip>
               </Box>
-              <Button type='submit' variant='contained'>
-                Generate
-              </Button>
             </Box>
           </Grid>
         </Grid>

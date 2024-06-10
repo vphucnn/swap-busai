@@ -6,25 +6,20 @@ import { Settings } from 'src/@core/context/settingsContext';
 
 // ** Components
 // import Autocomplete from 'src/layouts/components/Autocomplete'
-import ModeToggler from 'src/@core/layouts/components/shared-components/ModeToggler';
 
-// import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown'
-import { Button } from '@mui/material';
-import {
-  WalletMultiButton
-} from '@solana/wallet-adapter-material-ui';
 import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
+import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
 
 import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton';
 
 // import NotificationDropdown, {
 //   NotificationsType
-// } from 'src/@core/layouts/components/shared-components/NotificationDropdown'
+// } from 'src/@core/layouts/components/shared-components/NotificationDropdown';
 
-// import ShortcutsDropdown, { ShortcutsType } from 'src/@core/layouts/components/shared-components/ShortcutsDropdown'
 
 // ** Hook Import
-// import { useAuth } from 'src/hooks/useAuth'
+import { BusAiButton } from 'src/@core/components/button/BusAiButton';
+import { useAuth } from 'src/hooks/useAuth';
 
 interface Props {
   hidden: boolean
@@ -132,40 +127,41 @@ const AppBarContent = (props: Props) => {
   // ** Props
   // const { hidden, settings, saveSettings } = props
   const { settings, saveSettings } = props
+  const hide = true;
 
   // ** Hook
-  // const auth = useAuth()
+  const auth = useAuth()
   const onAuth = (ctx: any) => {
-    console.log(ctx);
+    console.log("ctx", ctx);
   };
+
+  console.log(auth)
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <Button variant="contained" onClick={() => { { } }}>Swap Points</Button>
+      <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}>Swap Points</BusAiButton>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
-      <LanguageDropdown settings={settings} saveSettings={saveSettings} />
-      <ModeToggler settings={settings} saveSettings={saveSettings} />
-      {/* {auth.user && (
+      {!hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
+      {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
+      {auth.user && (
         <>
-          <ShortcutsDropdown settings={settings} shortcuts={shortcuts} />
-          <NotificationDropdown settings={settings} notifications={notifications} />
+          {/* <ShortcutsDropdown settings={settings} shortcuts={shortcuts} /> */}
+          {/* <NotificationDropdown settings={settings} notifications={notifications} /> */}
           <UserDropdown settings={settings} />
         </>
-      )} */}
-      <Box className="connect-walletv" sx={{ position: 'relative' }}>
-        <WalletMultiButton />
-      </Box>
-      <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
+      )}
+      {!auth.user && <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <TelegramLoginButton
-          botName="Binance111_bot"
+          botName={process.env.NEXT_PUBLIC_BOT_NAME}
           cornerRadius="8"
           className="tg-login-button"
           dataOnAuth={onAuth}
-          dataAuthUrl={'/auth/telelgram'}
+
+          // dataAuthUrl={'/auth/telelgram'}
           requestAccess={'write'}
           usePic={true}
         />
-      </Box>
+      </Box>}
 
     </Box>
   )

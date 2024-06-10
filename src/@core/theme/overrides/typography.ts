@@ -60,6 +60,10 @@ const typography = {
       {
         props: { variant: 'overline' },
         style: ({ theme }: OwnerStateThemeType) => ({ color: theme.palette.text.secondary })
+      },
+      {
+        props: { variant: 'tableHeader' },
+        style: ({ theme }: OwnerStateThemeType) => ({ color: theme.palette.text.tableHeader })
       }
     ]
   }

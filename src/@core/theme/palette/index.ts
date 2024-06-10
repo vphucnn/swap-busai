@@ -38,9 +38,9 @@ const DefaultPalette = (mode: Palette['mode'], skin: Skin): Palette => {
       white: whiteColor
     },
     primary: {
-      light: '#0095A9',
-      main: '#0095A9',
-      dark: '#0095A9',
+      light: '#ff66c8',
+      main: '#ff66c8',
+      dark: '#ff66c8',
       contrastText: whiteColor
     },
     secondary: {
@@ -92,7 +92,8 @@ const DefaultPalette = (mode: Palette['mode'], skin: Skin): Palette => {
     text: {
       primary: `rgba(${mainColor}, 1)`,
       secondary: `rgba(${mainColor}, 0.8)`,
-      disabled: `rgba(${mainColor}, 0.42)`
+      disabled: `rgba(${mainColor}, 0.42)`,
+      tableHeader: '#CBFB45',
     },
     divider: `rgba(${mainColor}, 0.16)`,
     background: {

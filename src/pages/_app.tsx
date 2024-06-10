@@ -66,18 +66,9 @@ import 'src/iconify-bundle/icons-bundle-react'
 import '../../styles/globals.css'
 
 
-import { useMemo } from 'react'
 
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base'
-import {
-  WalletDialogProvider
-} from '@solana/wallet-adapter-material-ui'
-import { ConnectionProvider, WalletProvider } from '@solana/wallet-adapter-react'
-import { UnsafeBurnerWalletAdapter } from '@solana/wallet-adapter-wallets'
-import { clusterApiUrl } from '@solana/web3.js'
 
 // Default styles that can be overridden by your app
-require('@solana/wallet-adapter-react-ui/styles.css');
 
 // ** Extend App Props with Emotion
 type ExtendedAppProps = AppProps & {
@@ -128,55 +119,30 @@ const App = (props: ExtendedAppProps) => {
 
   const setConfig = Component.setConfig ?? undefined
 
-  const authGuard = Component.authGuard ?? true
+  const authGuard = Component.authGuard ?? false
 
   const guestGuard = Component.guestGuard ?? false
 
   const aclAbilities = Component.acl ?? defaultACLObj
 
-  const network = WalletAdapterNetwork.Devnet;
 
-  // You can also provide a custom RPC endpoint.
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
-
-  const wallets = useMemo(
-    () => [
-      /**
-       * Wallets that implement either of these standards will be available automatically.
-       *
-       *   - Solana Mobile Stack Mobile Wallet Adapter Protocol
-       *     (https://github.com/solana-mobile/mobile-wallet-adapter)
-       *   - Solana Wallet Standard
-       *     (https://github.com/anza-xyz/wallet-standard)
-       *
-       * If you wish to support a wallet that supports neither of those standards,
-       * instantiate its legacy wallet adapter here. Common legacy adapters can be found
-       * in the npm package `@solana/wallet-adapter-wallets`.
-       */
-      new UnsafeBurnerWalletAdapter(),
-    ],
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [network]
-  );
 
 
   return (
     <Provider store={store}>
       <CacheProvider value={emotionCache}>
         <Head>
-          <title>{`${themeConfig.templateName} - Material Design React Admin Template`}</title>
+          <title>{`${themeConfig.templateName} - Make Busai your true style
+`}</title>
           <meta
             name='description'
-            content={`${themeConfig.templateName} – Material Design React Admin Dashboard Template – is the most developer friendly & highly customizable Admin Dashboard Template based on MUI v5.`}
+            content={`${themeConfig.templateName} – Make Busai your true style`}
           />
-          <meta name='keywords' content='Material Design, MUI, Admin Template, React Admin Template' />
+          <meta name='keywords' content='Busai, Panda' />
           <meta name='viewport' content='initial-scale=1, width=device-width' />
         </Head>
 
         <AuthProvider>
-          <ConnectionProvider endpoint={endpoint}>
-            <WalletProvider wallets={wallets} autoConnect>
-              <WalletDialogProvider>
                 <SettingsProvider {...(setConfig ? { pageSettings: setConfig() } : {})}>
                   <SettingsConsumer>
                     {({ settings }) => {
@@ -195,9 +161,6 @@ const App = (props: ExtendedAppProps) => {
                     }}
                   </SettingsConsumer>
                 </SettingsProvider>
-              </WalletDialogProvider>
-            </WalletProvider>
-          </ConnectionProvider>
         </AuthProvider>
       </CacheProvider>
     </Provider>

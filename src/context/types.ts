@@ -9,11 +9,14 @@ export type LoginParams = {
 export type UserDataType = {
   id: number
   role: string
-  email: string
+  email?: string
+  firstName?: string
+  lastName?: string
+  username?: string
+  password?: string
+  avatar?: string
   fullName: string
-  username: string
-  password: string
-  avatar?: string | null
+  point: number
 }
 
 export type AuthValuesType = {
@@ -23,4 +26,5 @@ export type AuthValuesType = {
   setLoading: (value: boolean) => void
   setUser: (value: UserDataType | null) => void
   login: (params: LoginParams, errorCallback?: ErrCallbackType) => void
+  loginTelegram: (data: any, errorCallback?: ErrCallbackType) => void
 }

@@ -25,6 +25,10 @@ declare module '@mui/material/styles' {
       tableHeaderBg?: string
     }
   }
+
+  interface TypeText {
+    tableHeader: string;
+  }
 }
 
 declare module '@mui/material/Button' {
@@ -36,6 +40,12 @@ declare module '@mui/material/Button' {
 declare module '@mui/material/ButtonGroup' {
   interface ButtonGroupPropsVariantOverrides {
     tonal: true
+  }
+}
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    tableHeader: true;
   }
 }
 
