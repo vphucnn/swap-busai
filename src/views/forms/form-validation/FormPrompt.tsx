@@ -65,7 +65,6 @@ const chip = [
 const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageShare }: Props) => {
   // ** States
   // ** Hooks
-  // const [isLoading, setIsLoading] = useState(false);
 
   const [listChip, setListChip] = useState<string[]>([])
 
