@@ -1,4 +1,4 @@
-import { Box, Typography, styled } from '@mui/material';
+import { Box, CircularProgress, Typography, styled } from '@mui/material';
 import type { SyntheticEvent } from 'react';
 import { useState } from 'react';
 
@@ -19,6 +19,7 @@ const Generator = () => {
 
   const [urlImg, setUrlImg] = useState<string | null>('/images/general/gen-default.png')
   const [imageShare, setImageShare] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false);
 
   // const [show, setShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>('1')
@@ -80,7 +81,7 @@ const Generator = () => {
                   }} />
                 </TabList>
                 <TabPanel value='1' sx={{ paddingLeft: 0, paddingRight: 0 }}>
-                  <FormPrompt setUrlImg={setUrlImg} setImageShare={setImageShare} />
+                  <FormPrompt setIsLoading={setIsLoading} isLoading={isLoading} setUrlImg={setUrlImg} setImageShare={setImageShare} />
                 </TabPanel>
                 <TabPanel value='2' sx={{ paddingLeft: 0, paddingRight: 0 }}>
                   <FormRandom setUrlImg={setUrlImg} />
@@ -94,10 +95,9 @@ const Generator = () => {
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
                   <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '360px' }}>
-                    {urlImg && <Img src={urlImg} alt='box' />}
-                    {/* {!urlImg && <Typography sx={{ fontWeight: 700, typography: { lg: 'body1', xs: 'body1' } }}>
-                      Please create an image
-                    </Typography>} */}
+                    {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
+                    {isLoading && <CircularProgress />
+                    }
                   </Box>
                 </Box>
                 <Typography variant="body1" sx={{}}>

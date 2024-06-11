@@ -32,6 +32,7 @@ const TableReward = () => {
 
 
   useEffect(() => {
+    setPageSize(10)
     const fetchData = async () => {
       // setIsLoading(true);
       // setError(null);
@@ -39,6 +40,7 @@ const TableReward = () => {
         console.log("getTable")
         const response = await API.getTask(page, pageSize)
         console.log("getTable", response)
+        setData(response.data.data)
 
         // setData(fetchedData);
       } catch (error) {
@@ -104,7 +106,7 @@ const TableReward = () => {
         </Table>
       </TableContainer>}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <PageIndicator currentPage={1} totalPages={3} />
+        <PageIndicator setPage={setPage} currentPage={page} totalPages={3} />
       </Box>
 
     </Box>
