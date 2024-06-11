@@ -34,6 +34,8 @@ import API from 'src/api'
 // }
 
 interface Props {
+  isLoading: boolean,
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
   setShow?: Dispatch<SetStateAction<boolean>>,
   setUrlImg: Dispatch<SetStateAction<string | null>>,
 }
@@ -138,7 +140,7 @@ const listPrompt = [
 ]
 
 
-const FormRandom = ({ setShow, setUrlImg }: Props) => {
+const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
 
   const [listChip, setListChip] = useState<any[]>([])
   const [showRemove, setShowRemove] = useState<boolean>(true)
@@ -158,9 +160,10 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
 
   const onSubmit = async () => {
     NProgress.start()
-
+    setIsLoading(true)
     await fetchData(genPormpt())
     NProgress.done()
+    setIsLoading(false)
     if (setShow) setShow(true)
   }
   const [currentStep, setCurrentStep] = useState<number>(1)
@@ -251,7 +254,7 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
               {currentStep === 1 && <BusAiButton onClick={() => setCurrentStep(2)} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} variant='contained'>
                 Next
               </BusAiButton>}
-              {currentStep === 2 && <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}  onClick={onSubmit} variant='contained'>
+              {currentStep === 2 && <BusAiButton disabled={isLoading} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={onSubmit} variant='contained'>
                 Generate
               </BusAiButton>}
             </Box>
