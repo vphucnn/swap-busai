@@ -6,15 +6,14 @@ import Grid from '@mui/material/Grid'
 // ** Custom Component Import
 
 // ** Third Party Imports
-import { useForm } from 'react-hook-form'
+// import { useForm } from 'react-hook-form'
 import toast from 'react-hot-toast'
 
 // ** Icon Imports
 
 // ** Types
 import { Box } from '@mui/system'
-import axios from 'axios'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { Button, Tooltip, Typography } from '@mui/material'
 import NProgress from 'nprogress'
@@ -23,15 +22,16 @@ import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
 import StepBar from 'src/@core/components/steper/StepBar'
 import { Icon } from '@iconify/react'
+import API from 'src/api'
 
 
-interface FormInputs {
-  prompt: string
-}
+// interface FormInputs {
+//   prompt: string
+// }
 
-const defaultValues = {
-  prompt: '',
-}
+// const defaultValues = {
+//   prompt: '',
+// }
 
 interface Props {
   setShow?: Dispatch<SetStateAction<boolean>>,
@@ -39,56 +39,142 @@ interface Props {
 }
 
 
+const listPrompt = [
+  {
+    type: 'Hat',
+    chips: [
+      "Red hat with a hom on it",
+      "Standing on 1 leg",
+      "Stick out the tongue",
+      "Red hat with a horn on it",
+      "Jean Jacket with rocker style",
+      "Funny nerdy face",
+      "Shareable",
+      "Engaging",
+      "Reflecting culture",
+      "Relatable and understandable",
+      "Pop culture phenomenon",
+      "Humorous and witty",
+      "Visually appealing",
+      "Thought-provoking"
+    ]
+  },
+  {
+    type: 'Shoes',
+    chips: [
+      "Pink flip flops",
+      "Standing on 1 leg",
+      "Stick out the tongue",
+      "Red hat with a horn on it",
+      "Jean Jacket with rocker style",
+      "Funny nerdy face",
+      "Shareable",
+      "Engaging",
+      "Reflecting culture",
+      "Relatable and understandable",
+      "Pop culture phenomenon",
+      "Humorous and witty",
+      "Visually appealing",
+      "Thought-provoking"
+    ]
+  }
+  ,
+  {
+    type: 'Clothes',
+    chips: [
+      "Pink flip flops",
+      "Standing on 1 leg",
+      "Stick out the tongue",
+      "Red hat with a horn on it",
+      "Jean Jacket with rocker style",
+      "Funny nerdy face",
+      "Shareable",
+      "Engaging",
+      "Reflecting culture",
+      "Relatable and understandable",
+      "Pop culture phenomenon",
+      "Humorous and witty",
+      "Visually appealing",
+      "Thought-provoking"
+    ]
+  },
+  {
+    type: 'Emotion',
+    chips: [
+      "Funny nerdy face",
+      "Standing on 1 leg",
+      "Stick out the tongue",
+      "Red hat with a horn on it",
+      "Jean Jacket with rocker style",
+      "Funny nerdy face",
+      "Shareable",
+      "Engaging",
+      "Reflecting culture",
+      "Relatable and understandable",
+      "Pop culture phenomenon",
+      "Humorous and witty",
+      "Visually appealing",
+      "Thought-provoking"
+    ]
+  }
+  , {
+    type: 'Pose',
+    chips: [
+      "Standing on 1 leg",
+      "Stick out the tongue",
+      "Red hat with a horn on it",
+      "Jean Jacket with rocker style",
+      "Funny nerdy face",
+      "Shareable",
+      "Engaging",
+      "Reflecting culture",
+      "Relatable and understandable",
+      "Pop culture phenomenon",
+      "Humorous and witty",
+      "Visually appealing",
+      "Thought-provoking"
+    ]
+  }
+]
+
+
 const FormRandom = ({ setShow, setUrlImg }: Props) => {
-  // ** States
-  // ** Hooks
-  const {
-    control,
-    handleSubmit,
-  } = useForm<FormInputs>({ defaultValues })
+
+  const [listChip, setListChip] = useState<any[]>([])
+  const [showRemove, setShowRemove] = useState<boolean>(true)
+
+  useEffect(() => {
+    setListChip(listPrompt)
+  }, []);
+
+  const genPormpt = () => {
+    let resultString = "";
+    for (const obj of listChip) {
+      resultString += `${obj.type}, ${obj.chips[0]}; `;
+    }
+
+    return resultString
+  }
 
   const onSubmit = async () => {
     NProgress.start()
 
-    await fetchData(control._formValues.prompt)
+    await fetchData(genPormpt())
     NProgress.done()
     if (setShow) setShow(true)
-    toast.success('Form Submitted')
   }
   const [currentStep, setCurrentStep] = useState<number>(1)
+  useEffect(() => {
+    setShowRemove(currentStep < 2)
+  }, [currentStep]);
 
 
   const fetchData = async (prompt: string) => {
     try {
-      const data = JSON.stringify({
-        "host": "Fireworks",
-        "model_name": "stable-diffusion-xl-1024-v1-0",
-        "prompt": prompt,
-        "negative_prompt": "bad proportions, asymmetric ears, broken wrist, additional limbs, asymmetric, collapsed eyeshadow, altered appendages, broken finger, bad anatomy, elongated throat, double face, conjoined, bad face, broken hand, out of frame, disconnected limb, 3d, bad ears, amputee, cross-eyed, disfigured, cartoon, bad eyes, cloned face, combined appendages, broken leg, copied visage, absent limbs, childish, cropped head, cloned head, desiccated, duplicated features, dismembered, disproportionate, cripple.",
-        "config": {
-          "image_content_type": "image/png",
-          "size": "1024 x 1024",
-          "cfg_scale": 7,
-          "seed": 5564,
-          "steps": 30,
-          "sampler": "K_DPMPP_2M",
-          "safety_check": true
-        }
-      });
 
-      const config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: 'https://ai-api-gpu-local.playgroundx.site/v2/ai_center/text-to-image',
-        headers: {
-          'accept': 'application/json',
-          'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjQ4NTgyODUyNDEsInVzZXJfaWQiOiIxIn0.WcBCWXVZqI5G4sRRi_eOSxfEP5ynQfCbGsKQNOulkfU',
-          'Content-Type': 'application/json'
-        },
-        data: data
-      };
-      const response = await axios.request(config);
-      setUrlImg(response?.data?.data?.file_url?.url)
+      const response = await API.textToImage(prompt);
+      setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
+      toast.success('Generate done')
 
       return response.data
     } catch (error) {
@@ -107,115 +193,36 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
         <StepBar currentStep={currentStep} totalSteps={2} />
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <Box>
-            <Typography
-              variant="body1"
-              component="div"
-              sx={{
-                width: '80px',
-                color: 'black',
-                fontSize: 18,
-                fontWeight: 700,
-                lineHeight: '25.6px',
-                wordWrap: 'break-word',
-              }}
-            >
-              Hat
-            </Typography>
+
+        {listChip.map((item, index) => (
+
+          <Box key={index} sx={{ display: 'flex', gap: '1rem', justifyContent: 'flex-start' }}>
+            <Box>
+              <Typography
+                variant="body1"
+                component="div"
+                sx={{
+                  width: '80px',
+                  color: 'black',
+                  fontSize: 18,
+                  fontWeight: 700,
+                  lineHeight: '25.6px',
+                  wordWrap: 'break-word',
+                }}
+              >
+                {item.type}
+              </Typography>
+            </Box>
+            <Box>
+              <Grid container gap={'1rem'}>
+                <BusAiChip label={item.chips[0]} showRemove={showRemove} />
+              </Grid>
+            </Box>
           </Box>
-          <Grid container gap={'1rem'}>
-            <BusAiChip label='Red hat with a hom on it' />
-          </Grid>
-        </Box>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <Box>
-            <Typography
-              variant="body1"
-              component="div"
-              sx={{
-                width: '80px',
-                color: 'black',
-                fontSize: 18,
-                fontWeight: 700,
-                lineHeight: '25.6px',
-                wordWrap: 'break-word',
-              }}
-            >
-              Shoes
-            </Typography>
-          </Box>
-          <Grid container gap={'1rem'}>
-            <BusAiChip label='Pink flip flops' />
-          </Grid>
-        </Box>
-        <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'flex-start' }}>
-          <Box>
-            <Typography
-              variant="body1"
-              component="div"
-              sx={{
-                width: '80px',
-                color: 'black',
-                fontSize: 18,
-                fontWeight: 700,
-                lineHeight: '25.6px',
-                wordWrap: 'break-word',
-              }}
-            >
-              Clothes
-            </Typography>
-          </Box>
-          <Box>
-            <Grid container gap={'1rem'}>
-              <BusAiChip label='Jean Jacket with rocker style' />
-            </Grid>
-          </Box>
-        </Box>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <Box>
-            <Typography
-              variant="body1"
-              component="div"
-              sx={{
-                width: '80px',
-                color: 'black',
-                fontSize: 18,
-                fontWeight: 700,
-                lineHeight: '25.6px',
-                wordWrap: 'break-word',
-              }}
-            >
-              Emotion
-            </Typography>
-          </Box>
-          <Grid container gap={'1rem'}>
-            <BusAiChip label='Funny nerdy face' /><BusAiChip label='stick out the tongue' />
-          </Grid>
-        </Box>
-        <Box sx={{ display: 'flex', gap: '1rem' }}>
-          <Box>
-            <Typography
-              variant="body1"
-              component="div"
-              sx={{
-                width: '80px',
-                color: 'black',
-                fontSize: 18,
-                fontWeight: 700,
-                lineHeight: '25.6px',
-                wordWrap: 'break-word',
-              }}
-            >
-              Pose
-            </Typography>
-          </Box>
-          <Grid container gap={'1rem'}>
-            <BusAiChip label='Standing on 1 leg' />
-          </Grid>
-        </Box>
+        ))}
+
       </Box>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form>
         <Grid container gap={10}>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
@@ -244,7 +251,7 @@ const FormRandom = ({ setShow, setUrlImg }: Props) => {
               {currentStep === 1 && <BusAiButton onClick={() => setCurrentStep(2)} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} variant='contained'>
                 Next
               </BusAiButton>}
-              {currentStep === 2 && <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
+              {currentStep === 2 && <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}  onClick={onSubmit} variant='contained'>
                 Generate
               </BusAiButton>}
             </Box>
