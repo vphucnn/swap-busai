@@ -14,11 +14,14 @@ import TabPanel from '@mui/lab/TabPanel';
 import Tab from '@mui/material/Tab';
 import FormRandom from 'src/views/forms/form-validation/FormRandom';
 import { BusAiButton } from 'src/@core/components/button/BusAiButton';
+import API from 'src/api';
+import toast from 'react-hot-toast';
+import NProgress from 'nprogress'
 
 const Generator = () => {
 
   const [urlImg, setUrlImg] = useState<string | null>('/images/general/gen-default.png')
-  const [imageShare, setImageShare] = useState<string | null>(null)
+  const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
 
   // const [show, setShow] = useState<boolean>(false)
@@ -27,6 +30,19 @@ const Generator = () => {
   const handleChange = (event: SyntheticEvent, newValue: string) => {
     setValue(newValue)
   }
+
+
+  const callShareImage = async (id: string) => {
+    try {
+      NProgress.start()
+      const response = await API.shareTelegram(id);
+      NProgress.done()
+      window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
+    } catch (error) {
+      NProgress.done()
+      toast.error('Share error')
+    }
+  };
 
   const Img = styled('img')(({ theme }) => ({
     maxWidth: "100%",
@@ -81,10 +97,10 @@ const Generator = () => {
                   }} />
                 </TabList>
                 <TabPanel value='1' sx={{ paddingLeft: 0, paddingRight: 0 }}>
-                  <FormPrompt setIsLoading={setIsLoading} isLoading={isLoading} setUrlImg={setUrlImg} setImageShare={setImageShare} />
+                  <FormPrompt setIsLoading={setIsLoading} isLoading={isLoading} setUrlImg={setUrlImg} setImageId={setImageId} />
                 </TabPanel>
                 <TabPanel value='2' sx={{ paddingLeft: 0, paddingRight: 0 }}>
-                  <FormRandom setIsLoading={setIsLoading} isLoading={isLoading} setUrlImg={setUrlImg}  setImageShare={setImageShare}/>
+                  <FormRandom setIsLoading={setIsLoading} isLoading={isLoading} setUrlImg={setUrlImg} setImageId={setImageId} />
                 </TabPanel>
               </TabContext>
             </Box>
@@ -103,15 +119,15 @@ const Generator = () => {
                 <Typography variant="body1" sx={{}}>
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
-                <BusAiButton disabled={!imageShare} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                  if (imageShare) window.open(`https://t.me/share/url?url=${imageShare}`, '_blank', 'noopener,noreferrer');
+                <BusAiButton disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                  if (ImageId) callShareImage(ImageId)
                 }} >Share</BusAiButton>
               </Box>
             </Box>
           </Box>
         </Box>
         <Box>
-          {/* <DialogShowPanda image={urlImg} imageShare={imageShare} show={show} setShow={setShow} /> */}
+          {/* <DialogShowPanda image={urlImg} ImageId={ImageId} show={show} setShow={setShow} /> */}
         </Box>
       </Box>
 
