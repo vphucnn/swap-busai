@@ -37,6 +37,10 @@ const API = {
   getTask: (page: number, pageSize: number, shareStatus?: boolean) => {
     return api.get('/ai/tasks', { params: { page, pageSize, shareStatus } });
   },
+
+  shareTelegram: (id: string) => {
+    return api.get('/telegram/share/' + id);
+  },
 };
 
 export default API;

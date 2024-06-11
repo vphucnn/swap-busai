@@ -40,7 +40,7 @@ interface Props {
   setShow?: Dispatch<SetStateAction<boolean>>,
   setIsLoading: Dispatch<SetStateAction<boolean>>,
   setUrlImg: Dispatch<SetStateAction<string | null>>,
-  setImageShare: Dispatch<SetStateAction<string | null>>
+  setImageId: Dispatch<SetStateAction<string | null>>
 }
 
 
@@ -62,7 +62,7 @@ const chip = [
 ]
 
 
-const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageShare }: Props) => {
+const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageId }: Props) => {
   // ** States
   // ** Hooks
 
@@ -98,7 +98,7 @@ const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageShare
 
       const response = await API.textToImage(prompt);
       setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
-      setImageShare(API.getUrlImage(response?.data?.data?.task_result?.url))
+      setImageId(response?.data?.data?.task_result?.id)
       toast.success('Generate done')
 
       return response.data
