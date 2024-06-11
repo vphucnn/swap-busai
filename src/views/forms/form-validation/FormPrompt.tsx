@@ -56,16 +56,15 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
     await fetchData(control._formValues.prompt)
     NProgress.done()
     if(setShow) setShow(true)
-    toast.success('Form Submitted')
   }
 
   const fetchData = async (prompt: string) => {
     try {
 
       const response = await API.textToImage(prompt);
-      console.log("response", response)
       setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
       setImageShare(API.getUrlImage(response?.data?.data?.task_result?.url))
+      toast.success('Generate done')
 
       return response.data
     } catch (error) {
