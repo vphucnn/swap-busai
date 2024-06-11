@@ -88,9 +88,9 @@ const Generator = () => {
             </Box>
           </Box>
           <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', alignItems: 'center', gap: '1rem' }}>
-            <Box sx={{ margin: "auto", display: 'flex', width: '400px', maxWidth: '100vw', alignItems: 'center', }}>
+            <Box sx={{ margin: "auto", display: 'flex', width: '400px', justifyContent: 'center', maxWidth: '100vw', alignItems: 'center', }}>
               {/* <SwiperGenerateInage /> */}
-              <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
                   <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '360px' }}>
                     {urlImg && <Img src={urlImg} alt='box' />}
