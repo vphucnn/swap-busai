@@ -38,9 +38,9 @@ const TableReward = () => {
       // setError(null);
       try {
         console.log("getTable")
-        const response = await API.getTask(page, pageSize)
-        console.log("getTable", response)
-        setData([])
+        const response = await API.getTask(page, pageSize, true)
+        console.log("getTable", response.data.data.data)
+        setData(response.data.data.data)
 
         // setData(response.data.data)
 
@@ -93,14 +93,14 @@ const TableReward = () => {
               >
                 <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
                   <Typography variant="body1" sx={{ color: 'white' }} >
-                    {row.user}
+                    {row.timeShare}
                   </Typography>
                 </TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row.user}
+                  {row?.shareStatus?.toString()|| 'false'}
                 </Typography></TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}>+   <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row.user}
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
+                 {row.sharePoint}
                 </Typography></TableCell>
               </TableRow>
             ))}
