@@ -40,7 +40,9 @@ const TableReward = () => {
         console.log("getTable")
         const response = await API.getTask(page, pageSize)
         console.log("getTable", response)
-        setData(response.data.data)
+        setData([])
+
+        // setData(response.data.data)
 
         // setData(fetchedData);
       } catch (error) {
