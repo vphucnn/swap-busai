@@ -38,6 +38,7 @@ interface Props {
   setIsLoading: Dispatch<SetStateAction<boolean>>,
   setShow?: Dispatch<SetStateAction<boolean>>,
   setUrlImg: Dispatch<SetStateAction<string | null>>,
+  setImageShare: Dispatch<SetStateAction<string | null>>
 }
 
 
@@ -140,7 +141,7 @@ const listPrompt = [
 ]
 
 
-const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
+const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageShare }: Props) => {
 
   const [listChip, setListChip] = useState<any[]>([])
   const [showRemove, setShowRemove] = useState<boolean>(true)
@@ -177,6 +178,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
 
       const response = await API.textToImage(prompt);
       setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
+      setImageShare(API.getUrlImage(response?.data?.data?.task_result?.url))
       toast.success('Generate done')
 
       return response.data
