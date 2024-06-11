@@ -103,7 +103,9 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
     }
   };
   const handleClick = (value: string) => {
-    setValue('prompt', value);
+    const currentPrompt = control._formValues?.prompt || ''; // Handle potential undefined value
+    const updatedPrompt = currentPrompt ? `${currentPrompt}, ${value}` : value;
+    setValue('prompt', updatedPrompt);
   };
 
   return (

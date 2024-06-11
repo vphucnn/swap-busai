@@ -17,7 +17,7 @@ import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 
 const Generator = () => {
 
-  const [urlImg, setUrlImg] = useState<string | null>(null)
+  const [urlImg, setUrlImg] = useState<string | null>('/images/general/gen-default.png')
   const [imageShare, setImageShare] = useState<string | null>(null)
 
   // const [show, setShow] = useState<boolean>(false)
@@ -29,7 +29,8 @@ const Generator = () => {
 
   const Img = styled('img')(({ theme }) => ({
     maxWidth: "100%",
-
+    borderRadius: '15px',
+    width: "250px",
     [theme.breakpoints.down('lg')]: {
       marginTop: theme.spacing(5)
     },
@@ -87,22 +88,22 @@ const Generator = () => {
               </TabContext>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', alignItems: 'center', gap: '1rem' }}>
-            <Box sx={{ margin: "auto", display: 'flex', width: '400px', justifyContent: 'center', maxWidth: '100vw', alignItems: 'center', }}>
+          <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem' }}>
+            <Box sx={{ margin: "auto", display: 'flex', width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
               {/* <SwiperGenerateInage /> */}
-              <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
+              <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
                   <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '360px' }}>
                     {urlImg && <Img src={urlImg} alt='box' />}
-                    {!urlImg && <Typography sx={{ fontWeight: 700, typography: { lg: 'body1', xs: 'body1' } }}>
+                    {/* {!urlImg && <Typography sx={{ fontWeight: 700, typography: { lg: 'body1', xs: 'body1' } }}>
                       Please create an image
-                    </Typography>}
+                    </Typography>} */}
                   </Box>
                 </Box>
                 <Typography variant="body1" sx={{}}>
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
-                <BusAiButton backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                <BusAiButton disabled={!imageShare} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                   if (imageShare) window.open(`https://t.me/share/url?url=${imageShare}`, '_blank', 'noopener,noreferrer');
                 }} >Share</BusAiButton>
               </Box>
