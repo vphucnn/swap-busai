@@ -12,7 +12,7 @@ export const BusAiButton : React.FC<BusAiButtonProps> = ({backgroundColor, borde
     <Button
       {...props}
       variant="contained" // For a solid background
-      style={{
+      sx={{
         backgroundColor: backgroundColor,
         borderRadius: 40,
         color: 'white',
