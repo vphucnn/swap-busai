@@ -29,6 +29,7 @@ const TableReward = () => {
   const [data, setData] = useState<any[]>([]);
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
+  const [totalPages, setTotalPages] = useState<number>(0);
 
 
   useEffect(() => {
@@ -41,6 +42,7 @@ const TableReward = () => {
         const response = await API.getTask(page, pageSize, true)
         console.log("getTable", response.data.data.data)
         setData(response.data.data.data)
+        setTotalPages(Math.ceil(response.data.data.total / 10))
 
         // setData(response.data.data)
 
@@ -53,7 +55,7 @@ const TableReward = () => {
     };
 
     fetchData();
-  }, []);
+  }, [page, pageSize]);
 
   return (
     <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
@@ -108,7 +110,7 @@ const TableReward = () => {
         </Table>
       </TableContainer>}
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-        <PageIndicator setPage={setPage} currentPage={page} totalPages={3} />
+        <PageIndicator setPage={setPage} currentPage={page} totalPages={totalPages} />
       </Box>
 
     </Box>
