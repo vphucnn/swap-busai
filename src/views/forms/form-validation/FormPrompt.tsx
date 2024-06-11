@@ -102,8 +102,9 @@ const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageId }:
       toast.success('Generate done')
 
       return response.data
-    } catch (error) {
-      toast.error('Generate error')
+    } catch (error: any) {
+      console.log(error)
+      toast.error(error?.response.data.message)
     }
   };
   const handleClick = (value: string) => {

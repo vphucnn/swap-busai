@@ -183,8 +183,8 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
       toast.success('Generate done')
 
       return response.data
-    } catch (error) {
-      toast.error('Generate error')
+    } catch (error: any) {
+      toast.error(error?.response.data.message)
     }
   };
 
