@@ -14,7 +14,7 @@ import toast from 'react-hot-toast'
 
 // ** Types
 import { Box } from '@mui/system'
-import { Dispatch, SetStateAction } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { Icon } from '@iconify/react'
 import { Tooltip, Typography } from '@mui/material'
@@ -23,6 +23,8 @@ import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
 import API from 'src/api'
+import { getRandomEight } from 'src/@core/utils/helps'
+import IconButton from '@mui/material/IconButton';
 
 
 interface FormInputs {
@@ -35,14 +37,43 @@ const defaultValues = {
 
 interface Props {
   setShow?: Dispatch<SetStateAction<boolean>>,
-  setUrlImg: Dispatch<SetStateAction<string|null>>,
-  setImageShare: Dispatch<SetStateAction<string|null>>
+  setUrlImg: Dispatch<SetStateAction<string | null>>,
+  setImageShare: Dispatch<SetStateAction<string | null>>
 }
+
+
+const chip = [
+  "Pink flip flops",
+  "Standing on 1 leg",
+  "Stick out the tongue",
+  "Red hat with a horn on it",
+  "Jean Jacket with rocker style",
+  "Funny nerdy face",
+  "Shareable",
+  "Engaging",
+  "Reflecting culture",
+  "Relatable and understandable",
+  "Pop culture phenomenon",
+  "Humorous and witty",
+  "Visually appealing",
+  "Thought-provoking"
+]
 
 
 const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
   // ** States
   // ** Hooks
+
+  const [listChip, setListChip] = useState<string[]>([])
+
+  const reloadChip = () => {
+    setListChip(getRandomEight(chip))
+  }
+
+  useEffect(() => {
+    reloadChip()
+  }, []);
+
   const {
     control,
     handleSubmit,
@@ -55,7 +86,7 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
 
     await fetchData(control._formValues.prompt)
     NProgress.done()
-    if(setShow) setShow(true)
+    if (setShow) setShow(true)
   }
 
   const fetchData = async (prompt: string) => {
@@ -83,12 +114,14 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
         </Typography>
       </Box>
       <Grid container gap={'1rem'}>
-        <BusAiChip onClick={() => handleClick('Pink flip flops')} label='Pink flip flops' />
-        <BusAiChip onClick={() => handleClick('Standing on 1 leg')} label='Standing on 1 leg' />
-        <BusAiChip onClick={() => handleClick('stick out the tongue')} label='stick out the tongue' />
-        <BusAiChip onClick={() => handleClick('Red hat with a horn on it')} label='Red hat with a horn on it' />
-        <BusAiChip onClick={() => handleClick('Jean Jacket with rocker style')} label='Jean Jacket with rocker style' />
-        <BusAiChip onClick={() => handleClick('Funny nerdy face')} label='Funny nerdy face' />
+        {
+          listChip.map((item, index) => (<BusAiChip key={index} onClick={() => handleClick(item)} label={item} />))
+        }
+      </Grid>
+      <Grid item xs={12} container justifyContent="flex-end" >
+        <IconButton onClick={reloadChip} aria-label="reload">
+          <Icon color={'#ff66c8'} icon='tabler:reload' fontSize={20} />
+        </IconButton>
       </Grid>
       <form onSubmit={handleSubmit(onSubmit)}>
         <Grid container gap={10}>
