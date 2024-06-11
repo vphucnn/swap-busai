@@ -36,7 +36,9 @@ const defaultValues = {
 }
 
 interface Props {
+  isLoading: boolean,
   setShow?: Dispatch<SetStateAction<boolean>>,
+  setIsLoading: Dispatch<SetStateAction<boolean>>,
   setUrlImg: Dispatch<SetStateAction<string | null>>,
   setImageShare: Dispatch<SetStateAction<string | null>>
 }
@@ -60,11 +62,13 @@ const chip = [
 ]
 
 
-const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
+const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageShare }: Props) => {
   // ** States
   // ** Hooks
+  // const [isLoading, setIsLoading] = useState(false);
 
   const [listChip, setListChip] = useState<string[]>([])
+
 
   const reloadChip = () => {
     setListChip(getRandomEight(chip))
@@ -83,8 +87,9 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
 
   const onSubmit = async () => {
     NProgress.start()
-
+    setIsLoading(true)
     await fetchData(control._formValues.prompt)
+    setIsLoading(false)
     NProgress.done()
     if (setShow) setShow(true)
   }
@@ -149,7 +154,7 @@ const FormPrompt = ({ setShow, setUrlImg, setImageShare }: Props) => {
           </Grid>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-              <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
+              <BusAiButton disabled={isLoading} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
                 Generate
               </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
