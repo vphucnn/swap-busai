@@ -30,9 +30,13 @@ const API = {
     return api.post('/ai/text-to-image/queue', { prompt: prompt });
   },
 
-  getUrlImage: (path: string) =>{
+  getUrlImage: (path: string) => {
     return API_BASE_URL + path
-  }
+  },
+
+  getTask: (page: number, pageSize: number, shareStatus?: boolean) => {
+    return api.get('/ai/tasks', { params: { page, pageSize, shareStatus } });
+  },
 };
 
 export default API;
