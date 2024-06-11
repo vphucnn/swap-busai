@@ -63,17 +63,17 @@ const TableReward = () => {
         <Table aria-label='simple table'>
           <TableHead>
             <TableRow>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '2rem 0 1rem 0' }}>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
                 <Typography variant="tableHeader" >
                   Date
                 </Typography>
               </TableCell>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '2rem 0 1rem 0' }} align='right'>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
                 <Typography variant="tableHeader" >
                   Status
                 </Typography>
               </TableCell>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '2rem 0 1rem 0' }} align='right'>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
                 <Typography variant="tableHeader" >
                   Reward
                 </Typography>
