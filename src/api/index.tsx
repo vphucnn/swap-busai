@@ -27,7 +27,7 @@ const API = {
   },
 
   textToImage: (prompt: any) => {
-    return api.post('/ai/text-to-image/queue', { prompt: prompt + '.Tt is a panda' });
+    return api.post('/ai/text-to-image/queue', { prompt: prompt });
   },
 
   getUrlImage: (path: string) => {
