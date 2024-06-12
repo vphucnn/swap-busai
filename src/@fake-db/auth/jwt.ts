@@ -12,22 +12,66 @@ import { UserDataType } from 'src/context/types'
 
 const users: UserDataType[] = [
   {
-    id: 1,
+    _id: "1",
     role: 'admin',
-    password: 'admin',
-    fullName: 'John Doe',
-    username: 'johndoe',
-    email: 'admin@busai.com',
-    point: 1
+    point: 1,
+    avatar: '',
+    firstName: '',
+    lastName: '',
+    telegramId: 0,
+    verified: false,
+    lang: '',
+    isDeleted: false,
+    createdAt: '',
+    updatedAt: '',
+    checkProfile: {
+      isBusAiGroupMember: false,
+      isBusAiChannelMember: false,
+      status: false,
+      taskOfDay: 0,
+      config: {
+        _id: '',
+        key: '',
+        __v: 0,
+        pointPreShare: 0,
+        busAiChannel: '',
+        busAiGroup: '',
+        busAiChannelId: '',
+        busAiGroupId: '',
+        maxTaskPerDay: 0
+      }
+    }
   },
   {
-    id: 2,
+    _id: "2",
     role: 'client',
-    password: 'client',
-    fullName: 'Jane Doe',
-    username: 'janedoe',
-    email: 'client@busai.com',
-    point: 1
+    point: 1,
+    avatar: '',
+    firstName: '',
+    lastName: '',
+    telegramId: 0,
+    verified: false,
+    lang: '',
+    isDeleted: false,
+    createdAt: '',
+    updatedAt: '',
+    checkProfile: {
+      isBusAiGroupMember: false,
+      isBusAiChannelMember: false,
+      status: false,
+      taskOfDay: 0,
+      config: {
+        _id: '',
+        key: '',
+        __v: 0,
+        pointPreShare: 0,
+        busAiChannel: '',
+        busAiGroup: '',
+        busAiChannelId: '',
+        busAiGroupId: '',
+        maxTaskPerDay: 0
+      }
+    }
   }
 ]
 
@@ -40,17 +84,16 @@ const jwtConfig = {
 
 type ResponseType = [number, { [key: string]: any }]
 
-mock.onPost('/jwt/login').reply(request => {
-  const { email, password } = JSON.parse(request.data)
+mock.onPost('/jwt/login').reply(() => {
 
   let error = {
     email: ['Something went wrong']
   }
 
-  const user = users.find(u => u.email === email && u.password === password)
+  const user = users[0]
 
   if (user) {
-    const accessToken = jwt.sign({ id: user.id }, jwtConfig.secret as string, { expiresIn: jwtConfig.expirationTime })
+    const accessToken = jwt.sign({ id: user._id }, jwtConfig.secret as string, { expiresIn: jwtConfig.expirationTime })
 
     const response = {
       accessToken,
@@ -69,37 +112,50 @@ mock.onPost('/jwt/login').reply(request => {
 
 mock.onPost('/jwt/register').reply(request => {
   if (request.data.length > 0) {
-    const { email, password, username } = JSON.parse(request.data)
-    const isEmailAlreadyInUse = users.find(user => user.email === email)
-    const isUsernameAlreadyInUse = users.find(user => user.username === username)
+    const isEmailAlreadyInUse = false
+    const isUsernameAlreadyInUse = false
     const error = {
       email: isEmailAlreadyInUse ? 'This email is already in use.' : null,
       username: isUsernameAlreadyInUse ? 'This username is already in use.' : null
     }
 
     if (!error.username && !error.email) {
-      const { length } = users
-      let lastIndex = 0
-      if (length) {
-        lastIndex = users[length - 1].id
-      }
-      const userData : UserDataType= {
-        id: lastIndex + 1,
-        email,
-        password,
-        username,
+
+      const userData: UserDataType = {
+        _id: "0",
         avatar: '',
-        fullName: '',
-        role: 'admin',
-        point: 0
+        firstName: '',
+        lastName: '',
+        telegramId: 0,
+        verified: false,
+        lang: '',
+        isDeleted: false,
+        point: 0,
+        createdAt: '',
+        updatedAt: '',
+        checkProfile: {
+          isBusAiGroupMember: false,
+          isBusAiChannelMember: false,
+          status: false,
+          taskOfDay: 0,
+          config: {
+            _id: '',
+            key: '',
+            __v: 0,
+            pointPreShare: 0,
+            busAiChannel: '',
+            busAiGroup: '',
+            busAiChannelId: '',
+            busAiGroupId: '',
+            maxTaskPerDay: 0
+          }
+        }
       }
 
       users.push(userData)
 
-      const accessToken = jwt.sign({ id: userData.id }, jwtConfig.secret as string)
+      const accessToken = jwt.sign({ id: userData._id }, jwtConfig.secret as string)
 
-      const user = { ...userData }
-      delete user.password
 
       const response = { accessToken }
 
@@ -137,7 +193,7 @@ mock.onGet('/auth/me').reply(config => {
         const { id: userId } = oldTokenDecoded.payload
 
         // ** Get user that matches id in token
-        const user = users.find(u => u.id === userId)
+        const user = users.find(u => u._id === userId)
 
         // ** Sign a new token
         const accessToken = jwt.sign({ id: userId }, jwtConfig.secret as string, {
@@ -158,7 +214,7 @@ mock.onGet('/auth/me').reply(config => {
       const userId = decoded.id
 
       // ** Get user that matches id in token
-      const userData = JSON.parse(JSON.stringify(users.find((u: UserDataType) => u.id === userId)))
+      const userData = JSON.parse(JSON.stringify(users.find((u: UserDataType) => u._id === userId)))
 
       delete userData.password
 

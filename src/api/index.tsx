@@ -26,6 +26,10 @@ const API = {
     return api.post('/auth/login-telegram', { data: userData });
   },
 
+  getProfile: () => {
+    return api.get('user/profile');
+  },
+
   textToImage: (prompt: any) => {
     return api.post('/ai/text-to-image/queue', { prompt: prompt });
   },

@@ -23,6 +23,7 @@ import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
 import StepBar from 'src/@core/components/steper/StepBar'
 import { Icon } from '@iconify/react'
 import API from 'src/api'
+import { useAuth } from 'src/hooks/useAuth'
 
 
 // interface FormInputs {
@@ -359,6 +360,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
 
   const [listChip, setListChip] = useState<any[]>([])
   const [showRemove, setShowRemove] = useState<boolean>(true)
+  const {user} = useAuth()
 
   useEffect(() => {
     randomChip()
@@ -465,7 +467,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Typography variant="body1">
-                  Generated 1/3
+                Generated {user?.checkProfile?.taskOfDay}/{user?.checkProfile?.config?.maxTaskPerDay}
                 </Typography>
                 <Tooltip placement='top' title={
                   <React.Fragment>

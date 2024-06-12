@@ -23,7 +23,9 @@ const defaultProvider: AuthValuesType = {
   setLoading: () => Boolean,
   login: () => Promise.resolve(),
   loginTelegram: () => Promise.resolve(),
-  logout: () => Promise.resolve()
+  logout: () => Promise.resolve(),
+  updateProfile: () => Promise.resolve(),
+
 }
 
 const AuthContext = createContext(defaultProvider)
@@ -46,7 +48,7 @@ const AuthProvider = ({ children }: Props) => {
       const profile = window.localStorage.getItem(authConfig.userData)!
       if (storedToken && profile) {
         setLoading(true)
-        setUser({...JSON.parse(profile)})
+        handleUpdateProfile()
         setLoading(false)
       } else {
         setLoading(false)
@@ -86,10 +88,29 @@ const AuthProvider = ({ children }: Props) => {
       setUser({ ...response.data.data.profile })
       window.localStorage.setItem(authConfig.storageTokenKeyName, response.data.data.accessToken)
       window.localStorage.setItem(authConfig.userData, JSON.stringify(response.data.data.profile))
+      const profile = await API.getProfile()
+      setUser({ ...profile.data.data })
+      window.localStorage.setItem(authConfig.userData, JSON.stringify(profile.data.data))
+      console.log("profile", profile)
+
     } catch (error: any) {
       console.error(error);
       toast.error("Login error");
       if (errorCallback) errorCallback(error);
+    } finally {
+
+    }
+  }
+
+  const handleUpdateProfile = async () => {
+    try {
+      const profile = await API.getProfile()
+      setUser({ ...profile.data.data })
+      window.localStorage.setItem(authConfig.userData, JSON.stringify(profile.data.data))
+      console.log("profile", profile)
+
+    } catch (error: any) {
+      console.error(error);
     } finally {
 
     }
@@ -109,7 +130,8 @@ const AuthProvider = ({ children }: Props) => {
     setLoading,
     login: handleLogin,
     loginTelegram: handleLoginTelegram,
-    logout: handleLogout
+    logout: handleLogout,
+    updateProfile: handleUpdateProfile,
   }
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>

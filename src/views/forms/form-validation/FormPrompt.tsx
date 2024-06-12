@@ -25,6 +25,7 @@ import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
 import API from 'src/api'
 import { getRandomEight } from 'src/@core/utils/helps'
 import IconButton from '@mui/material/IconButton';
+import { useAuth } from 'src/hooks/useAuth'
 
 
 interface FormInputs {
@@ -67,7 +68,7 @@ const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageId }:
   // ** Hooks
 
   const [listChip, setListChip] = useState<string[]>([])
-
+  const {user, updateProfile} = useAuth()
 
   const reloadChip = () => {
     setListChip(getRandomEight(chip))
@@ -100,6 +101,7 @@ const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageId }:
       setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
       setImageId(response?.data?.data?.task_result?.id)
       toast.success('Generate done')
+      updateProfile()
 
       return response.data
     } catch (error: any) {
@@ -159,7 +161,7 @@ const FormPrompt = ({ setIsLoading ,isLoading, setShow, setUrlImg, setImageId }:
               </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Typography variant="body1">
-                  Generated 1/3
+                  Generated {user?.checkProfile?.taskOfDay}/{user?.checkProfile?.config?.maxTaskPerDay}
                 </Typography>
                 <Tooltip placement='top' title={
                   <React.Fragment>
