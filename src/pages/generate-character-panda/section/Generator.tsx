@@ -17,6 +17,7 @@ import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 import API from 'src/api';
 import toast from 'react-hot-toast';
 import NProgress from 'nprogress'
+import { useAuth } from 'src/hooks/useAuth';
 
 const Generator = () => {
 
@@ -24,6 +25,7 @@ const Generator = () => {
   const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
   const [shareStatus, setShareStatus] = useState<boolean>(false)
+  const { updateProfile, user } = useAuth()
 
   // const [show, setShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>('1')
@@ -39,6 +41,7 @@ const Generator = () => {
       const response = await API.shareTelegram(id);
       NProgress.done()
       setShareStatus(true)
+      updateProfile()
       window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
     } catch (error) {
       NProgress.done()
@@ -125,9 +128,12 @@ const Generator = () => {
                 <Typography variant="body1" sx={{}}>
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
-                <BusAiButton disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                  if (ImageId) callShareImage(ImageId)
-                }} >Share</BusAiButton>
+                {user && user.checkProfile.status ?
+                  <BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    if (ImageId) callShareImage(ImageId)
+                  }} >Share</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
+                  }} >Need to start bot</BusAiButton>}
               </Box>
             </Box>
           </Box>
