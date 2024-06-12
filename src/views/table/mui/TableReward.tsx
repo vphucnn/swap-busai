@@ -9,6 +9,7 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import { useEffect, useState } from 'react'
 import PageIndicator from 'src/@core/components/pagination/PageIndicator'
+import { formatDateddmmyyyyhhmm } from 'src/@core/utils/format'
 import API from 'src/api'
 
 // const createData = (user: string, type: string, reward: number) => {
@@ -95,14 +96,14 @@ const TableReward = () => {
               >
                 <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
                   <Typography variant="body1" sx={{ color: 'white' }} >
-                    {row.timeShare}
+                    {formatDateddmmyyyyhhmm(row.timeShare)}
                   </Typography>
                 </TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row?.shareStatus?.toString()|| 'false'}
+                  {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
                 </Typography></TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
-                 {row.sharePoint}
+                  {row.sharePoint}
                 </Typography></TableCell>
               </TableRow>
             ))}
