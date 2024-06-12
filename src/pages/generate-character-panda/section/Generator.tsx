@@ -23,6 +23,7 @@ const Generator = () => {
   const [urlImg, setUrlImg] = useState<string | null>('/images/general/gen-default.png')
   const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
+  const [shareStatus, setShareStatus] = useState<boolean>(false)
 
   // const [show, setShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>('1')
@@ -37,6 +38,7 @@ const Generator = () => {
       NProgress.start()
       const response = await API.shareTelegram(id);
       NProgress.done()
+      setShareStatus(true)
       window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
     } catch (error) {
       NProgress.done()
@@ -119,7 +121,7 @@ const Generator = () => {
                 <Typography variant="body1" sx={{}}>
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
-                <BusAiButton disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                <BusAiButton disabled={!ImageId || shareStatus} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                   if (ImageId) callShareImage(ImageId)
                 }} >Share</BusAiButton>
               </Box>
