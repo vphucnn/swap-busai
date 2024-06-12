@@ -141,28 +141,47 @@ const listPrompt = [
 ]
 
 
+
+
 const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }: Props) => {
 
   const [listChip, setListChip] = useState<any[]>([])
   const [showRemove, setShowRemove] = useState<boolean>(true)
 
   useEffect(() => {
-    setListChip(listPrompt)
+    randomChip()
   }, []);
 
-  const genPormpt = () => {
+  const genPrompt = () => {
     let resultString = "";
     for (const obj of listChip) {
-      resultString += `${obj.type}, ${obj.chips[0]}; `;
+      resultString += `${obj.type}: ${obj.chips[0]}.`;
     }
 
     return resultString
   }
 
+  const removeChip = (index: number) => {
+    const newListCip = [...listChip];
+    newListCip[index].chips = []
+    console.log(newListCip)
+    setListChip(newListCip)
+  }
+
+  const randomChip = () => {
+    const newListCip = JSON.parse(JSON.stringify(listPrompt));
+    for (let i = 0; i < newListCip.length; i++) {
+      const randomIndex = Math.floor(Math.random() * newListCip[i].chips.length);
+      newListCip[i].chips = [newListCip[i].chips[randomIndex]]
+      console.log(listPrompt)
+    }
+    setListChip(newListCip)
+  }
+
   const onSubmit = async () => {
     NProgress.start()
     setIsLoading(true)
-    await fetchData(genPormpt())
+    await fetchData(genPrompt())
     NProgress.done()
     setIsLoading(false)
     if (setShow) setShow(true)
@@ -221,7 +240,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
             </Box>
             <Box>
               <Grid container gap={'1rem'}>
-                <BusAiChip label={item.chips[0]} showRemove={showRemove} />
+                {item.chips[0] && <BusAiChip label={item.chips[0]} showRemove={showRemove} remove={() => removeChip(index)} />}
               </Grid>
             </Box>
           </Box>
@@ -248,7 +267,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
           </Grid>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-              {currentStep === 1 && <Button variant='outlined' sx={{ borderRadius: 40 }}>
+              {currentStep === 1 && <Button variant='outlined' sx={{ borderRadius: 40 }} onClick={randomChip}>
                 Random
               </Button>}
               {currentStep === 2 && <Button onClick={() => setCurrentStep(1)} variant='outlined' sx={{ borderRadius: 40 }}>
