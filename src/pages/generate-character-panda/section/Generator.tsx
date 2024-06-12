@@ -1,6 +1,6 @@
 import { Box, CircularProgress, Typography, styled } from '@mui/material';
 import type { SyntheticEvent } from 'react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // import { SwiperGenerateInage } from 'src/views/components/swiper/SwiperGenerateInage';
 import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
@@ -59,6 +59,10 @@ const Generator = () => {
       marginTop: theme.spacing(5)
     }
   }))
+
+  useEffect(() => {
+    if (ImageId) setShareStatus(false);
+  }, [ImageId]);
 
   return (
     <Box
