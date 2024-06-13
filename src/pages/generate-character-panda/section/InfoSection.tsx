@@ -23,7 +23,7 @@ const InfoSection = () => {
         marginTop: '5rem', paddingBottom: '5rem'
       }}>
         <Box>
-          <Typography  sx={{ fontWeight: 700 ,typography: { lg: 'h1', xs: 'h3' } }}>
+          <Typography  sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
             Create Music with AI and Earn Point
           </Typography>
         </Box>

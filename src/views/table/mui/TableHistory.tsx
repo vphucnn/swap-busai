@@ -92,28 +92,28 @@ const TableHistory = () => {
   }, [page, pageSize]);
 
   return (
-    <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
-      {data && <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
+    <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: { lg: '64px', xs: '20px' }  }}>
+      {data && <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius:  { lg: '64px 64px 0px 0px', xs: '20px 20px 0px 0px' }  }} component={Paper}>
         <Table aria-label='simple table'>
           <TableHead>
             <TableRow>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader"  sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Image
                 </Typography>
               </TableCell>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader"  sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Date
                 </Typography>
               </TableCell>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader" sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Status
                 </Typography>
               </TableCell>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader"  sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Reward
                 </Typography>
               </TableCell>
@@ -138,15 +138,15 @@ const TableHistory = () => {
                   </Typography>
                 </TableCell>
                 <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
-                  <Typography variant="body1" sx={{ color: 'white' }} >
+                  <Typography variant="body1" sx={{ color: 'white' , fontSize: { lg: '18px', xs: '14px' } }} >
                     {row.timeShare ? formatDateddmmyyyyhhmm(row.timeShare) : null}
                   </Typography>
                 </TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white' }} >
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' }  }} >
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
                 </Typography></TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row.sharePoint ? row.sharePoint : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                  {row.sharePoint ? row.sharePoint : <BusAiButton sx={{ width: "100%" , backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
                     if (row?._id) callShareImage(row?._id)
                   }} >Share</BusAiButton>}
                 </Typography></TableCell>
