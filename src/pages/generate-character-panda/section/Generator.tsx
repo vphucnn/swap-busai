@@ -119,7 +119,7 @@ const Generator = () => {
               {/* <SwiperGenerateInage /> */}
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
-                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '360px' }}>
+                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '425px' }}>
                     {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
                     {isLoading && <CircularProgress />
                     }
