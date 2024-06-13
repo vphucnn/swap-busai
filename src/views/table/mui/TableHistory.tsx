@@ -1,5 +1,5 @@
 // ** MUI Imports
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -7,10 +7,14 @@ import TableCell from '@mui/material/TableCell'
 import TableContainer from '@mui/material/TableContainer'
 import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
+import NProgress from 'nprogress'
 import { useEffect, useState } from 'react'
+import toast from 'react-hot-toast'
+import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import PageIndicator from 'src/@core/components/pagination/PageIndicator'
 import { formatDateddmmyyyyhhmm } from 'src/@core/utils/format'
 import API from 'src/api'
+import { useAuth } from 'src/hooks/useAuth'
 
 // const createData = (user: string, type: string, reward: number) => {
 //   return { user, type, reward }
@@ -24,6 +28,20 @@ import API from 'src/api'
 //   createData('01/07/2024 13:00', 'successful', 16.0)
 // ]
 
+const Img = styled('img')(({ theme }) => ({
+  maxWidth: "100%",
+  borderRadius: '15px',
+  width: "250px",
+  [theme.breakpoints.down('lg')]: {
+    marginTop: theme.spacing(5)
+  },
+  [theme.breakpoints.down('md')]: {
+  },
+  [theme.breakpoints.up('lg')]: {
+    marginTop: theme.spacing(5)
+  }
+}))
+
 
 
 const TableHistory = () => {
@@ -31,30 +49,45 @@ const TableHistory = () => {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const { updateProfile } = useAuth()
+
+  const callShareImage = async (id: string) => {
+    try {
+      NProgress.start()
+      const response = await API.shareTelegram(id);
+      NProgress.done()
+      updateProfile()
+      fetchData()
+      window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
+    } catch (error) {
+      NProgress.done()
+      toast.error('Share error')
+    }
+  };
+
+  const fetchData = async () => {
+    // setIsLoading(true);
+    // setError(null);
+    try {
+      console.log("getTable")
+      const response = await API.getTask(page, pageSize)
+      console.log("getTable", response.data.data.data)
+      setData(response.data.data.data)
+      setTotalPages(Math.ceil(response.data.data.total / 10))
+
+      // setData(response.data.data)
+
+      // setData(fetchedData);
+    } catch (error) {
+      // setError(error.message);
+    } finally {
+      // setIsLoading(false);
+    }
+  };
 
 
   useEffect(() => {
-    setPageSize(10)
-    const fetchData = async () => {
-      // setIsLoading(true);
-      // setError(null);
-      try {
-        console.log("getTable")
-        const response = await API.getTask(page, pageSize, true)
-        console.log("getTable", response.data.data.data)
-        setData(response.data.data.data)
-        setTotalPages(Math.ceil(response.data.data.total / 10))
-
-        // setData(response.data.data)
-
-        // setData(fetchedData);
-      } catch (error) {
-        // setError(error.message);
-      } finally {
-        // setIsLoading(false);
-      }
-    };
-
+    setPageSize(pageSize || 10)
     fetchData();
   }, [page, pageSize]);
 
@@ -64,6 +97,11 @@ const TableHistory = () => {
         <Table aria-label='simple table'>
           <TableHead>
             <TableRow>
+              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
+                <Typography variant="tableHeader" >
+                  Image
+                </Typography>
+              </TableCell>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
                 <Typography variant="tableHeader" >
                   Date
@@ -96,14 +134,21 @@ const TableHistory = () => {
               >
                 <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
                   <Typography variant="body1" sx={{ color: 'white' }} >
-                    {formatDateddmmyyyyhhmm(row.timeShare)}
+                    <Img src={API.getUrlImageMiniSizeById(row?._id)} alt='box' />
+                  </Typography>
+                </TableCell>
+                <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
+                  <Typography variant="body1" sx={{ color: 'white' }} >
+                    {row.timeShare ? formatDateddmmyyyyhhmm(row.timeShare) : null}
                   </Typography>
                 </TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white' }} >
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
                 </Typography></TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row.sharePoint}
+                  {row.sharePoint ? row.sharePoint : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                    if (row?._id) callShareImage(row?._id)
+                  }} >Share</BusAiButton>}
                 </Typography></TableCell>
               </TableRow>
             ))}
