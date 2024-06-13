@@ -24,7 +24,7 @@ export default function Page() {
       <VideoSection/>
       <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '5rem' }}>
         <Box >
-          <Typography variant="h1" sx={{ fontWeight: 700 }}>
+        <Typography sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
             Your Reward
           </Typography>
         </Box>

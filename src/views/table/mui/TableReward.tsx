@@ -68,17 +68,17 @@ const TableReward = () => {
           <TableHead>
             <TableRow>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader"  sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Date
                 </Typography>
               </TableCell>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader" sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Status
                 </Typography>
               </TableCell>
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
-                <Typography variant="tableHeader" >
+                <Typography variant="tableHeader" sx={{fontSize: { lg: '32px', xs: '16px' } }}>
                   Reward
                 </Typography>
               </TableCell>
@@ -98,14 +98,14 @@ const TableReward = () => {
                 }}
               >
                 <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
-                  <Typography variant="body1" sx={{ color: 'white' }} >
+                  <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' }  }} >
                     {formatDateddmmyyyyhhmm(row.timeShare)}
                   </Typography>
                 </TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white' }} >
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }} >  <Typography variant="body1" sx={{ color: 'white' }} >
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
                 </Typography></TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
+                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }}> <Typography variant="body1" sx={{ color: 'white' }} >
                   {row.sharePoint}
                 </Typography></TableCell>
               </TableRow>

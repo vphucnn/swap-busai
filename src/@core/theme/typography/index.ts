@@ -26,8 +26,10 @@ const typography = {
     fontSize: 80,
   },
   h3: {
-    fontWeight: 600,
-    fontSize: 60,
+    fontWeight: 800,
+    fontSize: 40,
+    lineHeight: "48px",
+    letterSpacing: '-2.2px'
   },
   h4: {
     fontWeight: 500,

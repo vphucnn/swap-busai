@@ -83,7 +83,7 @@ const Generator = () => {
         width: "100%"
       }}>
         <Box sx={{ textAlign: 'center', marginTop: { xs: '1rem', md: '2rem' }, }}>
-          <Typography sx={{ fontWeight: 700, typography: { lg: 'h1', xs: 'h3' } }}>
+          <Typography sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
             Make Busai your true style
           </Typography>
         </Box>
