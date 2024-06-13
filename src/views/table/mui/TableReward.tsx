@@ -11,6 +11,7 @@ import { useEffect, useState } from 'react'
 import PageIndicator from 'src/@core/components/pagination/PageIndicator'
 import { formatDateddmmyyyyhhmm } from 'src/@core/utils/format'
 import API from 'src/api'
+import { useAuth } from 'src/hooks/useAuth'
 
 // const createData = (user: string, type: string, reward: number) => {
 //   return { user, type, reward }
@@ -31,10 +32,12 @@ const TableReward = () => {
   const [page, setPage] = useState<number>(1);
   const [pageSize, setPageSize] = useState<number>(10);
   const [totalPages, setTotalPages] = useState<number>(0);
+  const { user } = useAuth()
 
 
   useEffect(() => {
-    setPageSize(10)
+
+    setPageSize(pageSize)
     const fetchData = async () => {
       // setIsLoading(true);
       // setError(null);
@@ -56,7 +59,7 @@ const TableReward = () => {
     };
 
     fetchData();
-  }, [page, pageSize]);
+  }, [page, pageSize, user]);
 
   return (
     <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>

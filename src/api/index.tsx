@@ -38,6 +38,10 @@ const API = {
     return API_BASE_URL + path
   },
 
+  getUrlImageMiniSizeById: (id: string) => {
+    return API_BASE_URL + '/ai/image/' + id + '.png?resize=true'
+  },
+
   getTask: (page: number, pageSize: number, shareStatus?: boolean) => {
     return api.get('/ai/tasks', { params: { page, pageSize, shareStatus } });
   },

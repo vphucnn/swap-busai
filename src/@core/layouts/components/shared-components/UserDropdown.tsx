@@ -160,20 +160,20 @@ const UserDropdown = (props: Props) => {
             </Box>
           </Box>
         </Box>
-        <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/profile')}>
+        {/* <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} /> */}
+        {/* <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/profile')}>
           <Box sx={styles}>
             <Icon icon='tabler:user-check' />
             My Profile
           </Box>
-        </MenuItemStyled>
+        </MenuItemStyled> */}
         <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/history')}>
           <Box sx={styles}>
             <Icon icon='tabler:credit-card' />
             History
           </Box>
         </MenuItemStyled>
-        <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
+        {/* <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} /> */}
         <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled sx={{ p: 0 }} onClick={handleLogout}>
           <Box sx={styles}>

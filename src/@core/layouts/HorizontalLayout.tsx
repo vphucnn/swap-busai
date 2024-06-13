@@ -18,7 +18,8 @@ import { LayoutProps } from 'src/@core/layouts/types'
 import Customizer from 'src/@core/components/customizer'
 import ScrollToTop from 'src/@core/components/scroll-to-top'
 import AppBarContent from './components/horizontal/app-bar-content'
-import Navigation from './components/horizontal/navigation'
+
+// import Navigation from './components/horizontal/navigation'
 import Footer from './components/shared-components/footer'
 
 // ** Util Import
@@ -76,9 +77,10 @@ const HorizontalLayout = (props: LayoutProps) => {
   } = props
 
   // ** Vars
-  const { skin, appBar, navHidden, appBarBlur, contentWidth } = settings
+  const { skin, appBar, appBarBlur, contentWidth } = settings
   const appBarProps = horizontalLayoutProps?.appBar?.componentProps
-  const userNavMenuContent = horizontalLayoutProps?.navMenu?.content
+
+  // const userNavMenuContent = horizontalLayoutProps?.navMenu?.content
 
   let userAppBarStyle = {}
   if (appBarProps && appBarProps.sx) {
@@ -114,7 +116,8 @@ const HorizontalLayout = (props: LayoutProps) => {
             className='layout-navbar'
             sx={{
               width: '100%',
-              ...(navHidden ? {} : { borderBottom: theme => `1px solid ${theme.palette.divider}` })
+
+              // ...(navHidden ? {} : { borderBottom: theme => `1px solid ${theme.palette.divider}` })
             }}
           >
             <Toolbar
@@ -136,7 +139,7 @@ const HorizontalLayout = (props: LayoutProps) => {
             </Toolbar>
           </Box>
           {/* Navigation Menu */}
-          {navHidden ? null : (
+          {/* {navHidden ? null : (
             <Box className='layout-horizontal-nav' sx={{ width: '100%', ...horizontalLayoutProps?.navMenu?.sx }}>
               <Toolbar
                 className='horizontal-nav-content-container'
@@ -157,7 +160,7 @@ const HorizontalLayout = (props: LayoutProps) => {
                 )}
               </Toolbar>
             </Box>
-          )}
+          )} */}
         </AppBar>
         {/* Content */}
         <ContentWrapper
