@@ -39,16 +39,12 @@ const AppBarContent = (props: Props) => {
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
 
-        {!settings.navHidden ? (
-          <IconButton color='inherit' sx={{ ml: -2.75 }} onClick={toggleNavVisibility}>
-            <Icon fontSize='1.5rem' icon='tabler:menu-2' />
-          </IconButton>
-        ) : null}
+
         <BusAiLogo height={40} width={'fit-content'}/>
 
         {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       </Box>
-      <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center' }}>
+      <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <LanguageDropdown settings={settings} saveSettings={saveSettings} />
         {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
         <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}>
@@ -72,6 +68,11 @@ const AppBarContent = (props: Props) => {
           </>
         )}
       </Box>
+      {!settings.navHidden ? (
+          <IconButton color='inherit' sx={{  }} onClick={toggleNavVisibility}>
+            <Icon fontSize='1.5rem' icon='tabler:menu-2' />
+          </IconButton>
+        ) : null}
     </Box>
   )
 }
