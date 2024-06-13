@@ -128,7 +128,7 @@ const Generator = () => {
                 <Typography variant="body1" sx={{}}>
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
-                {user && user.checkProfile.status ?
+                {(user &&  user.checkProfile &&  user.checkProfile.status) ?
                   <BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     if (ImageId) callShareImage(ImageId)
                   }} >Share</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
