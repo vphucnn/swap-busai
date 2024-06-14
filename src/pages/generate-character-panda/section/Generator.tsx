@@ -64,7 +64,7 @@ const Generator = () => {
 
   const getShareImage = async () => {
     try {
-      const response = await API.getTask(1,1, null)
+      const response = await API.getTask(1,1, false)
       console.log(response.data.data.data)
       if(response?.data?.data?.data[0]?._id){
         setImageId(response?.data?.data?.data[0]?._id)
