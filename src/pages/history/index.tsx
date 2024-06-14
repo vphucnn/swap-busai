@@ -30,7 +30,7 @@ export default function Page() {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
       <Box>
-        <Typography variant="h1">
+        <Typography sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
           History
         </Typography>
       </Box>

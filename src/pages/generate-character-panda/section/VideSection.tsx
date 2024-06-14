@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { SwiperInfo } from 'src/views/components/swiper/SwiperInfo';
 
 const VideoSection = () => {
   return (
@@ -8,7 +9,7 @@ const VideoSection = () => {
         How To be more creative with Busai?
       </Typography>
     </Box>
-    <Box sx={{}}>
+    {/* <Box sx={{}}>
       <iframe
         id="video-demo-trailer-home-abc"
         style={{
@@ -27,7 +28,8 @@ const VideoSection = () => {
         allowFullScreen
       ></iframe>
 
-    </Box>
+    </Box> */}
+    <SwiperInfo/>
   </Box>
   );
 };
