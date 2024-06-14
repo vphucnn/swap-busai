@@ -23,7 +23,7 @@ const InfoSection = () => {
         marginTop: '5rem', paddingBottom: '5rem'
       }}>
         <Box>
-          <Typography  sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
+          <Typography sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
             Create Music with AI and Earn Point
           </Typography>
         </Box>
@@ -31,9 +31,9 @@ const InfoSection = () => {
 
           <Box sx={{ width: { xs: '100%', md: '50%' } }}>
             <Typography variant="body1" sx={{ textAlign: 'left' }}>
-              Culpa aliquip aute labore velit culpa culpa eiusmod ipsum eu. Officia dolor commodo quis qui ullamco dolor. Commodo ex ad et cillum laboris cillum cupidatat esse sunt dolore esse magna exercitation est veniam labore. Aliqua velit pariatur irure in labore reprehenderit occaecat.Amet qui eu voluptate nostrud proident esse exercitation fugiat Lorem ullamco qui mollit magna ad. Ex commodo magna ullamco laborum cupidatat irure quis excepteur velit est excepteur elit labore esse reprehenderit cupidatat et. Excepteur incididunt esse incididunt nisi non nisi nostru
+              Our AI-powered generator is here to help you craft beats and melodies with the ease of a panda munching on bamboo. Whether you’re a pro or just looking to jam, BUSAI turns your wildest musical dreams into reality. Dive into the sonic wilderness and let BUSAI guide you to your next hit track – it’s a musical adventure in the heart of the bamboo jungle!
             </Typography>
-            <BusAiButton sx={{ marginTop: '1rem' }} type='submit' variant='contained' backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} >
+            <BusAiButton sx={{ marginTop: '2rem' }} type='submit' variant='contained' backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} >
               Try it out
             </BusAiButton>
           </Box>
