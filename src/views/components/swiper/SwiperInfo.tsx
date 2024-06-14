@@ -15,6 +15,7 @@ import IconNext from 'src/views/ui/icons/IconNext';
 
 const Img = styled('img')(({ theme }) => ({
   maxWidth: "100%",
+  width: '1500px',
 
   [theme.breakpoints.down('lg')]: {
     marginTop: theme.spacing(5)
@@ -41,7 +42,7 @@ export const SwiperInfo = () => {
 
   return (
     <Box>
-      <Box sx={{ margin: "auto", display: 'flex', maxWidth: '95vw', width: '1000px', alignItems: 'center'  }}>
+      <Box sx={{ margin: "auto", display: 'flex', maxWidth: '95vw', width: '1500px', alignItems: 'center'  }}>
         <IconButton aria-label="back" sx={{ }} onClick={handlePrev} >
           <IconBack />
         </IconButton >
