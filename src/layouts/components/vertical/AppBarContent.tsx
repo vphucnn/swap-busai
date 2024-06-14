@@ -11,7 +11,7 @@ import UserDropdown from 'src/@core/layouts/components/shared-components/UserDro
 
 // ** Hook Import
 import { Icon } from '@iconify/react'
-import { IconButton } from '@mui/material'
+import { IconButton, Link } from '@mui/material'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import BusAiLogo from 'src/@core/components/logo/BusAiLogo'
 import { useAuth } from 'src/hooks/useAuth'
@@ -39,9 +39,9 @@ const AppBarContent = (props: Props) => {
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
 
-
-        <BusAiLogo height={40} width={'fit-content'} />
-
+        <Link href='/generate-character-panda'>
+          <BusAiLogo height={40} width={'fit-content'} />
+        </Link>
         {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       </Box>
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
