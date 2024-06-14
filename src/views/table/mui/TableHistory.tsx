@@ -92,7 +92,7 @@ const TableHistory = () => {
   }, [page, pageSize]);
 
   return (
-    <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: { lg: '64px', xs: '20px' } }}>
+    <Box sx={{ background: "#726FF7", width: '1350px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: { lg: '64px', xs: '20px' } }}>
       {data && <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius: { lg: '64px 64px 0px 0px', xs: '20px 20px 0px 0px' } }} component={Paper}>
         <Table aria-label='simple table'>
           <TableHead>
