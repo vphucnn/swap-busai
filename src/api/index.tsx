@@ -42,7 +42,7 @@ const API = {
     return API_BASE_URL + '/ai/image/' + id + '.png?resize=true'
   },
 
-  getTask: (page: number, pageSize: number, shareStatus?: boolean) => {
+  getTask: (page: number, pageSize: number, shareStatus?: boolean | null) => {
     return api.get('/ai/tasks', { params: { page, pageSize, shareStatus } });
   },
 

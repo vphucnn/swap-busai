@@ -19,9 +19,22 @@ import toast from 'react-hot-toast';
 import NProgress from 'nprogress'
 import { useAuth } from 'src/hooks/useAuth';
 
+const Img = styled('img')(({ theme }) => ({
+  maxWidth: "100%",
+  borderRadius: '15px',
+  width: "250px",
+  [theme.breakpoints.down('lg')]: {
+    marginTop: theme.spacing(5)
+  },
+  [theme.breakpoints.down('md')]: {
+  },
+  [theme.breakpoints.up('lg')]: {
+    marginTop: theme.spacing(5)
+  }
+}))
 const Generator = () => {
 
-  const [urlImg, setUrlImg] = useState<string | null>('/images/general/gen-default.png')
+  const [urlImg, setUrlImg] = useState<string | null>(null)
   const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
   const [shareStatus, setShareStatus] = useState<boolean>(false)
@@ -49,23 +62,33 @@ const Generator = () => {
     }
   };
 
-  const Img = styled('img')(({ theme }) => ({
-    maxWidth: "100%",
-    borderRadius: '15px',
-    width: "250px",
-    [theme.breakpoints.down('lg')]: {
-      marginTop: theme.spacing(5)
-    },
-    [theme.breakpoints.down('md')]: {
-    },
-    [theme.breakpoints.up('lg')]: {
-      marginTop: theme.spacing(5)
+  const getShareImage = async () => {
+    try {
+      const response = await API.getTask(1,1, null)
+      console.log(response.data.data.data)
+      if(response?.data?.data?.data[0]?._id){
+        setImageId(response?.data?.data?.data[0]?._id)
+        setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
+
+
+      }else{
+        setUrlImg('/images/general/gen-default.png')
+      }
+
+    } catch (error) {
+      console.log(error)
     }
-  }))
+  };
+
+
 
   useEffect(() => {
     if (ImageId) setShareStatus(false);
   }, [ImageId]);
+
+  useEffect(() => {
+    if (!urlImg) getShareImage();
+  }, [urlImg]);
 
   return (
     <Box
@@ -133,7 +156,7 @@ const Generator = () => {
                     if (ImageId) callShareImage(ImageId)
                   }} >Share 🙌</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
-                  }} >Need to start bot</BusAiButton>}
+                  }} >Verify Your Account</BusAiButton>}
               </Box>
             </Box>
           </Box>
