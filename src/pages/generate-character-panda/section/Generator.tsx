@@ -66,16 +66,14 @@ const Generator = () => {
   };
 
   const getShareImage = async () => {
+    setUrlImg('/images/general/gen-default.png')
+
     try {
       const response = await API.getTask(1,1, false)
-      console.log(response.data.data.data)
       if(response?.data?.data?.data[0]?._id){
         setImageId(response?.data?.data?.data[0]?._id)
         setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-      }else{
-        setUrlImg('/images/general/gen-default.png')
       }
-
     } catch (error) {
       console.log(error)
     }
@@ -88,7 +86,8 @@ const Generator = () => {
   }, [ImageId]);
 
   useEffect(() => {
-    if (!urlImg) getShareImage();
+    if (!urlImg) {getShareImage();}
+
   }, [urlImg]);
 
   return (
