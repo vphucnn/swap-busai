@@ -56,16 +56,16 @@ export const SwiperInfo = () => {
           }}
         >
           <SwiperSlide>
-            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/01.png' alt='box' /></Box>
+            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/01.svg' alt='box' /></Box>
           </SwiperSlide>
           <SwiperSlide>
-            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/02.png' alt='box' /></Box>
+            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/02.svg' alt='box' /></Box>
           </SwiperSlide> <SwiperSlide>
-            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/03.png' alt='box' /></Box>
+            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/03.svg' alt='box' /></Box>
           </SwiperSlide> <SwiperSlide>
-            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/04.png' alt='box' /></Box>
+            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/04.svg' alt='box' /></Box>
           </SwiperSlide> <SwiperSlide>
-            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/05.png' alt='box' /></Box>
+            <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/05.svg' alt='box' /></Box>
           </SwiperSlide>
         </Swiper>
         <IconButton aria-label="next" sx={{ }} onClick={handleNext}>

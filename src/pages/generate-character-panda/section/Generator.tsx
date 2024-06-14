@@ -49,6 +49,9 @@ const Generator = () => {
 
 
   const callShareImage = async (id: string) => {
+    if(!user) {
+      return toast.error("You need to log in")
+    }
     try {
       NProgress.start()
       const response = await API.shareTelegram(id);
@@ -69,8 +72,6 @@ const Generator = () => {
       if(response?.data?.data?.data[0]?._id){
         setImageId(response?.data?.data?.data[0]?._id)
         setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-
-
       }else{
         setUrlImg('/images/general/gen-default.png')
       }

@@ -139,9 +139,11 @@ const AppBarContent = (props: Props) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-      <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'}>Swap Points</BusAiButton>
+      <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+        window.open(process.env.NEXT_PUBLIC_LINK_SWAP_POINT, '_blank');
+      }}>Swap Points</BusAiButton>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
-      {!hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
+      {hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
       {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
       {auth.user && (
         <>
@@ -159,7 +161,7 @@ const AppBarContent = (props: Props) => {
 
           // dataAuthUrl={'/auth/telelgram'}
           requestAccess={'write'}
-          usePic={true}
+          usePic={false}
         />
       </Box>}
 

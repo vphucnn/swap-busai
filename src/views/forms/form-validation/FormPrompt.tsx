@@ -85,6 +85,9 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
   } = useForm<FormInputs>({ defaultValues })
 
   const onSubmit = async () => {
+    if(!user) {
+      return toast.error("You need to log in")
+    }
     NProgress.start()
     setIsLoading(true)
     await fetchData(control._formValues.prompt)

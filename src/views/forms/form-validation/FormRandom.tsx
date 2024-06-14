@@ -393,6 +393,9 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
   }
 
   const onSubmit = async () => {
+    if(!user) {
+      return toast.error("You need to log in")
+    }
     NProgress.start()
     setIsLoading(true)
     await fetchData(genPrompt())
