@@ -44,7 +44,7 @@ const AppBarContent = (props: Props) => {
 
         {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
       </Box>
-      <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+      <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
         {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} /> */}
         {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
         <BusAiButton size={'small'} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {

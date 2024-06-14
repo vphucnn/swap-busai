@@ -39,6 +39,7 @@ const Generator = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [shareStatus, setShareStatus] = useState<boolean>(false)
   const { updateProfile, user } = useAuth()
+  const [checkStatus, setCheckStatus] = useState<boolean>(false)
 
   // const [show, setShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>('1')
@@ -49,7 +50,7 @@ const Generator = () => {
 
 
   const callShareImage = async (id: string) => {
-    if(!user) {
+    if (!user) {
       return toast.error("You need to log in")
     }
     try {
@@ -66,21 +67,31 @@ const Generator = () => {
   };
 
   const getShareImage = async () => {
+    setUrlImg('/images/general/gen-default.png')
+
     try {
-      const response = await API.getTask(1,1, false)
-      console.log(response.data.data.data)
-      if(response?.data?.data?.data[0]?._id){
+      const response = await API.getTask(1, 1, false)
+      if (response?.data?.data?.data[0]?._id) {
         setImageId(response?.data?.data?.data[0]?._id)
         setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-      }else{
-        setUrlImg('/images/general/gen-default.png')
       }
-
     } catch (error) {
       console.log(error)
     }
   };
 
+
+  useEffect(() => {
+    if (checkStatus) {
+      const interval = setInterval(checkProfile, 30000);
+
+      return () => clearInterval(interval);
+    }
+  }, [checkStatus]);
+
+  function checkProfile() {
+    if (checkStatus ) updateProfile()
+  }
 
 
   useEffect(() => {
@@ -88,7 +99,8 @@ const Generator = () => {
   }, [ImageId]);
 
   useEffect(() => {
-    if (!urlImg) getShareImage();
+    if (!urlImg) { getShareImage(); }
+
   }, [urlImg]);
 
   return (
@@ -152,10 +164,11 @@ const Generator = () => {
                 <Typography variant="body1" sx={{}}>
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
-                {(user &&  user.checkProfile &&  user.checkProfile.status) ?
+                {(user && user.checkProfile && user.checkProfile.status) ?
                   <BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     if (ImageId) callShareImage(ImageId)
                   }} >Share 🙌</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    setCheckStatus(true);
                     window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
                   }} >Verify Your Account</BusAiButton>}
               </Box>

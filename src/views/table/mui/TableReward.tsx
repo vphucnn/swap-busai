@@ -62,7 +62,7 @@ const TableReward = () => {
   }, [page, pageSize, user]);
 
   return (
-    <Box sx={{ background: "#726FF7", width: '1200px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
+    <Box sx={{ background: "#726FF7", width: '1350px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
       {data && <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
         <Table aria-label='simple table'>
           <TableHead>
