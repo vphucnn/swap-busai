@@ -25,6 +25,7 @@ export const BusAiButton : React.FC<BusAiButtonProps> = ({backgroundColor, borde
         justifyContent: 'center',
         alignItems: 'center',
         gap: 10,
+        ...props.sx
       }}
     >
       {props.children}
