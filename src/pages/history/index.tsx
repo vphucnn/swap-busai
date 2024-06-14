@@ -28,7 +28,7 @@ import TableHistory from 'src/views/table/mui/TableHistory';
 export default function Page() {
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '1rem' }}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', textAlign: 'center', gap: '1rem', marginTop: '3rem' }}>
       <Box>
         <Typography sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
           History
