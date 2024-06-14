@@ -72,11 +72,11 @@ const TableReward = () => {
                   Date
                 </Typography>
               </TableCell>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
+              {/* <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
                 <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
                   Status
                 </Typography>
-              </TableCell>
+              </TableCell> */}
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
                 <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
                   Reward
@@ -102,9 +102,9 @@ const TableReward = () => {
                     {row.timeShare ? formatDateddmmyyyyhhmm(row?.time?.end_generate) : null}
                   </Typography>
                 </TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }} >  <Typography variant="body1" sx={{ color: 'white' }} >
+                {/* <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }} >  <Typography variant="body1" sx={{ color: 'white' }} >
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
-                </Typography></TableCell>
+                </Typography></TableCell> */}
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }}> <Typography variant="body1" sx={{ color: 'white' }} >
                   {row.sharePoint}
                 </Typography></TableCell>

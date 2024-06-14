@@ -107,11 +107,11 @@ const TableHistory = () => {
                   Date
                 </Typography>
               </TableCell>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
+              {/* <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
                 <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
                   Status
                 </Typography>
-              </TableCell>
+              </TableCell> */}
               <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
                 <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
                   Reward
@@ -137,14 +137,14 @@ const TableHistory = () => {
                 </TableCell>
                 <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
                   <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
-                  {row?.time?.end_generate ? formatDateddmmyyyyhhmm(row?.time?.end_generate) : null}
+                    {row?.time?.end_generate ? formatDateddmmyyyyhhmm(row?.time?.end_generate) : null}
                   </Typography>
                 </TableCell>
-                <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
+                {/* <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }} >  <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
-                </Typography></TableCell>
+                </Typography></TableCell> */}
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row.sharePoint ? row.sharePoint : <BusAiButton size={isMobile ? 'small' : 'medium'}  backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                  {row.sharePoint ? row.sharePoint : <BusAiButton size={isMobile ? 'small' : 'medium'} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
                     if (row?._id) callShareImage(row?._id)
                   }} >Share</BusAiButton>}
                 </Typography></TableCell>
