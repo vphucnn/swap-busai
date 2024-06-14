@@ -7,7 +7,6 @@ import { Settings } from 'src/@core/context/settingsContext';
 // ** Components
 // import Autocomplete from 'src/layouts/components/Autocomplete'
 
-import LanguageDropdown from 'src/@core/layouts/components/shared-components/LanguageDropdown';
 import UserDropdown from 'src/@core/layouts/components/shared-components/UserDropdown';
 
 import { TelegramLoginButton } from '../login-telegram/TelegramLoginButton';
@@ -126,8 +125,7 @@ interface Props {
 const AppBarContent = (props: Props) => {
   // ** Props
   // const { hidden, settings, saveSettings } = props
-  const { settings, saveSettings } = props
-  const hide = true;
+  const { settings } = props
 
   // ** Hook
   const auth = useAuth()
@@ -138,12 +136,12 @@ const AppBarContent = (props: Props) => {
   console.log(auth)
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+    <Box sx={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
       <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
         window.open(process.env.NEXT_PUBLIC_LINK_SWAP_POINT, '_blank');
       }}>Swap Points</BusAiButton>
       {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}
-      {hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />}
+      {/* {hide && <LanguageDropdown settings={settings} saveSettings={saveSettings} />} */}
       {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
       {auth.user && (
         <>
