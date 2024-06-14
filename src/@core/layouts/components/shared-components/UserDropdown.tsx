@@ -114,7 +114,9 @@ const UserDropdown = (props: Props) => {
       >
         <Avatar
           alt='John Doe'
-          src={user?.avatar}
+          src={'/images/avatars/default.png'}
+
+          // src={user?.avatar}
           onClick={handleDropdownOpen}
           sx={{ width: 50, height: 50 }}
         />
@@ -123,7 +125,7 @@ const UserDropdown = (props: Props) => {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          gap: '0.5rem',
+          gap: '0.1rem',
           marginLeft: '0.5rem'
         }}
       >
