@@ -131,7 +131,7 @@ const Generator = () => {
                 {(user &&  user.checkProfile &&  user.checkProfile.status) ?
                   <BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     if (ImageId) callShareImage(ImageId)
-                  }} >Share</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                  }} >Share 🙌</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
                   }} >Need to start bot</BusAiButton>}
               </Box>

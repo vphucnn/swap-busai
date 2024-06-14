@@ -146,7 +146,7 @@ const TableHistory = () => {
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
                 </Typography></TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}> <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row.sharePoint ? row.sharePoint : <BusAiButton sx={{ width: "100%"  }} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                  {row.sharePoint ? row.sharePoint : <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
                     if (row?._id) callShareImage(row?._id)
                   }} >Share</BusAiButton>}
                 </Typography></TableCell>
