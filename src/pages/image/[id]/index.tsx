@@ -7,11 +7,18 @@ import Head from 'next/head';
 const Image = ({ imageData, id }: any) => (
   <>
     <Head>
-      <meta name="twitter:card" content={`${id}`} />
-      <meta name="twitter:title"  content={`${id}`}/>
+      <meta name="description" content={`BusAi {id}`}/>
       <meta property="og:title" content={`${id}`} />
       <meta property="og:description" content={`BusAi ${id}`} />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
+      <meta name="og:image:width" content="400" />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
+      <meta name="og:image:width" content="800" />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
+      <meta name="og:image:width" content="1800" />
+      <meta name="twitter:card" content="summary_large_image"/>
+      <meta name="twitter:title"  content={`${id}`}/>
+      <meta name="twitter:description" content={`BusAi ${id}`}/>
       <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
       <meta name="twitter:image:width" content="400" />
       <meta name="twitter:image:height" content="400" />
