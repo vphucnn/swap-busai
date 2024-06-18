@@ -123,7 +123,7 @@ const UserDropdown = (props: Props) => {
       </Badge>
       <Box
         sx={{
-          display: 'flex',
+          display: {md: 'flex', xs: 'none'},
           flexDirection: 'column',
           gap: '0.1rem',
           marginLeft: '0.5rem'
@@ -158,7 +158,7 @@ const UserDropdown = (props: Props) => {
             </Badge>
             <Box sx={{ display: 'flex', ml: 2.5, alignItems: 'flex-start', flexDirection: 'column' }}>
               <Typography sx={{ fontWeight: 500 }}>{user?.firstName} {user?.lastName}</Typography>
-              <Typography variant='body2'>User</Typography>
+              <Typography variant='body2'>{points} points</Typography>
             </Box>
           </Box>
         </Box>
