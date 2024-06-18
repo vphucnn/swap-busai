@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Typography, styled } from '@mui/material';
+import { Box, Typography, styled } from '@mui/material';
 import type { SyntheticEvent } from 'react';
 import { useEffect, useState } from 'react';
 
@@ -151,22 +151,17 @@ const Generator = () => {
               </TabContext>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem' }}>
-            <Box sx={{ margin: "auto", display: 'flex', width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
+          <Box sx={{ display: 'flex',  alignItems: 'flex-end', justifyContent:'center',   width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem', paddingBottom: '1.5rem' }}>
+            <Box sx={{  display: 'flex',   width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
               {/* <SwiperGenerateInage /> */}
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
-                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '350px' }}>
+                  <Box sx={{ width: 'fit-content', display: 'flex',  justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
                     {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
                     {isLoading &&
-                      <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
-                        <Box>
-                          <CircularProgress />
-                        </Box>
-                        <Box>
-                          <Typography variant="body1" sx={{}}>
-                            Something fun is happening
-                          </Typography>
+                      <Box sx={{maxWidth: '98vw', borderRadius: '15px' , width: '250px', height: '250px' ,display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                        <Box className="loader">
+
                         </Box>
                       </Box>
                     }
