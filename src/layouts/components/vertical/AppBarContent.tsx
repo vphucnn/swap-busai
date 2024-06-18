@@ -56,7 +56,7 @@ const AppBarContent = (props: Props) => {
             cornerRadius="8"
             className="tg-login-button"
             dataOnAuth={onAuth}
-            buttonSize={'medium'}
+            buttonSize={'small'}
 
             // dataAuthUrl={'/auth/telelgram'}
             requestAccess={'write'}
