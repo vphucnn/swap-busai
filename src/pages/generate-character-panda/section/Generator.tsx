@@ -18,6 +18,7 @@ import API from 'src/api';
 import toast from 'react-hot-toast';
 import NProgress from 'nprogress'
 import { useAuth } from 'src/hooks/useAuth';
+import { Icon } from '@iconify/react';
 
 const Img = styled('img')(({ theme }) => ({
   maxWidth: "100%",
@@ -90,7 +91,7 @@ const Generator = () => {
   }, [checkStatus]);
 
   function checkProfile() {
-    if (checkStatus ) updateProfile()
+    if (checkStatus) updateProfile()
   }
 
 
@@ -166,18 +167,24 @@ const Generator = () => {
                 </Typography>
                 {(user && user.checkProfile && user.checkProfile.status) ?
                   <>
-                  <BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                    if (ImageId) callShareImage(ImageId)
-                  }} >Share 🙌</BusAiButton>
+                    <BusAiButton sx={{ width: "100%", gap: '0.5rem' }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#e3a600'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                      if (ImageId) callShareImage(ImageId)
+                    }} >
+                      <Icon icon='ic:baseline-telegram' fontSize={30} />Share To Earn
+                    </BusAiButton>
+                    <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
+                      <BusAiButton sx={{ gap: '0.5rem' }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                        if (ImageId) window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
 
-<BusAiButton sx={{ width: "100%" }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                    if (ImageId)       window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
-
-                  }} >Share to Facebook</BusAiButton>
-
-<BusAiButton sx={{ width: "100%" }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                    if (ImageId)  window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
-                  }} >Share to X</BusAiButton>
+                      }} >
+                        <Icon icon='ic:baseline-facebook' fontSize={30} />Share
+                      </BusAiButton>
+                      <BusAiButton sx={{ gap: '0.5rem' ,}} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                        if (ImageId) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
+                      }} >
+                        <Icon icon='ri:twitter-x-fill' fontSize={25} />Share
+                      </BusAiButton>
+                    </Box>
                   </>
                   : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     setCheckStatus(true);
