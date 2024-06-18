@@ -10,7 +10,7 @@ const Image = ({ imageData, id }: any) => (
       <meta property="og:title" content={id} />
       <meta property="og:description" content={id} />
       <meta property="og:image" content={`data:image/jpeg;base64,${imageData}`} />
-      <meta property="og:url" content={window.location.href} />
+      <meta property="og:url" content={`/image${id}`} />
       <meta property="og:type" content="website" />
     </Helmet>
 

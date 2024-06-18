@@ -85,7 +85,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
     try {
 
       const response = await API.textToImage(prompt);
-      setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
+      setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.task_result?.id))
       setImageId(response?.data?.data?.task_result?.id)
       toast.success('Generate done')
       updateProfile()

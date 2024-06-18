@@ -170,12 +170,12 @@ const Generator = () => {
                     if (ImageId) callShareImage(ImageId)
                   }} >Share 🙌</BusAiButton>
 
-<BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+<BusAiButton sx={{ width: "100%" }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     if (ImageId)       window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
 
                   }} >Share to Facebook</BusAiButton>
 
-<BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+<BusAiButton sx={{ width: "100%" }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     if (ImageId)  window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
                   }} >Share to X</BusAiButton>
                   </>

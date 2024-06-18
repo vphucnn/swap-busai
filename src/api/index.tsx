@@ -34,10 +34,6 @@ const API = {
     return api.post('/ai/text-to-image/queue', { prompt: prompt });
   },
 
-  getUrlImage: (path: string) => {
-    return API_BASE_URL + path
-  },
-
   getUrlImageMiniSizeById: (id: string) => {
     return API_BASE_URL + '/ai/image/' + id + '.png?resize=true'
   },
