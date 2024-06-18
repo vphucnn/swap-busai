@@ -158,7 +158,17 @@ const Generator = () => {
                 <Box>
                   <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '350px' }}>
                     {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
-                    {isLoading && <CircularProgress />
+                    {isLoading &&
+                      <Box sx={{display: 'flex', justifyContent:'center', flexDirection:'column', alignItems: 'center', gap: '1rem'}}>
+                        <Box>
+                        <CircularProgress />
+                        </Box>
+                        <Box>
+                        <Typography variant="body1" sx={{}}>
+                          Something fun is happening
+                        </Typography>
+                        </Box>
+                      </Box>
                     }
                   </Box>
                 </Box>
@@ -179,7 +189,7 @@ const Generator = () => {
                       }} >
                         <Icon icon='ic:baseline-facebook' fontSize={30} />Share
                       </BusAiButton>
-                      <BusAiButton sx={{ gap: '0.5rem' ,}} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton sx={{ gap: '0.5rem', }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (ImageId) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
                       }} >
                         <Icon icon='ri:twitter-x-fill' fontSize={25} />Share
