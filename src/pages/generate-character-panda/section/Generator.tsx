@@ -155,7 +155,7 @@ const Generator = () => {
               {/* <SwiperGenerateInage /> */}
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
-                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '425px' }}>
+                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '350px' }}>
                     {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
                     {isLoading && <CircularProgress />
                     }
@@ -165,9 +165,21 @@ const Generator = () => {
                   Share Your <b>Idea</b> To Earn <b>Busai</b>
                 </Typography>
                 {(user && user.checkProfile && user.checkProfile.status) ?
+                  <>
                   <BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     if (ImageId) callShareImage(ImageId)
-                  }} >Share 🙌</BusAiButton> : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                  }} >Share 🙌</BusAiButton>
+
+<BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    if (ImageId)       window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
+
+                  }} >Share to Facebook</BusAiButton>
+
+<BusAiButton sx={{ width: "100%" }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    if (ImageId)  window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
+                  }} >Share to X</BusAiButton>
+                  </>
+                  : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                     setCheckStatus(true);
                     window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
                   }} >Verify Your Account</BusAiButton>}

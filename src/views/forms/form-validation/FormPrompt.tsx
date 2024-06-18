@@ -157,7 +157,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
                   multiline
                   value={value}
                   onChange={onChange}
-                  placeholder='Prompt'
+                  placeholder='Enter your prompt here'
                   error={Boolean(errors.prompt)}
                   aria-describedby='validation-basic-first-name'
                   {...(errors.prompt && { helperText: 'This field is required' })}
