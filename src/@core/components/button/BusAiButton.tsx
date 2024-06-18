@@ -24,7 +24,6 @@ export const BusAiButton : React.FC<BusAiButtonProps> = ({backgroundColor, borde
         display: 'flex', // Inline-flex for side-by-side content
         justifyContent: 'center',
         alignItems: 'center',
-        gap: 10,
         ...props.sx
       }}
     >
