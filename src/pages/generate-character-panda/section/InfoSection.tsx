@@ -33,7 +33,10 @@ const InfoSection = () => {
             <Typography variant="body1" sx={{ textAlign: 'left' }}>
               Our AI-powered generator is here to help you craft beats and melodies with the ease of a panda munching on bamboo. Whether you’re a pro or just looking to jam, BUSAI turns your wildest musical dreams into reality. Dive into the sonic wilderness and let BUSAI guide you to your next hit track – it’s a musical adventure in the heart of the bamboo jungle!
             </Typography>
-            <BusAiButton sx={{ marginTop: '2rem' }} type='submit' variant='contained' backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} >
+            <BusAiButton sx={{ marginTop: '2rem' }} type='submit' variant='contained' backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'}
+             onClick={() => {
+              window.open(process.env.NEXT_PUBLIC_LINK_SWAP_POINT, '_blank');
+            }}>
               Try it out
             </BusAiButton>
           </Box>
