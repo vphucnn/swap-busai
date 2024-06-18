@@ -2,18 +2,16 @@ import { Box } from '@mui/system';
 import axios from 'axios';
 import { ReactNode } from 'react';
 import BlankLayout from 'src/@core/layouts/BlankLayout';
-import Helmet from 'react-helmet'; // Or import { MetaTags } from 'react-meta-tags';
+import Head from 'next/head';
 
 const Image = ({ imageData, id }: any) => (
   <>
-    <Helmet>
-      <meta property="og:title" content={id} />
-      <meta property="og:description" content={id} />
-      <meta property="og:image" content={`data:image/jpeg;base64,${imageData}`} />
-      <meta property="og:url" content={`/image${id}`} />
-      <meta property="og:type" content="website" />
-    </Helmet>
-
+    <Head>
+      <meta property="og:title" content={`${id}`} />
+      <meta property="og:description" content={`BusAi ${id}`} />
+      <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
+      <title>BusAi {id}</title>
+    </Head>
     <Box sx={{ display: 'flex' }}>
       {imageData ? <img alt="" style={{ margin: 'auto' }} src={`data:image/jpeg;base64,${imageData}`} /> : <p>Image not found</p>}
     </Box >
@@ -23,9 +21,6 @@ const Image = ({ imageData, id }: any) => (
 export const getServerSideProps = async (context: any) => {
   // Fetch the image from the external URL
   try {
-
-    console.log("slug", context.params.id)
-
     const response = await axios.get(`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${context.params.id}.png`, {
       responseType: 'arraybuffer',
     });
