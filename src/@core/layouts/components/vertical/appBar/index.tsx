@@ -41,7 +41,7 @@ const Toolbar = styled(MuiToolbar)<ToolbarProps>(({ theme }) => ({
 
   // marginTop: theme.spacing(4),
   borderRadius: theme.shape.borderRadius,
-  padding: `${theme.spacing(0, 6)} !important`
+  padding: `${theme.spacing(0, 1)} !important`
 }))
 
 const LayoutAppBar = (props: Props) => {
