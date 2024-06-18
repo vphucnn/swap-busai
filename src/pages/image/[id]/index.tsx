@@ -12,8 +12,8 @@ const Image = ({ imageData, id }: any) => (
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
       <title>BusAi {id}</title>
     </Head>
-    <Box sx={{ display: 'flex' }}>
-      {imageData ? <img alt="" style={{ margin: 'auto' }} src={`data:image/jpeg;base64,${imageData}`} /> : <p>Image not found</p>}
+    <Box sx={{ minHeight: '100vh',  display: 'flex', justifyContent: 'center', alignItems:'center' }}>
+      {imageData ? <img alt="" style={{ margin: 'auto' , maxWidth: '99vw'}} src={`data:image/jpeg;base64,${imageData}`} /> : <p>Image not found</p>}
     </Box >
   </>
 );
