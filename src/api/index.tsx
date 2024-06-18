@@ -43,7 +43,7 @@ const API = {
   },
 
   getUrlImageById: (id: string) => {
-    return API_BASE_URL + '/ai/image/' + id + '.png'
+    return process.env.NEXT_PUBLIC_BASE_DOMAIN + '/' + id
   },
 
   getTask: (page: number, pageSize: number, shareStatus?: boolean | null) => {
