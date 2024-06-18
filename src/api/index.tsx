@@ -42,6 +42,10 @@ const API = {
     return API_BASE_URL + '/ai/image/' + id + '.png?resize=true'
   },
 
+  getUrlImageById: (id: string) => {
+    return API_BASE_URL + '/ai/image/' + id + '.png'
+  },
+
   getTask: (page: number, pageSize: number, shareStatus?: boolean | null) => {
     return api.get('/ai/tasks', { params: { page, pageSize, shareStatus } });
   },
