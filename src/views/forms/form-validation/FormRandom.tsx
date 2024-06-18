@@ -103,7 +103,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
     try {
 
       const response = await API.textToImage(prompt);
-      setUrlImg(API.getUrlImage(response?.data?.data?.task_result?.resized_url))
+      setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.task_result?.id))
       console.log(response?.data?.data)
       setImageId(response?.data?.data?.task_result?.id)
       toast.success('Generate done')
