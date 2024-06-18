@@ -12,6 +12,7 @@ const Image = ({ imageData, id }: any) => (
       <meta property="og:title" content={`${id}`} />
       <meta property="og:description" content={`BusAi ${id}`} />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
+      <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
       <title>BusAi {id}</title>
     </Head>
     <Box sx={{ minHeight: '100vh',  display: 'flex', justifyContent: 'center', alignItems:'center' }}>
