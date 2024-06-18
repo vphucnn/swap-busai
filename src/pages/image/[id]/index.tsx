@@ -7,6 +7,8 @@ import Head from 'next/head';
 const Image = ({ imageData, id }: any) => (
   <>
     <Head>
+      <meta name="twitter:card" content={`${id}`} />
+      <meta name="twitter:title"  content={`${id}`}/>
       <meta property="og:title" content={`${id}`} />
       <meta property="og:description" content={`BusAi ${id}`} />
       <meta property="og:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
