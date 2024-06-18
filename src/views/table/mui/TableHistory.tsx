@@ -158,19 +158,19 @@ const TableHistory = () => {
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}>
                 <>
                     <Box sx={{maxWidth: '250px', margin: 'auto'}}>
-                    { !row.sharePoint  && <BusAiButton sx={{ width: "100%", gap: '0.5rem' }} disabled={!row?._id} backgroundColor={'#e3a600'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                    { !row.sharePoint  && <BusAiButton sx={{ width: "100%", gap: '0.5rem',  '&:hover': { borderBottom: '4px #CC0083  solid' }  }} disabled={!row?._id} backgroundColor={'#FFD600'} borderBottom={'4px #e3a600 solid'} onClick={() => {
                       if (row?._id) callShareImage(row?._id)
                     }} >
                       <Icon icon='ic:baseline-telegram' fontSize={30} />Share To Earn
                     </BusAiButton>}
                     <Box sx={{ display: 'flex', gap: '1rem', marginTop: '1rem', justifyContent: 'space-between' }}>
-                      <BusAiButton sx={{ gap: '0.5rem' }} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (row?._id) window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(row?._id), '_blank');
 
                       }} >
                         <Icon icon='ic:baseline-facebook' fontSize={30} />Share
                       </BusAiButton>
-                      <BusAiButton sx={{ gap: '0.5rem' ,}} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton sx={{ gap: '0.5rem' , '&:hover': { borderBottom: '4px #CC0083  solid' }}} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (row?._id) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(row?._id), '_blank')
                       }} >
                         <Icon icon='ri:twitter-x-fill' fontSize={25} />Share

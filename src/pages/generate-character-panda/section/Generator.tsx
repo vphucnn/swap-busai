@@ -1,4 +1,4 @@
-import { Box, CircularProgress, Typography, styled } from '@mui/material';
+import { Box, Typography, styled } from '@mui/material';
 import type { SyntheticEvent } from 'react';
 import { useEffect, useState } from 'react';
 
@@ -151,22 +151,17 @@ const Generator = () => {
               </TabContext>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex', width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem' }}>
-            <Box sx={{ margin: "auto", display: 'flex', width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
+          <Box sx={{ display: 'flex',  alignItems: 'flex-end', justifyContent:'center',   width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem', paddingBottom: '1.5rem' }}>
+            <Box sx={{  display: 'flex',   width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
               {/* <SwiperGenerateInage /> */}
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
-                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '350px' }}>
+                  <Box sx={{ width: 'fit-content', display: 'flex',  justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
                     {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
                     {isLoading &&
-                      <Box sx={{display: 'flex', justifyContent:'center', flexDirection:'column', alignItems: 'center', gap: '1rem'}}>
-                        <Box>
-                        <CircularProgress />
-                        </Box>
-                        <Box>
-                        <Typography variant="body1" sx={{}}>
-                          Something fun is happening
-                        </Typography>
+                      <Box sx={{maxWidth: '98vw', borderRadius: '15px' , width: '250px', height: '250px' ,display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                        <Box className="loader">
+
                         </Box>
                       </Box>
                     }
@@ -177,19 +172,19 @@ const Generator = () => {
                 </Typography>
                 {(user && user.checkProfile && user.checkProfile.status) ?
                   <>
-                    <BusAiButton sx={{ width: "100%", gap: '0.5rem' }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#e3a600'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+                    <BusAiButton sx={{ width: "100%", gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId || shareStatus || isLoading} backgroundColor={'#FFD600'} borderBottom={'4px #e3a600 solid'} onClick={() => {
                       if (ImageId) callShareImage(ImageId)
                     }} >
                       <Icon icon='ic:baseline-telegram' fontSize={30} />Share To Earn
                     </BusAiButton>
                     <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
-                      <BusAiButton sx={{ gap: '0.5rem' }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (ImageId) window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
 
                       }} >
                         <Icon icon='ic:baseline-facebook' fontSize={30} />Share
                       </BusAiButton>
-                      <BusAiButton sx={{ gap: '0.5rem', }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (ImageId) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
                       }} >
                         <Icon icon='ri:twitter-x-fill' fontSize={25} />Share
