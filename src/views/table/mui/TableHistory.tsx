@@ -1,6 +1,6 @@
 // ** MUI Imports
 import { Icon } from '@iconify/react'
-import { Box, Theme, Typography, styled, useMediaQuery } from '@mui/material'
+import { Box, Typography, styled } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -50,7 +50,8 @@ const TableHistory = () => {
   const [pageSize, setPageSize] = useState<number>(10);
   const [totalPages, setTotalPages] = useState<number>(0);
   const { updateProfile } = useAuth()
-  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+
+  // const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   const callShareImage = async (id: string) => {
     try {
