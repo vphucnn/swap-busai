@@ -3,7 +3,7 @@ import { SwiperInfo } from 'src/views/components/swiper/SwiperInfo';
 
 const VideoSection = () => {
   return (
-    <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: '5rem' }}>
+    <Box sx={{ textAlign: 'center', display: 'flex', flexDirection: 'column', gap: {xs: '1rem', md: '3rem' ,lg:'5rem'} }}>
     <Box>
       <Typography  sx={{ typography: { lg: 'h1', xs: 'h3' }  }}>
         How To be more creative with Busai?
