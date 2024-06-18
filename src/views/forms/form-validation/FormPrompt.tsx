@@ -22,9 +22,10 @@ import NProgress from 'nprogress'
 import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
-import { getRandomEight } from 'src/@core/utils/helps'
+import { getRandomHints } from 'src/@core/utils/helps'
 import API from 'src/api'
 import { useAuth } from 'src/hooks/useAuth'
+import { listPrompt } from 'src/configs/const'
 
 
 interface FormInputs {
@@ -44,22 +45,6 @@ interface Props {
 }
 
 
-const chip = [
-  "Pink flip flops",
-  "Standing on 1 leg",
-  "Stick out the tongue",
-  "Red hat with a horn on it",
-  "Jean Jacket with rocker style",
-  "Funny nerdy face",
-  "Shareable",
-  "Engaging",
-  "Reflecting culture",
-  "Relatable and understandable",
-  "Pop culture phenomenon",
-  "Humorous and witty",
-  "Visually appealing",
-  "Thought-provoking"
-]
 
 
 const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }: Props) => {
@@ -70,7 +55,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
   const { user, updateProfile } = useAuth()
 
   const reloadChip = () => {
-    setListChip(getRandomEight(chip))
+    setListChip(getRandomHints(listPrompt))
   }
 
   useEffect(() => {
