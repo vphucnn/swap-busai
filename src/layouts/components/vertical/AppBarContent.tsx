@@ -47,7 +47,7 @@ const AppBarContent = (props: Props) => {
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
         {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} /> */}
         {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
-        <BusAiButton size={'small'} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
+        <BusAiButton size={'small'} style={{fontSize : '8px'}} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
           window.open(process.env.NEXT_PUBLIC_LINK_SWAP_POINT, '_blank');
         }}>Swap Points</BusAiButton>
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
