@@ -22,7 +22,7 @@ import NProgress from 'nprogress'
 import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
-import { getRandomHints } from 'src/@core/utils/helps'
+import { getRandomHints, getRandomOneHints } from 'src/@core/utils/helps'
 import API from 'src/api'
 import { useAuth } from 'src/hooks/useAuth'
 import { listPrompt } from 'src/configs/const'
@@ -96,10 +96,17 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
       toast.error(error?.response.data.message)
     }
   };
-  const handleClick = (value: string) => {
+  const handleClick = (value: string, index: number) => {
     const currentPrompt = control._formValues?.prompt || ''; // Handle potential undefined value
     const updatedPrompt = currentPrompt ? `${currentPrompt}, ${value}` : value;
     setValue('prompt', updatedPrompt);
+    let chip = getRandomOneHints(listPrompt)
+    while (chip === value) {
+      chip = getRandomOneHints(listPrompt)      // Khối mã cần lặp lại
+    }
+    const newListChip = [...listChip]
+    newListChip[index] = chip
+    setListChip(newListChip)
   };
 
   return (
@@ -109,11 +116,11 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
           Customizing Busai according to your ideas is simple, just write a detailed description in the box below. Share your achievements in Busai's community and receive surprising rewards
         </Typography>
       </Box>
-      <Grid container gap={'1rem'} sx={{marginTop:'1rem'}}>
+      {listChip && <Grid container gap={'1rem'} sx={{marginTop:'1rem'}}>
         {
-          listChip.map((item, index) => (<BusAiChip key={index} onClick={() => handleClick(item)} label={item} />))
+          listChip.map((item, index) => (<BusAiChip key={index} onClick={() => handleClick(item, index)} label={item} />))
         }
-      </Grid>
+      </Grid>}
       <Grid item xs={12} container justifyContent="flex-end" >
         <Button disableRipple disableTouchRipple sx={{
           '&:hover': {

@@ -26,3 +26,13 @@ export function getRandomHints(array: string | any[]) {
 
 return randomEight;
 }
+
+export function getRandomOneHints(array: string | any[]) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    const randomElement = array[randomIndex].chips;
+    const randomChipIndex = Math.floor(Math.random() * randomElement.length);
+    const chip = randomElement[randomChipIndex]
+
+    return chip
+
+}
