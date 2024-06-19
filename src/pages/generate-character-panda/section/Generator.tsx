@@ -99,13 +99,19 @@ const Generator = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const pending = await (await API.checkPending()).data.data
-        if(pending){
-          setIsLoading(true)
-        }else{
-          setIsLoading(false)
-
-          if(user) updateProfile()
+        if(user){
+          const pending = await (await API.checkPending()).data.data
+          if(pending){
+            setIsLoading(true)
+          }else{
+              updateProfile()
+              const response = await API.getTask(1, 1)
+              if (response?.data?.data?.data[0]?._id) {
+                setImageId(response?.data?.data?.data[0]?._id)
+                setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
+              }
+              setIsLoading(false)
+          }
         }
       } catch (error) {
         console.error('Error fetching data:', error);
