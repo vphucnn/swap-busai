@@ -1,6 +1,6 @@
 // ** MUI Imports
 import { Icon } from '@iconify/react'
-import { Box, Typography, styled } from '@mui/material'
+import { Box, Theme, Typography, styled, useMediaQuery } from '@mui/material'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -51,7 +51,7 @@ const TableHistory = () => {
   const [totalPages, setTotalPages] = useState<number>(0);
   const { updateProfile } = useAuth()
 
-  // const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
 
   const callShareImage = async (id: string) => {
     try {
@@ -139,7 +139,7 @@ const TableHistory = () => {
                   }
                 }}
               >
-                <TableCell component='th' scope='row' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '1rem', }}>
+                <TableCell component='th' scope='row' sx={{ minWidth: "150px" , borderBottom: '1px solid rgba(255, 255, 255, 0.2)', justifyContent: 'center', alignItems: 'center', textAlign: 'center', padding: '1rem', }}>
                   <Img src={API.getUrlImageMiniSizeById(row?._id)} alt='box' />
                 </TableCell>
                 <TableCell component='th' scope='row' sx={{ minWidth: "200px", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
@@ -157,23 +157,23 @@ const TableHistory = () => {
                 </TableCell>
                 <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem' }}>
                 <>
-                    <Box sx={{maxWidth: '250px', margin: 'auto'}}>
-                    { !row.sharePoint  && <BusAiButton sx={{ width: "100%", gap: '0.5rem',  '&:hover': { borderBottom: '4px #CC0083  solid' }  }} disabled={!row?._id} backgroundColor={'#FFD600'} borderBottom={'4px #e3a600 solid'} onClick={() => {
+                    <Box sx={{maxWidth: '300px', margin: 'auto'}}>
+                    { !row.sharePoint  && <BusAiButton   size={isMobile ? 'small' : 'medium'} sx={{ width: "100%", gap: '0.5rem',  fontSize: isMobile ? '14px' : '18px',  '&:hover': { borderBottom: '4px #CC0083  solid' }  }} disabled={!row?._id} backgroundColor={'#FFD600'} borderBottom={'4px #e3a600 solid'} onClick={() => {
                       if (row?._id) callShareImage(row?._id)
                     }} >
-                      <Icon icon='ic:baseline-telegram' fontSize={30} />Share To Earn
+                      <Icon icon='ic:baseline-telegram' fontSize={isMobile? 20: 30} />Share To Earn
                     </BusAiButton>}
                     <Box sx={{ display: 'flex', gap: '1rem', marginTop: '1rem', justifyContent: 'space-between' }}>
-                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton  size={isMobile ? 'small' : 'medium'} sx={{width: "100%", gap: '0.5rem', fontSize: isMobile ? '14px' : '18px', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (row?._id) window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(row?._id), '_blank');
 
                       }} >
-                        <Icon icon='ic:baseline-facebook' fontSize={30} />Share
+                        <Icon icon='ic:baseline-facebook' fontSize={isMobile? 20: 30} />Share
                       </BusAiButton>
-                      <BusAiButton sx={{ gap: '0.5rem' , '&:hover': { borderBottom: '4px #CC0083  solid' }}} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton  size={isMobile ? 'small' : 'medium'} sx={{ width: "100%", gap: '0.5rem' , fontSize: isMobile ? '14px' : '18px',  '&:hover': { borderBottom: '4px #CC0083  solid' }}} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (row?._id) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(row?._id), '_blank')
                       }} >
-                        <Icon icon='ri:twitter-x-fill' fontSize={25} />Share
+                        <Icon icon='ri:twitter-x-fill' fontSize={isMobile? 18: 25} />Share
                       </BusAiButton>
                     </Box>
                     </Box>
