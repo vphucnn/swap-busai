@@ -164,7 +164,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
               </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Typography variant="body1">
-                  Generated {user?.checkProfile?.taskOfDay}/{user?.checkProfile?.config?.maxTaskPerDay}
+                  Generated {user?.checkProfile?.taskOfDay || 0}/{user?.checkProfile?.config?.maxTaskPerDay || 3}
                 </Typography>
                 <Tooltip placement='top' title={
                   <React.Fragment>

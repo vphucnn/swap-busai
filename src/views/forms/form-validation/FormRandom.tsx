@@ -50,7 +50,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
 
   const [listChip, setListChip] = useState<any[]>([])
   const [showRemove, setShowRemove] = useState<boolean>(true)
-  const {user} = useAuth()
+  const { user } = useAuth()
 
   useEffect(() => {
     randomChip()
@@ -83,7 +83,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
   }
 
   const onSubmit = async () => {
-    if(!user) {
+    if (!user) {
       return toast.error("You need to log in")
     }
     NProgress.start()
@@ -160,7 +160,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                 <Typography variant="body1">
-                Generated {user?.checkProfile?.taskOfDay}/{user?.checkProfile?.config?.maxTaskPerDay}
+                  Generated {user?.checkProfile?.taskOfDay || 0}/{user?.checkProfile?.config?.maxTaskPerDay || 3}
                 </Typography>
                 <Tooltip placement='top' title={
                   <React.Fragment>
