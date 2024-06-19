@@ -105,7 +105,7 @@ const TableReward = () => {
                 {/* <TableCell align='right' sx={{ borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }} >  <Typography variant="body1" sx={{ color: 'white' }} >
                   {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
                 </Typography></TableCell> */}
-                <TableCell align='right' sx={{ width: "50%" , borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }}> <Typography variant="body1" sx={{ color: 'white' }} >
+                <TableCell align='right' sx={{ width: "50%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem',  }}> <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
                   {row.sharePoint}
                 </Typography></TableCell>
               </TableRow>
