@@ -43,7 +43,7 @@ export const SwiperInfo = () => {
   return (
     <Box>
       <Box sx={{ margin: "auto", display: 'flex', maxWidth: '95vw', width: '1500px', alignItems: 'center'  }}>
-        <IconButton aria-label="back" sx={{width: {xs: '40px', md: '50px', lg: '100px'} }}  onClick={handlePrev} >
+        <IconButton aria-label="back" sx={{width: {xs: '40px', md: '50px', lg: '100px'} , height: {xs: '40px', md: '50px', lg: '100px'}}}  onClick={handlePrev} >
           <IconBack  />
         </IconButton >
         <Swiper
@@ -69,7 +69,7 @@ export const SwiperInfo = () => {
             <Box sx={{ width: 'fit-content' }}> <Img src='/images/general/slides/05.svg' alt='box' /></Box>
           </SwiperSlide>
         </Swiper>
-        <IconButton aria-label="next" sx={{width: {xs: '40px', md: '50px', lg: '100px'} }}  onClick={handleNext}>
+        <IconButton aria-label="next" sx={{width: {xs: '40px', md: '50px', lg: '100px'}, height: {xs: '40px', md: '50px', lg: '100px'} }}  onClick={handleNext}>
           <IconNext />
         </IconButton>
       </Box>
