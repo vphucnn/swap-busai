@@ -31,7 +31,7 @@ const Image = ({ imageData, id }: any) => (
       <title>BusAi {id}</title>
     </Head>
     <Box sx={{ minHeight: '100vh',  display: 'flex', justifyContent: 'center', alignItems:'center' }}>
-      {imageData ? <img alt="" style={{ margin: 'auto' , maxWidth: '99vw'}} src={`data:image/jpeg;base64,${imageData}`} /> : <p>Image not found</p>}
+      {imageData ? <img alt="" style={{ margin: 'auto' , maxWidth: '100vw', maxHeight: '100vh'}} src={`data:image/jpeg;base64,${imageData}`} /> : <p>Image not found</p>}
     </Box >
   </>
 );
