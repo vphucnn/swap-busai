@@ -42,13 +42,13 @@ interface Props {
   setShow?: Dispatch<SetStateAction<boolean>>,
   setIsLoading: Dispatch<SetStateAction<boolean>>,
   setUrlImg: Dispatch<SetStateAction<string | null>>,
-  setImageId: Dispatch<SetStateAction<string | null>>
+  setImageId?: Dispatch<SetStateAction<string | null>>
 }
 
 
 
 
-const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }: Props) => {
+const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
   // ** States
   // ** Hooks
 
@@ -89,7 +89,8 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
 
       const response = await API.textToImage(prompt);
       setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.task_result?.id))
-      setImageId(response?.data?.data?.task_result?.id)
+
+      // setImageId(response?.data?.data?.task_result?.id)
       toast.success('Generate done')
       updateProfile()
 
