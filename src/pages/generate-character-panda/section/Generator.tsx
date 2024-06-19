@@ -185,7 +185,7 @@ const Generator = () => {
                         <Icon icon='ic:baseline-facebook' fontSize={30} />Share
                       </BusAiButton>
                       <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                        if (ImageId) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
+                        if (ImageId) window.open(`https://x.com/intent/post?text=Dog, cat? No, now Panda ruled the world%0AThe great $BUSAI has arrive&url=` + API.getUrlImageById(ImageId), '_blank')
                       }} >
                         <Icon icon='ri:twitter-x-fill' fontSize={25} />Share
                       </BusAiButton>
