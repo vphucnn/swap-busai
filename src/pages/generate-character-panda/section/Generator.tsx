@@ -39,7 +39,7 @@ const Generator = () => {
   const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
   const [shareStatus, setShareStatus] = useState<boolean>(false)
-  const { updateProfile, user } = useAuth()
+  const { updateProfile, user, loginTelegramCustom } = useAuth()
   const [checkStatus, setCheckStatus] = useState<boolean>(false)
 
   // const [show, setShow] = useState<boolean>(false)
@@ -192,6 +192,9 @@ const Generator = () => {
                     </Box>
                   </>
                   : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    if(!user){
+                      return loginTelegramCustom()
+                    }
                     setCheckStatus(true);
                     window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
                   }} >Verify Your Account</BusAiButton>}

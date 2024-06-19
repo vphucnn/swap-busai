@@ -183,7 +183,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
               {currentStep === 1 && <BusAiButton onClick={() => setCurrentStep(2)} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} variant='contained'>
                 Next
               </BusAiButton>}
-              {currentStep === 2 && <BusAiButton disabled={isLoading} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={onSubmit} variant='contained'>
+              {currentStep === 2 && <BusAiButton disabled={isLoading || !user} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={onSubmit} variant='contained'>
                 Generate
               </BusAiButton>}
             </Box>

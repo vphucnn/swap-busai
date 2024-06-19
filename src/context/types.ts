@@ -60,5 +60,7 @@ export type AuthValuesType = {
   login: (params: LoginParams, errorCallback?: ErrCallbackType) => void
   loginTelegram: (data: any, errorCallback?: ErrCallbackType) => void
   updateProfile: () => void
+  loginTelegramCustom: () => void
+
 
 }

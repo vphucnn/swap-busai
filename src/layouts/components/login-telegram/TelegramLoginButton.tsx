@@ -33,7 +33,7 @@ export const TelegramLoginButton = ({
   useEffect(() => {
     if (instance && !loader) {
       (window as any).TelegramLoginWidget = {
-        dataOnauth: (user: any) => {
+        dataOnAuth: (user: any) => {
           handleSubmit(user)
         },
       };
@@ -53,7 +53,7 @@ export const TelegramLoginButton = ({
       } else {
         script.setAttribute(
           "data-onauth",
-          "TelegramLoginWidget.dataOnauth(user)"
+          "TelegramLoginWidget.dataOnAuth(user)"
         );
       }
       script.async = true;
