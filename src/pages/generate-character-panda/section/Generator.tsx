@@ -38,9 +38,11 @@ const Generator = () => {
   const [urlImg, setUrlImg] = useState<string | null>(null)
   const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
+
   const [shareStatus, setShareStatus] = useState<boolean>(false)
   const { updateProfile, user, loginTelegramCustom } = useAuth()
-  const [checkStatus, setCheckStatus] = useState<boolean>(false)
+
+  // const [checkStatus, setCheckStatus] = useState<boolean>(false)
 
   // const [show, setShow] = useState<boolean>(false)
   const [value, setValue] = useState<string>('1')
@@ -82,17 +84,40 @@ const Generator = () => {
   };
 
 
+  // useEffect(() => {
+  //   if (checkStatus) {
+  //     const interval = setInterval(checkProfile, 30000);
+
+  //     return () => clearInterval(interval);
+  //   }
+  // }, [checkStatus]);
+
+  // function checkProfile() {
+  //   if (checkStatus) updateProfile()
+  // }
+
   useEffect(() => {
-    if (checkStatus) {
-      const interval = setInterval(checkProfile, 30000);
+    const fetchData = async () => {
+      try {
+        const pending = await (await API.checkPending()).data.data
+        if(pending){
+          setIsLoading(true)
+        }else{
+          setIsLoading(false)
 
-      return () => clearInterval(interval);
-    }
-  }, [checkStatus]);
+          if(user) updateProfile()
+        }
+      } catch (error) {
+        console.error('Error fetching data:', error);
+      }
+    };
+    fetchData()
 
-  function checkProfile() {
-    if (checkStatus) updateProfile()
-  }
+    const intervalId = setInterval(fetchData, 5000);
+
+    // Cleanup function to clear the interval when the component unmounts
+    return () => clearInterval(intervalId);
+  }, []);
 
 
   useEffect(() => {
@@ -157,8 +182,8 @@ const Generator = () => {
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
                   <Box sx={{ width: 'fit-content', display: 'flex',  justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
-                    {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
-                    {isLoading &&
+                    {urlImg && !isLoading  &&  <Img src={urlImg} alt='box' />}
+                    {isLoading  &&
                       <Box sx={{maxWidth: '98vw', borderRadius: '15px' , width: '250px', height: '250px' ,display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                         <Box className="loader">
 
@@ -195,7 +220,8 @@ const Generator = () => {
                     if(!user){
                       return loginTelegramCustom()
                     }
-                    setCheckStatus(true);
+
+                    // setCheckStatus(true);
                     window.open('https://t.me/' + process.env.NEXT_PUBLIC_BOT_NAME, '_blank');
                   }} >Verify Your Account</BusAiButton>}
               </Box>

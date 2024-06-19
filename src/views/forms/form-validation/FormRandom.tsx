@@ -16,7 +16,8 @@ import { Box } from '@mui/system'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { Button, Tooltip, Typography } from '@mui/material'
-import NProgress from 'nprogress'
+
+// import NProgress from 'nprogress'
 import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
@@ -86,10 +87,12 @@ const FormRandom = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
     if (!user) {
       return toast.error("You need to log in")
     }
-    NProgress.start()
+
+    // NProgress.start()
     setIsLoading(true)
     await fetchData(genPrompt())
-    NProgress.done()
+
+    // NProgress.done()
     setIsLoading(false)
     if (setShow) setShow(true)
   }
