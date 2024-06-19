@@ -49,6 +49,10 @@ const API = {
   shareTelegram: (id: string) => {
     return api.get('/telegram/share/' + id);
   },
+
+  checkPending: () => {
+    return api.get('/ai/text-to-image/check-pending');
+  },
 };
 
 export default API;

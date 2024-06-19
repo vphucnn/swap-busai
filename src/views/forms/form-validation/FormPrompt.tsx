@@ -18,7 +18,8 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 import { Icon } from '@iconify/react'
 import { Button, Tooltip, Typography } from '@mui/material'
-import NProgress from 'nprogress'
+
+// import NProgress from 'nprogress'
 import React from 'react'
 import { BusAiButton } from 'src/@core/components/button/BusAiButton'
 import { BusAiChip } from 'src/@core/components/chip/BusAiChip'
@@ -73,11 +74,13 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
     if(!user) {
       return toast.error("You need to log in")
     }
-    NProgress.start()
+
+    // NProgress.start()
     setIsLoading(true)
     await fetchData(control._formValues.prompt)
     setIsLoading(false)
-    NProgress.done()
+
+    // NProgress.done()
     if (setShow) setShow(true)
   }
 
