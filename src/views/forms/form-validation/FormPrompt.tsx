@@ -168,7 +168,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg, setImageId }:
                 </Typography>
                 <Tooltip placement='top' title={
                   <React.Fragment>
-                    <Typography color="inherit">Generated</Typography>
+                    <Typography color="inherit">Each user can only generate and share photos up to 3 times a day to earn points</Typography>
                   </React.Fragment>
                 }>
                   <Icon icon='tabler:info-circle' fontSize={20} />
