@@ -25,6 +25,8 @@ const defaultProvider: AuthValuesType = {
   loginTelegram: () => Promise.resolve(),
   logout: () => Promise.resolve(),
   updateProfile: () => Promise.resolve(),
+  loginTelegramCustom: () => Promise.resolve(),
+
 
 }
 
@@ -81,6 +83,18 @@ const AuthProvider = ({ children }: Props) => {
       })
   }
 
+  const handleLoginTelegramCustom = () => {
+    (window as any)?.Telegram?.Login?.auth(
+      { bot_id: process.env.NEXT_PUBLIC_BOT_ID, request_access: true },
+      async (data : any) => {
+        if (!data) {
+          return toast.error("Login failed")
+        }
+       await (window as any)?.TelegramLoginWidget?.dataOnAuth(data)
+      }
+    );
+  }
+
   const handleLoginTelegram = async (data: any, errorCallback?: ErrCallbackType) => {
     try {
       const response = await API.loginTelegram(data)
@@ -132,6 +146,8 @@ const AuthProvider = ({ children }: Props) => {
     loginTelegram: handleLoginTelegram,
     logout: handleLogout,
     updateProfile: handleUpdateProfile,
+    loginTelegramCustom: handleLoginTelegramCustom,
+
   }
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>
