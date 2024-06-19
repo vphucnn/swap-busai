@@ -22,12 +22,12 @@ const Image = ({ imageData, id }: any) => (
       <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
       <meta name="twitter:image:width" content="400" />
       <meta name="twitter:image:height" content="400" />
-      <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
+      {/* <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
       <meta name="twitter:image:width" content="800" />
       <meta name="twitter:image:height" content="800" />
       <meta property="twitter:image" content={`${process.env.NEXT_PUBLIC_DOMAIN_API}/api/ai/image/${id}.png`} />
       <meta name="twitter:image:width" content="1800" />
-      <meta name="twitter:image:height" content="1800" />
+      <meta name="twitter:image:height" content="1800" /> */}
       <title>BusAi {id}</title>
     </Head>
     <Box sx={{ minHeight: '100vh',  display: 'flex', justifyContent: 'center', alignItems:'center' }}>
