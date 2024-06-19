@@ -177,14 +177,14 @@ const Generator = () => {
                     }} >
                       <Icon icon='ic:baseline-telegram' fontSize={30} />Share To Earn
                     </BusAiButton>
-                    <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
-                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                    <Box   sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
+                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (ImageId) window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
 
                       }} >
                         <Icon icon='ic:baseline-facebook' fontSize={30} />Share
                       </BusAiButton>
-                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+                      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (ImageId) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(ImageId), '_blank')
                       }} >
                         <Icon icon='ri:twitter-x-fill' fontSize={25} />Share
