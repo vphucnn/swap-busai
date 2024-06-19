@@ -171,7 +171,7 @@ const TableHistory = () => {
                         <Icon icon='ic:baseline-facebook' fontSize={isMobile? 20: 30} />Share
                       </BusAiButton>
                       <BusAiButton  size={isMobile ? 'small' : 'medium'} sx={{ width: "100%", gap: '0.5rem' , fontSize: isMobile ? '14px' : '18px',  '&:hover': { borderBottom: '4px #CC0083  solid' }}} disabled={!row?._id} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                        if (row?._id) window.open('https://x.com/intent/post?url=' + API.getUrlImageById(row?._id), '_blank')
+                        if (row?._id) window.open(`https://x.com/intent/post?text=Dog, cat? No, now Panda ruled the world%0AThe great $BUSAI has arrive&url=` + API.getUrlImageById(row?._id), '_blank')
                       }} >
                         <Icon icon='ri:twitter-x-fill' fontSize={isMobile? 18: 25} />Share
                       </BusAiButton>
