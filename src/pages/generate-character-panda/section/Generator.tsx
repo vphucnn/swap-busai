@@ -110,7 +110,7 @@ const Generator = () => {
             setIsLoading(true)
           }else{
               updateProfile()
-              const response = await API.getTask(1, 1)
+              const response = await API.getTask(1, 1, false)
               if (response?.data?.data?.data[0]?._id) {
                 setImageId(response?.data?.data?.data[0]?._id)
                 setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
