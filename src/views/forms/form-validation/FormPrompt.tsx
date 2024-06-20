@@ -78,7 +78,8 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
     // NProgress.start()
     setIsLoading(true)
     await fetchData(control._formValues.prompt)
-    setIsLoading(false)
+
+    // setIsLoading(false)
 
     // NProgress.done()
     if (setShow) setShow(true)
@@ -88,11 +89,12 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
     try {
 
       const response = await API.textToImage(prompt);
-      setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.task_result?.id))
+
+      // setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.task_result?.id))
 
       // setImageId(response?.data?.data?.task_result?.id)
-      toast.success('Generate done')
-      updateProfile()
+      // toast.success('Generate done')
+      // updateProfile()
 
       return response.data
     } catch (error: any) {
