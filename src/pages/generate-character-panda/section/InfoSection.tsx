@@ -1,5 +1,6 @@
 import { Box, Typography } from '@mui/material';
-import { maxWidth } from '@mui/system';
+
+// import { maxWidth } from '@mui/system';
 import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 
 const InfoSection = () => {
