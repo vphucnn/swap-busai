@@ -62,7 +62,7 @@ const TableHistory = () => {
       const response = await API.shareTelegram(id);
       NProgress.done()
       updateProfile()
-      fetchData()
+      await fetchData()
       window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
     } catch (error: any) {
       NProgress.done()

@@ -62,10 +62,11 @@ const Generator = () => {
     }
     try {
       NProgress.start()
+      setShareStatus(true)
       const response = await API.shareTelegram(id);
       NProgress.done()
-      setShareStatus(true)
       updateProfile()
+      setShareStatus(false)
       window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
     } catch (error : any) {
       NProgress.done()
@@ -114,6 +115,9 @@ const Generator = () => {
               if (response?.data?.data?.data[0]?._id) {
                 setImageId(response?.data?.data?.data[0]?._id)
                 setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
+              }else{
+                setUrlImg('/images/general/gen-default.png')
+
               }
               setIsLoading(false)
           }
