@@ -102,6 +102,7 @@ const Generator = () => {
   // function checkProfile() {
   //   if (checkStatus) updateProfile()
   // }
+  const [hasCalled, setHasCalled] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -111,7 +112,7 @@ const Generator = () => {
           if(pending){
             setIsLoading(true)
           }else{
-              if(!isLoading){
+              if(!hasCalled){
               updateProfile()
               const response = await API.getTask(1, 1, false)
               if (response?.data?.data?.data[0]?._id) {
@@ -124,7 +125,7 @@ const Generator = () => {
               }
               setIsLoading(false)
             }else{
-              setIsLoading(false)
+              setHasCalled(false)
             }
           }
         }
@@ -134,7 +135,7 @@ const Generator = () => {
     };
     fetchData()
 
-    const intervalId = setInterval(fetchData, 10000);
+    const intervalId = setInterval(fetchData, 20000);
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId);
@@ -149,6 +150,11 @@ const Generator = () => {
   //   if (!urlImg) { getShareImage(); }
 
   // }, [urlImg]);
+
+    useEffect(() => {
+    if (isLoading) { setHasCalled(true); }
+
+  }, [isLoading]);
 
   return (
     <Box
