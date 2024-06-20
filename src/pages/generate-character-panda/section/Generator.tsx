@@ -75,20 +75,20 @@ const Generator = () => {
     }
   };
 
-  const getShareImage = async () => {
-    setUrlImg('/images/general/gen-default.png')
-    setImageId(null)
+  // const getShareImage = async () => {
+  //   setUrlImg('/images/general/gen-default.png')
+  //   setImageId(null)
 
-    // try {
-    //   const response = await API.getTask(1, 1, false)
-    //   if (response?.data?.data?.data[0]?._id) {
-    //     setImageId(response?.data?.data?.data[0]?._id)
-    //     setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-    //   }
-    // } catch (error) {
-    //   console.log(error)
-    // }
-  };
+  //   // try {
+  //   //   const response = await API.getTask(1, 1, false)
+  //   //   if (response?.data?.data?.data[0]?._id) {
+  //   //     setImageId(response?.data?.data?.data[0]?._id)
+  //   //     setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
+  //   //   }
+  //   // } catch (error) {
+  //   //   console.log(error)
+  //   // }
+  // };
 
 
   // useEffect(() => {
@@ -141,10 +141,10 @@ const Generator = () => {
     if (ImageId) setShareStatus(false);
   }, [ImageId]);
 
-  useEffect(() => {
-    if (!urlImg) { getShareImage(); }
+  // useEffect(() => {
+  //   if (!urlImg) { getShareImage(); }
 
-  }, [urlImg]);
+  // }, [urlImg]);
 
   return (
     <Box
