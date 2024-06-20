@@ -1,4 +1,5 @@
 import { Box, Typography } from '@mui/material';
+import { maxWidth } from '@mui/system';
 import { BusAiButton } from 'src/@core/components/button/BusAiButton';
 
 const InfoSection = () => {
@@ -41,7 +42,7 @@ const InfoSection = () => {
             </BusAiButton>
           </Box>
           <Box sx={{ maxWidth: '90vw', width: { xs: '100%', md: '50%' } }}>
-            <img src='/images/general/pc.png' alt='box' />
+            <img src='/images/general/pc.png' style={{maxWidth: '100%'}} alt='box' />
           </Box>
 
         </Box>
