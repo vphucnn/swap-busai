@@ -111,6 +111,7 @@ const Generator = () => {
           if(pending){
             setIsLoading(true)
           }else{
+              if(!isLoading){
               updateProfile()
               const response = await API.getTask(1, 1, false)
               if (response?.data?.data?.data[0]?._id) {
@@ -122,6 +123,9 @@ const Generator = () => {
 
               }
               setIsLoading(false)
+            }else{
+              setIsLoading(false)
+            }
           }
         }
       } catch (error) {
@@ -130,7 +134,7 @@ const Generator = () => {
     };
     fetchData()
 
-    const intervalId = setInterval(fetchData, 5000);
+    const intervalId = setInterval(fetchData, 10000);
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId);
