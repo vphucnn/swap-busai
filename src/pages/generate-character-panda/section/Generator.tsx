@@ -77,6 +77,7 @@ const Generator = () => {
 
   const getShareImage = async () => {
     setUrlImg('/images/general/gen-default.png')
+    setImageId(null)
 
     // try {
     //   const response = await API.getTask(1, 1, false)
@@ -117,6 +118,7 @@ const Generator = () => {
                 setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
               }else{
                 setUrlImg('/images/general/gen-default.png')
+                setImageId(null)
 
               }
               setIsLoading(false)
