@@ -48,12 +48,12 @@ interface Props {
 
 
 
-const FormPrompt = ({ setIsLoading, isLoading, setShow, setUrlImg }: Props) => {
+const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
   // ** States
   // ** Hooks
 
   const [listChip, setListChip] = useState<string[]>([])
-  const { user, updateProfile } = useAuth()
+  const { user } = useAuth()
 
   const reloadChip = () => {
     setListChip(getRandomHints(listPrompt))

@@ -69,19 +69,19 @@ const Generator = () => {
     }
   };
 
-  const getShareImage = async () => {
-    setUrlImg('/images/general/gen-default.png')
+  // const getShareImage = async () => {
+  //   setUrlImg('/images/general/gen-default.png')
 
-    try {
-      const response = await API.getTask(1, 1, false)
-      if (response?.data?.data?.data[0]?._id) {
-        setImageId(response?.data?.data?.data[0]?._id)
-        setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  };
+  //   try {
+  //     const response = await API.getTask(1, 1, false)
+  //     if (response?.data?.data?.data[0]?._id) {
+  //       setImageId(response?.data?.data?.data[0]?._id)
+  //       setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // };
 
 
   // useEffect(() => {
