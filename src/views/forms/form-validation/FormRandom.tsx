@@ -93,7 +93,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow }: Props) => {
     await fetchData(genPrompt())
 
     // NProgress.done()
-    setIsLoading(false)
+    // setIsLoading(false)
     if (setShow) setShow(true)
   }
   const [currentStep, setCurrentStep] = useState<number>(1)
@@ -108,10 +108,10 @@ const FormRandom = ({ setIsLoading, isLoading, setShow }: Props) => {
       const response = await API.textToImage(prompt);
 
       // setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.task_result?.id))
-      console.log(response?.data?.data)
+      // console.log(response?.data?.data)
 
       // setImageId(response?.data?.data?.task_result?.id)
-      toast.success('Generate done')
+      // toast.success('Generate done')
 
       return response.data
     } catch (error: any) {
