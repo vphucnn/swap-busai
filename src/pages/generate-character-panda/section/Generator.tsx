@@ -130,10 +130,10 @@ const Generator = () => {
     if (ImageId) setShareStatus(false);
   }, [ImageId]);
 
-  useEffect(() => {
-    if (!urlImg) { getShareImage(); }
+  // useEffect(() => {
+  //   if (!urlImg) { getShareImage(); }
 
-  }, [urlImg]);
+  // }, [urlImg]);
 
   return (
     <Box
