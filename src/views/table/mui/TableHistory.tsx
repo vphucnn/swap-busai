@@ -64,9 +64,10 @@ const TableHistory = () => {
       updateProfile()
       fetchData()
       window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
-    } catch (error) {
+    } catch (error: any) {
       NProgress.done()
-      toast.error('Share error')
+      console.log(error?.response)
+      toast.error(error?.response?.data?.message || 'Share error')
     }
   };
 
