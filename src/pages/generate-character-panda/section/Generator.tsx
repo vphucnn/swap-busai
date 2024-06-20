@@ -24,6 +24,10 @@ const Img = styled('img')(({ theme }) => ({
   maxWidth: "100%",
   borderRadius: '15px',
   width: "250px",
+  ':hover': {
+    transform: 'scale(1.05)', /* Zoom on hover */
+    transition: 'transform 2s ease-in -out' /* Smooth transition */
+  },
   [theme.breakpoints.down('lg')]: {
     marginTop: theme.spacing(5)
   },
