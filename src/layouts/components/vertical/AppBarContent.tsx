@@ -39,7 +39,7 @@ const AppBarContent = (props: Props) => {
     <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
 
-        <Link href='/generate-character-panda'>
+        <Link href='https://busai.me'>
           <BusAiLogo height={40} width={'fit-content'} />
         </Link>
         {/* {auth.user && <Autocomplete hidden={hidden} settings={settings} />} */}

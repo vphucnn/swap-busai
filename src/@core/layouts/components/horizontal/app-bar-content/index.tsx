@@ -41,7 +41,7 @@ const AppBarContent = (props: Props) => {
       {userAppBarBranding ? (
         userAppBarBranding(props)
       ) : (
-        <LinkStyled href='/generate-character-panda'>
+        <LinkStyled href='https://busai.me'>
           <BusAiLogo/>
           {/* <Typography variant='h4' sx={{ ml: 2.5, fontWeight: 700, lineHeight: '24px' }}>
             {themeConfig.templateName}
