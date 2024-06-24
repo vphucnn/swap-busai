@@ -67,7 +67,8 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
     control,
     handleSubmit,
     setValue,
-    formState: { errors }
+    formState: { errors },
+    register
   } = useForm<FormInputs>({ defaultValues })
 
   const onSubmit = async () => {
@@ -115,6 +116,14 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
     setListChip(newListChip)
   };
 
+  const validateLength = (value:any) => {
+    if (value && value.length > 500) { // Change 10 to your desired limit
+      return toast.error('Input exceeds the maximum character limit.');
+    }
+
+return undefined; // No error
+  };
+
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
       <Box>
@@ -148,13 +157,13 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
               name='prompt'
               control={control}
               rules={{ required: true }}
-              render={({ field: { value, onChange } }) => (
+              render={({ field: { value } }) => (
                 <CustomTextField
                   fullWidth
                   rows={7}
                   multiline
                   value={value}
-                  onChange={onChange}
+                  {...register('prompt', { validate: validateLength })}
                   placeholder='Enter your prompt here'
                   error={Boolean(errors.prompt)}
                   aria-describedby='validation-basic-first-name'
