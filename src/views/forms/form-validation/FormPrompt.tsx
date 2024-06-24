@@ -98,8 +98,8 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
 
       return response.data
     } catch (error: any) {
-      console.log(error)
-      toast.error(error?.response.data.message)
+      // console.log(error)
+      // toast.error(error?.response.data.message)
     }
   };
   const handleClick = (value: string, index: number) => {
