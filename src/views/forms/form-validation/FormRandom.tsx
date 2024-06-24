@@ -60,7 +60,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow }: Props) => {
   const genPrompt = () => {
     let resultString = "";
     for (const obj of listChip) {
-      resultString += `${obj.type}: ${obj.chips[0]}.`;
+      resultString += `${obj.chips[0]},`;
     }
 
     return resultString
@@ -115,7 +115,7 @@ const FormRandom = ({ setIsLoading, isLoading, setShow }: Props) => {
 
       return response.data
     } catch (error: any) {
-      toast.error(error?.response.data.message)
+      // toast.error(error?.response.data.message)
     }
   };
 
