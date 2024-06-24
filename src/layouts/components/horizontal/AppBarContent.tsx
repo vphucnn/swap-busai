@@ -137,6 +137,11 @@ const AppBarContent = (props: Props) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+      <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+        window.open(`/BUSAI%20-%20Point%20policy.pdf`, '_blank')
+      }} >
+        Point Policy
+      </BusAiButton>
       <BusAiButton backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} onClick={() => {
         window.open(process.env.NEXT_PUBLIC_LINK_SWAP_POINT, '_blank');
       }}>Swap Points</BusAiButton>
