@@ -118,7 +118,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
 
   const validateLength = (value:any) => {
     if (value && value.length > 500) { // Change 10 to your desired limit
-      return toast.error('Input exceeds the maximum character limit.');
+      return toast.error('Input exceeds the maximum 500 character limit.');
     }
 
 return undefined; // No error
