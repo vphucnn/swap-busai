@@ -1,6 +1,6 @@
 import { Box, Typography, styled } from '@mui/material';
 import type { SyntheticEvent } from 'react';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 // import { SwiperGenerateInage } from 'src/views/components/swiper/SwiperGenerateInage';
 import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
@@ -37,11 +37,15 @@ const Img = styled('img')(({ theme }) => ({
     marginTop: theme.spacing(5)
   }
 }))
+let pendingId : any = null;
 const Generator = () => {
 
   const [urlImg, setUrlImg] = useState<string | null>(null)
   const [ImageId, setImageId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(false);
+
+  // const [pendingId, setPendingId] = useState<string | null>(null);
+  // const currentPendingIdRef = useRef(pendingId); // Create a ref to store the current count
 
   const [shareStatus, setShareStatus] = useState<boolean>(false)
   const { updateProfile, user, loginTelegramCustom } = useAuth()
@@ -110,8 +114,21 @@ const Generator = () => {
         if(user){
           const pending = await (await API.checkPending()).data.data
           if(pending){
+            if(!pendingId) pendingId=pending._id;
             setIsLoading(true)
           }else{
+              if(pendingId){
+                const task = await API.checkTaskByID(pendingId)
+                console.log("task", task)
+                if(task?.data?.data?.status.general_status === 'FAILED'){
+                  toast.error("Generate FAILED")
+                }
+                console.log()
+                if(task?.data?.data?.status.general_status === 'SUCCESS'){
+                  toast.success("Generate SUCCESS")
+                }
+                pendingId = null
+              }
               if(!hasCalled){
               updateProfile()
               const response = await API.getTask(1, 1, false)
@@ -121,7 +138,6 @@ const Generator = () => {
               }else{
                 setUrlImg('/images/general/gen-default.png')
                 setImageId(null)
-
               }
               setIsLoading(false)
             }else{
@@ -135,7 +151,7 @@ const Generator = () => {
     };
     fetchData()
 
-    const intervalId = setInterval(fetchData, 20000);
+    const intervalId = setInterval(fetchData, 5000);
 
     // Cleanup function to clear the interval when the component unmounts
     return () => clearInterval(intervalId);
@@ -145,6 +161,9 @@ const Generator = () => {
   useEffect(() => {
     if (ImageId) setShareStatus(false);
   }, [ImageId]);
+
+
+
 
   // useEffect(() => {
   //   if (!urlImg) { getShareImage(); }

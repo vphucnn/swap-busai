@@ -53,6 +53,9 @@ const API = {
   checkPending: () => {
     return api.get('/ai/text-to-image/check-pending');
   },
+  checkTaskByID: (id: string) => {
+    return api.get('/ai/task/'  + id);
+  },
 };
 
 export default API;
