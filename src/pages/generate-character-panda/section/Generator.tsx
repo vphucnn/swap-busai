@@ -37,7 +37,8 @@ const Img = styled('img')(({ theme }) => ({
     marginTop: theme.spacing(5)
   }
 }))
-let pendingId : any = null;
+let pendingId: any = null;
+let hasCalled = true;
 const Generator = () => {
 
   const [urlImg, setUrlImg] = useState<string | null>(null)
@@ -72,76 +73,56 @@ const Generator = () => {
       updateProfile()
       setShareStatus(false)
       window.open(process.env.NEXT_PUBLIC_LINK_SHARE + '/' + response.data.data.message_id, '_blank');
-    } catch (error : any) {
+    } catch (error: any) {
       NProgress.done()
       console.log(error?.response)
       toast.error(error?.response?.data?.message || 'Share error')
     }
   };
 
-  // const getShareImage = async () => {
-  //   setUrlImg('/images/general/gen-default.png')
-  //   setImageId(null)
+  const getShareImage = async () => {
+    updateProfile()
+    const response = await API.getTask(1, 1, false)
+    if (response?.data?.data?.data[0]?._id) {
+      setImageId(response?.data?.data?.data[0]?._id)
+      setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
+    } else {
+      setUrlImg('/images/general/gen-default.png')
+      setImageId(null)
+    }
+    setIsLoading(false)
+    hasCalled= true;
+  };
 
-  //   // try {
-  //   //   const response = await API.getTask(1, 1, false)
-  //   //   if (response?.data?.data?.data[0]?._id) {
-  //   //     setImageId(response?.data?.data?.data[0]?._id)
-  //   //     setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-  //   //   }
-  //   // } catch (error) {
-  //   //   console.log(error)
-  //   // }
-  // };
 
 
-  // useEffect(() => {
-  //   if (checkStatus) {
-  //     const interval = setInterval(checkProfile, 30000);
-
-  //     return () => clearInterval(interval);
-  //   }
-  // }, [checkStatus]);
-
-  // function checkProfile() {
-  //   if (checkStatus) updateProfile()
-  // }
-  const [hasCalled, setHasCalled] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        if(user){
+        if (user) {
           const pending = await (await API.checkPending()).data.data
-          if(pending){
-            if(!pendingId) pendingId=pending._id;
-            setIsLoading(true)
-          }else{
-              if(pendingId){
-                const task = await API.checkTaskByID(pendingId)
-                console.log("task", task)
-                if(task?.data?.data?.status.general_status === 'FAILED'){
-                  toast.error("Generate FAILED")
-                }
-                console.log()
-                if(task?.data?.data?.status.general_status === 'SUCCESS'){
-                  toast.success("Generate SUCCESS")
-                }
-                pendingId = null
+          if (pending) {
+            if (!pendingId){
+              pendingId = pending._id;
+              setIsLoading(true)
+            }
+          } else {
+            if (pendingId) {
+              const task = await API.checkTaskByID(pendingId)
+              if (task?.data?.data?.status.general_status === 'FAILED') {
+                getShareImage()
+                toast.error("Generate FAILED")
               }
-              if(!hasCalled){
-              updateProfile()
-              const response = await API.getTask(1, 1, false)
-              if (response?.data?.data?.data[0]?._id) {
-                setImageId(response?.data?.data?.data[0]?._id)
-                setUrlImg(API.getUrlImageMiniSizeById(response?.data?.data?.data[0]?._id))
-              }else{
-                setUrlImg('/images/general/gen-default.png')
-                setImageId(null)
+              if (task?.data?.data?.status.general_status === 'SUCCESS') {
+                getShareImage()
+                toast.success("Generate SUCCESS")
               }
-              setIsLoading(false)
-            }else{
-              setHasCalled(false)
+              pendingId = null
+            }
+            if (!hasCalled) {
+              console.log("!hasCalled")
+              getShareImage()
             }
           }
         }
@@ -170,8 +151,8 @@ const Generator = () => {
 
   // }, [urlImg]);
 
-    useEffect(() => {
-    if (isLoading) { setHasCalled(true); }
+  useEffect(() => {
+    if (isLoading) { hasCalled = true }
 
   }, [isLoading]);
 
@@ -222,15 +203,15 @@ const Generator = () => {
               </TabContext>
             </Box>
           </Box>
-          <Box sx={{ display: 'flex',  alignItems: 'flex-end', justifyContent:'center',   width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem', paddingBottom: '1.5rem' }}>
-            <Box sx={{  display: 'flex',   width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
+          <Box sx={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'center', width: { xs: '100%', md: '40%' }, position: 'relative', gap: '1rem', paddingBottom: '1.5rem' }}>
+            <Box sx={{ display: 'flex', width: '400px', justifyContent: 'center', maxWidth: '100vw' }}>
               {/* <SwiperGenerateInage /> */}
               <Box sx={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem', marginTop: '0.6rem' }}>
                 <Box>
-                  <Box sx={{ width: 'fit-content', display: 'flex',  justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
-                    {urlImg && !isLoading  &&  <Img src={urlImg} alt='box' />}
-                    {isLoading  &&
-                      <Box sx={{maxWidth: '98vw', borderRadius: '15px' , width: '250px', height: '250px' ,display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
+                  <Box sx={{ width: 'fit-content', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '300px' }}>
+                    {urlImg && !isLoading && <Img src={urlImg} alt='box' />}
+                    {isLoading &&
+                      <Box sx={{ maxWidth: '98vw', borderRadius: '15px', width: '250px', height: '250px', display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '1rem' }}>
                         <Box className="loader">
 
                         </Box>
@@ -248,7 +229,7 @@ const Generator = () => {
                     }} >
                       <Icon icon='ic:baseline-telegram' fontSize={30} />Share To Earn
                     </BusAiButton>
-                    <Box   sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
+                    <Box sx={{ display: 'flex', gap: '1rem', justifyContent: 'space-between' }}>
                       <BusAiButton sx={{ gap: '0.5rem', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!ImageId || isLoading} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
                         if (ImageId) window.open('https://www.facebook.com/sharer/sharer.php?u=' + API.getUrlImageById(ImageId), '_blank');
 
@@ -263,7 +244,7 @@ const Generator = () => {
                     </Box>
                   </>
                   : <BusAiButton sx={{ width: "100%" }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
-                    if(!user){
+                    if (!user) {
                       return loginTelegramCustom()
                     }
 

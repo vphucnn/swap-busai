@@ -42,9 +42,7 @@ const TableReward = () => {
       // setIsLoading(true);
       // setError(null);
       try {
-        console.log("getTable")
         const response = await API.getTask(page, pageSize, true)
-        console.log("getTable", response.data.data.data)
         setData(response.data.data.data)
         setTotalPages(Math.ceil(response.data.data.total / 10))
 
