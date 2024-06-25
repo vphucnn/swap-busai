@@ -1,6 +1,6 @@
 import { Box, Typography, styled } from '@mui/material';
 import type { SyntheticEvent } from 'react';
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 // import { SwiperGenerateInage } from 'src/views/components/swiper/SwiperGenerateInage';
 import FormPrompt from 'src/views/forms/form-validation/FormPrompt';
