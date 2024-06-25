@@ -105,7 +105,7 @@ const AuthProvider = ({ children }: Props) => {
       window.localStorage.setItem(authConfig.userData, JSON.stringify(response.data.data.profile))
       const profile = await API.getProfile()
       setUser({ ...profile.data.data })
-      Cookies.set('telegramData', JSON.stringify(data), { expires: 365 });
+      Cookies.set('telegramData', JSON.stringify(data), { expires: 365 , domain: '.busai.me'});
       window.localStorage.setItem(authConfig.userData, JSON.stringify(profile.data.data))
       console.log("profile", profile)
 
