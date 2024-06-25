@@ -14,6 +14,7 @@ import authConfig from 'src/configs/auth'
 import { AuthValuesType, LoginParams, ErrCallbackType, UserDataType } from './types'
 import API from 'src/api'
 import toast from 'react-hot-toast'
+import Cookies from 'js-cookie';
 
 // ** Defaults
 const defaultProvider: AuthValuesType = {
@@ -104,6 +105,7 @@ const AuthProvider = ({ children }: Props) => {
       window.localStorage.setItem(authConfig.userData, JSON.stringify(response.data.data.profile))
       const profile = await API.getProfile()
       setUser({ ...profile.data.data })
+      Cookies.set('telegramData', JSON.stringify(data), { expires: 365 });
       window.localStorage.setItem(authConfig.userData, JSON.stringify(profile.data.data))
       console.log("profile", profile)
 
