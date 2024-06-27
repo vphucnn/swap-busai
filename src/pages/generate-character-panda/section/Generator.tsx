@@ -81,6 +81,12 @@ const Generator = () => {
   };
 
   const getShareImage = async () => {
+    if (!user) {
+      setUrlImg('/images/general/gen-default.png')
+      setImageId(null)
+
+      return;
+    }
     updateProfile()
     const response = await API.getTask(1, 1, false)
     if (response?.data?.data?.data[0]?._id) {
@@ -91,7 +97,7 @@ const Generator = () => {
       setImageId(null)
     }
     setIsLoading(false)
-    hasCalled= true;
+    hasCalled = true;
   };
 
 
@@ -103,7 +109,7 @@ const Generator = () => {
         if (user) {
           const pending = await (await API.checkPending()).data.data
           if (pending) {
-            if (!pendingId){
+            if (!pendingId) {
               pendingId = pending._id;
               setIsLoading(true)
             }
@@ -146,10 +152,9 @@ const Generator = () => {
 
 
 
-  // useEffect(() => {
-  //   if (!urlImg) { getShareImage(); }
-
-  // }, [urlImg]);
+  useEffect(() => {
+    if (!urlImg) { getShareImage(); }
+  }, [urlImg]);
 
   useEffect(() => {
     if (isLoading) { hasCalled = true }
@@ -174,6 +179,7 @@ const Generator = () => {
         <Box sx={{ textAlign: 'center', marginTop: { xs: '1rem', md: '2rem' }, }}>
           <Typography sx={{ typography: { lg: 'h1', xs: 'h3' } }}>
             Make Busai your true style
+
           </Typography>
         </Box>
         <Box sx={{ display: 'flex', gap: '1rem', flexDirection: { xs: 'column', md: 'row' }, marginTop: { xs: '20px', md: '40px' }, }}>
