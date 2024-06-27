@@ -108,6 +108,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
     const currentPrompt = control._formValues?.prompt || ''; // Handle potential undefined value
     const updatedPrompt = currentPrompt ? `${currentPrompt}, ${value}` : value;
     setValue('prompt', updatedPrompt);
+    setLengthPrompt(updatedPrompt.length);
     let chip = getRandomOneHints(listPrompt)
     while (chip === value) {
       chip = getRandomOneHints(listPrompt)      // Khối mã cần lặp lại
