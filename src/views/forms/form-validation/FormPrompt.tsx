@@ -184,7 +184,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
           </Grid>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
-              <BusAiButton disabled={isLoading || !user} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
+              <BusAiButton disabled={isLoading || !user || !lengthPrompt || lengthPrompt > 500} backgroundColor={'#FF66C8'} borderBottom={'4px #CC0083 solid'} type='submit' variant='contained'>
                 Generate
               </BusAiButton>
               <Box sx={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
