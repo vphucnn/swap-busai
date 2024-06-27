@@ -54,6 +54,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
 
   const [listChip, setListChip] = useState<string[]>([])
   const { user } = useAuth()
+  const [lengthPrompt, setLengthPrompt] = useState<number>()
 
   const reloadChip = () => {
     setListChip(getRandomHints(listPrompt))
@@ -72,7 +73,7 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
   } = useForm<FormInputs>({ defaultValues })
 
   const onSubmit = async () => {
-    if(!user) {
+    if (!user) {
       return toast.error("You need to log in")
     }
 
@@ -116,12 +117,12 @@ const FormPrompt = ({ setIsLoading, isLoading, setShow }: Props) => {
     setListChip(newListChip)
   };
 
-  const validateLength = (value:any) => {
+  const validateLength = (value: any) => {
     if (value && value.length > 500) { // Change 10 to your desired limit
       return toast.error('Input exceeds the maximum 500 character limit.');
     }
 
-return undefined; // No error
+    return undefined; // No error
   };
 
   return (
@@ -131,7 +132,7 @@ return undefined; // No error
           Customizing Busai according to your ideas is simple, just write a detailed description in the box below. Share your achievements in Busai's community and receive surprising rewards
         </Typography>
       </Box>
-      {listChip && <Grid container gap={'1rem'} sx={{marginTop:'1rem'}}>
+      {listChip && <Grid container gap={'1rem'} sx={{ marginTop: '1rem' }}>
         {
           listChip.map((item, index) => (<BusAiChip key={index} onClick={() => handleClick(item, index)} label={item} />))
         }
@@ -163,14 +164,22 @@ return undefined; // No error
                   rows={7}
                   multiline
                   value={value}
-                  {...register('prompt', { validate: validateLength })}
+                  {...register('prompt', {
+                    validate: validateLength,
+                    onChange: (e) => {
+                      setLengthPrompt(e.target.value.length)
+                    },
+                  })}
                   placeholder='Enter your prompt here'
                   error={Boolean(errors.prompt)}
                   aria-describedby='validation-basic-first-name'
-                  {...(errors.prompt && { helperText: 'This field is required' })}
+                  {...(errors.prompt && { helperText: "" })}
                 />
               )}
             />
+            <Typography variant="body1" sx={{float: 'right', marginTop: '0.3rem', color: lengthPrompt && lengthPrompt > 500 ? 'red': '' }}>
+              {`${lengthPrompt?lengthPrompt :  0}/500`}
+            </Typography>
           </Grid>
           <Grid item xs={12} container justifyContent="flex-start" >
             <Box sx={{ display: 'flex', flexDirection: 'row', gap: '1rem' }}>
