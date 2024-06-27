@@ -130,6 +130,7 @@ const Generator = () => {
               console.log("!hasCalled")
               getShareImage()
             }
+            getShareImage()
           }
         }
       } catch (error) {
@@ -152,9 +153,9 @@ const Generator = () => {
 
 
 
-  useEffect(() => {
-    if (!urlImg) { getShareImage(); }
-  }, [urlImg]);
+  // useEffect(() => {
+  //   if (!urlImg) { getShareImage(); }
+  // }, [urlImg]);
 
   useEffect(() => {
     if (isLoading) { hasCalled = true }
