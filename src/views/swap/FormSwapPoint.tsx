@@ -4,11 +4,13 @@ import Card from '@mui/material/Card'
 import { Box, Theme } from '@mui/system'
 import { useState } from 'react';
 import { BusAiButton } from 'src/@core/components/button/BusAiButton';
+import DialogSwapComingSoon from '../components/dialogs/DialogSwapComingSoon';
 
 const FormSwapPoint = () => {
 
   const [value, setValue] = useState();
   const isMobile = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'))
+  const [open, setOpen] = useState<boolean>(false)
 
   // const [maxValue, setMaxValue] = useState();
   const [error, setError] = useState<string | null>(null);
@@ -80,10 +82,12 @@ const FormSwapPoint = () => {
       <Box>
         <BusAiButton size={isMobile ? 'small' : 'medium'} sx={{ width: "100%", gap: '0.5rem', fontSize: isMobile ? '14px' : '18px', '&:hover': { borderBottom: '4px #CC0083  solid' } }} disabled={!!error} backgroundColor={'#CBFB45'} borderBottom={'4px #6F9603 solid'} onClick={() => {
           console.log(value)
+          setOpen(true)
         }} >
           Share
         </BusAiButton>
       </Box>
+      <DialogSwapComingSoon setOpen={setOpen} open={open} />
     </Card >
   )
 }
