@@ -91,7 +91,7 @@ export default function Page() {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'column', marginTop: '2rem' }}>
         <Button variant="contained" onClick={() => {
-          router.replace('/generate-character-panda/')
+          router.replace('/')
         }}>Start</Button>
       </Box >
     </Box>

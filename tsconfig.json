@@ -31,7 +31,12 @@
   },
   "include": [
     "src",
-    "declaration.d.ts"
+    "declaration.d.ts",
+    "save/connect-wallet",
+    "save/generate-character-panda",
+    "save/history",
+    "save/[id]",
+    "save/profile"
   ],
   "exclude": [
     "node_modules"

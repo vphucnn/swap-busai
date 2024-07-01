@@ -136,7 +136,7 @@ const AuthProvider = ({ children }: Props) => {
     setUser(null)
     window.localStorage.removeItem(authConfig.userData)
     window.localStorage.removeItem(authConfig.storageTokenKeyName)
-    router.push('/generate-character-panda')
+    router.push('/')
   }
 
   const values = {

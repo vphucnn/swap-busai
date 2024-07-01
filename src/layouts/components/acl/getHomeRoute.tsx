@@ -3,7 +3,7 @@
  */
 const getHomeRoute = (role: string) => {
   if (role === 'client') return '/acl'
-  else return '/generate-character-panda'
+  else return '/'
 }
 
 export default getHomeRoute

@@ -53,7 +53,9 @@ const AclGuard = (props: AclGuardProps) => {
   if (auth.user && !ability) {
     ability = buildAbilityFor(auth.user.role || 'USER', aclAbilities.subject)
     if (router.route === '/') {
-      return <Spinner />
+      return <>{children}</>
+
+      // return <Spinner />
     }
   }
 
