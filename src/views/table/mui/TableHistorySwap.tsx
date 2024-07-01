@@ -9,9 +9,13 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import { useEffect, useState } from 'react'
 import PageIndicator from 'src/@core/components/pagination/PageIndicator'
+import PandaTable from 'src/@core/components/svg/PandaTable'
+import RainBow from 'src/@core/components/svg/RainBow'
 import { formatDateddmmyyyyhhmm } from 'src/@core/utils/format'
 import API from 'src/api'
 import { useAuth } from 'src/hooks/useAuth'
+import HandPanda from 'src/views/swap/HandPanda'
+import Stars from 'src/views/swap/Stars'
 
 // const createData = (user: string, type: string, reward: number) => {
 //   return { user, type, reward }
@@ -60,72 +64,88 @@ const TableHistorySwap = () => {
   }, [page, pageSize, user]);
 
   return (
-    <Box sx={{ background: "#726FF7", width: '1350px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
-      {data && <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
-        <Table aria-label='simple table'>
-          <TableHead>
-            <TableRow>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
-                <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
-                  Date
-                </Typography>
-              </TableCell>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
-                <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
-                  Status
-                </Typography>
-              </TableCell>
-              <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
-                <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
-                  Swap Points
-                </Typography>
-              </TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody >
-            {data.map(row => (
-              <TableRow
-                key={row.user}
-                sx={{
-                  '&:last-of-type td, &:last-of-type th': {
-                    paddingTop: '2rem'
-                  },
-                  '&:first-of-type td, &:first-of-type th': {
-                    paddingTop: '2rem !important'
-                  }
-                }}
-              >
-                <TableCell component='th' scope='row' sx={{ width: "33%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
-                  <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
-                    {row.timeShare ? formatDateddmmyyyyhhmm(row?.time?.end_generate) : null}
+    <Box sx={{ position: 'relative', background: "#726FF7", width: '1350px', maxWidth: '95vw', margin: 'auto', marginBottom: '5rem', borderRadius: '64px' }}>
+
+      <Box sx={{ position: 'absolute', right: -40, bottom: 35, zIndex: 10 }}>
+        <RainBow />
+      </Box>
+      <Box sx={{ position: 'absolute', top: -150, right: 180, zIndex: 10 }}>
+        <PandaTable />
+      </Box>
+      <Box sx={{ position: 'absolute', top: -28, right: 200, zIndex: 30 }}>
+        <HandPanda />
+      </Box>
+
+      <Box sx={{ position: 'absolute', bottom: 120, left: -40, zIndex: 30 }}>
+        <Stars />
+      </Box>
+      <Box sx={{ position: 'relative', zIndex: 20 }}>
+        {data && <TableContainer sx={{ overflowX: 'auto', background: "#726FF7", borderRadius: '64px 64px 0px 0px' }} component={Paper}>
+          <Table aria-label='simple table'>
+            <TableHead>
+              <TableRow>
+                <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }}>
+                  <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
+                    Date
                   </Typography>
                 </TableCell>
-                <TableCell align='right' sx={{ width: "33%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }} >  <Typography variant="body1" sx={{ color: 'white' }} >
-                  {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
-                </Typography></TableCell>
-                <TableCell align='right' sx={{ width: "33%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}> <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
-                  {row.sharePoint}
-                </Typography></TableCell>
+                <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
+                  <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
+                    Status
+                  </Typography>
+                </TableCell>
+                <TableCell sx={{ borderBottom: '1px solid rgba(255, 255, 255, 1)', textTransform: 'none', textAlign: 'center', padding: '3rem 0 2rem 0' }} align='right'>
+                  <Typography variant="tableHeader" sx={{ fontSize: { lg: '32px', xs: '16px' } }}>
+                    Swap Points
+                  </Typography>
+                </TableCell>
               </TableRow>
-            ))}
+            </TableHead>
+            <TableBody >
+              {data.map(row => (
+                <TableRow
+                  key={row.user}
+                  sx={{
+                    '&:last-of-type td, &:last-of-type th': {
+                      paddingTop: '2rem'
+                    },
+                    '&:first-of-type td, &:first-of-type th': {
+                      paddingTop: '2rem !important'
+                    }
+                  }}
+                >
+                  <TableCell component='th' scope='row' sx={{ width: "33%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}>
+                    <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
+                      {row.timeShare ? formatDateddmmyyyyhhmm(row?.time?.end_generate) : null}
+                    </Typography>
+                  </TableCell>
+                  <TableCell align='right' sx={{ width: "33%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', fontSize: { lg: '18px', xs: '14px' } }} >  <Typography variant="body1" sx={{ color: 'white' }} >
+                    {row?.shareStatus?.toString() === 'true' ? 'successful' : 'false'}
+                  </Typography></TableCell>
+                  <TableCell align='right' sx={{ width: "33%", borderBottom: '1px solid rgba(255, 255, 255, 0.2)', textAlign: 'center', padding: '1rem', }}> <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
+                    {row.sharePoint}
+                  </Typography></TableCell>
+                </TableRow>
+              ))}
 
-          </TableBody>
-        </Table>
-        {
-          (!data || data.length < 1) &&
-          <Box  sx={{ display: 'flex', flexDirection: "column", marginTop: '3rem', justifyContent: 'center', gap: '1rem' }}>
-            <Box>
-              <Img src={'/images/general/quiet.png'} />
+            </TableBody>
+          </Table>
+          {
+            (!data || data.length < 1) &&
+            <Box sx={{ display: 'flex', flexDirection: "column", marginTop: '3rem', justifyContent: 'center', gap: '1rem' }}>
+              <Box>
+                <Img src={'/images/general/quiet.png'} />
+              </Box>
+              <Box>
+                <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
+                  Seems a little quiet over here
+                </Typography>
+              </Box>
             </Box>
-            <Box>
-              <Typography variant="body1" sx={{ color: 'white', fontSize: { lg: '18px', xs: '14px' } }} >
-                Seems a little quiet over here
-              </Typography>
-            </Box>
-          </Box>
 
-        }
-      </TableContainer>}
+          }
+        </TableContainer>}
+      </Box>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <PageIndicator setPage={setPage} currentPage={page} totalPages={totalPages} />
       </Box>
