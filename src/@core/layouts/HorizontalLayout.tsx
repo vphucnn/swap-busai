@@ -97,7 +97,7 @@ const HorizontalLayout = (props: LayoutProps) => {
           color='default'
           elevation={skin === 'bordered' ? 0 : 2}
           className='layout-navbar-and-nav-container'
-          position={appBar === 'fixed' ? 'sticky' : 'static'}
+          position={appBar === 'fixed' ? 'absolute' : 'static'}
           sx={{
             alignItems: 'center',
             color: 'text.primary',
@@ -105,7 +105,7 @@ const HorizontalLayout = (props: LayoutProps) => {
             ...(appBar === 'static' && { zIndex: 13 }),
             transition: 'border-bottom 0.2s ease-in-out',
             ...(appBarBlur && { backdropFilter: 'blur(6px)' }),
-            backgroundColor: "#CBFB45 ",
+            backgroundColor: "transparent",
             ...(skin === 'bordered' && { borderBottom: theme => `0px solid ${theme.palette.divider}` }),
             ...userAppBarStyle
           }}

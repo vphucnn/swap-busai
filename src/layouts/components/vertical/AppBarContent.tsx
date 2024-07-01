@@ -36,7 +36,7 @@ const AppBarContent = (props: Props) => {
   const auth = useAuth()
 
   return (
-    <Box sx={{ width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+    <Box sx={{ width: '100%', background: 'transparent', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
       <Box className='actions-left' sx={{ mr: 2, display: 'flex', alignItems: 'center' }}>
 
         <Link href='https://busai.me'>
@@ -47,16 +47,21 @@ const AppBarContent = (props: Props) => {
       <Box className='actions-right' sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '0.5rem' }}>
         {/* <LanguageDropdown settings={settings} saveSettings={saveSettings} /> */}
         {/* <ModeToggler settings={settings} saveSettings={saveSettings} /> */}
-        <BusAiButton size={'small'}  style={{fontSize : '8px'}} sx={{'&:hover': { borderBottom: '4px #CC0083  solid' }, padding: '3px' }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+        {/* <BusAiButton size={'small'}  style={{fontSize : '8px'}} sx={{'&:hover': { borderBottom: '4px #CC0083  solid' }, padding: '3px' }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
         window.open(`/BUSAI%20-%20Point%20policy.pdf`, '_blank')
       }} >
         Point Policy
       </BusAiButton>
         <BusAiButton size={'small'} style={{fontSize : '8px'}} backgroundColor={'#FF66C8'}  sx={{padding: '3px' }} borderBottom={'4px #CC0083 solid'} onClick={() => {
           window.open(process.env.NEXT_PUBLIC_LINK_SWAP_POINT, '_blank');
-        }}>Swap Points</BusAiButton>
-        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-          {!auth.user && <TelegramLoginButton
+        }}>Swap Points</BusAiButton> */}
+        {!auth.user && <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <BusAiButton size={'small'} style={{ fontSize: '8px' }} sx={{ '&:hover': { borderBottom: '4px #CC0083  solid' }, padding: '3px' }} backgroundColor={'#726FF7'} borderBottom={'4px #0F0BC1 solid'} onClick={() => {
+            auth.loginTelegramCustom()
+          }} >
+            Login with Telegram
+          </BusAiButton>
+          <TelegramLoginButton
             botName={process.env.NEXT_PUBLIC_BOT_NAME}
             cornerRadius="8"
             className="tg-login-button"
@@ -66,8 +71,8 @@ const AppBarContent = (props: Props) => {
             // dataAuthUrl={'/auth/telelgram'}
             requestAccess={'write'}
             usePic={false}
-          />}
-        </Box>
+          />
+        </Box>}
         {auth.user && (
           <>
             {/* <ShortcutsDropdown settings={settings} shortcuts={shortcuts} /> */}

@@ -67,6 +67,7 @@ export const TelegramLoginButton = ({
 
   return (
     <div style={{
+      display: 'none'
     }} ref={instance} className={className} />
   );
 };

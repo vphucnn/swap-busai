@@ -7,7 +7,7 @@ import MuiToolbar, { ToolbarProps } from '@mui/material/Toolbar'
 import { LayoutProps } from 'src/@core/layouts/types'
 
 // ** Util Import
-import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
+// import { hexToRGBA } from 'src/@core/utils/hex-to-rgba'
 
 interface Props {
   hidden: LayoutProps['hidden']
@@ -81,7 +81,7 @@ const LayoutAppBar = (props: Props) => {
       color='default'
       className='layout-navbar'
       sx={{ ...appBarBlurEffect, ...userAppBarStyle }}
-      position={appBar === 'fixed' ? 'sticky' : 'static'}
+      position={appBar === 'fixed' ? 'absolute' : 'static'}
       {...userAppBarProps}
     >
       <Toolbar
@@ -89,7 +89,7 @@ const LayoutAppBar = (props: Props) => {
         sx={{
           ...(appBarBlur && { backdropFilter: 'blur(6px)' }),
           minHeight: theme => `${theme.mixins.toolbar.minHeight as number}px !important`,
-          backgroundColor: theme => hexToRGBA(theme.palette.background.paper, appBarBlur ? 0 : 1),
+          backgroundColor: 'transparent',
           ...(skin === 'bordered' ? { border: theme => `0px solid ${theme.palette.divider}` } : { boxShadow: 2 }),
           ...(contentWidth === 'boxed' && {
             '@media (min-width:1440px)': { maxWidth: theme => `calc(1440px - ${theme.spacing(6 * 2)})` }
