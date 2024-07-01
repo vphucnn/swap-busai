@@ -123,7 +123,7 @@ const UserDropdown = (props: Props) => {
       </Badge>
       <Box
         sx={{
-          display: {md: 'flex', xs: 'none'},
+          display: { md: 'flex', xs: 'none' },
           flexDirection: 'column',
           gap: '0.1rem',
           marginLeft: '0.5rem'
@@ -169,12 +169,12 @@ const UserDropdown = (props: Props) => {
             My Profile
           </Box>
         </MenuItemStyled> */}
-        <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/history')}>
+        {/* <MenuItemStyled sx={{ p: 0 }} onClick={() => handleDropdownClose('/history')}>
           <Box sx={styles}>
             <Icon icon='tabler:credit-card' />
             History
           </Box>
-        </MenuItemStyled>
+        </MenuItemStyled> */}
         {/* <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} /> */}
         <Divider sx={{ my: theme => `${theme.spacing(2)} !important` }} />
         <MenuItemStyled sx={{ p: 0 }} onClick={handleLogout}>
